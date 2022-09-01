@@ -1,1 +1,1 @@
-ENV DEEPSTACK_HOST_ADDRESS=host-gateway
+
