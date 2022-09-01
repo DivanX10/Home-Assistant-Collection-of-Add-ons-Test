@@ -29,10 +29,10 @@
   "TZ": ""
   },
   "schema": {
-    "VISION-FACE": "bool",
-    "VISION-DETECTION": "bool",
-    "VISION-SCENE": "bool",
-    "MODELSTORE-DETECTION": "bool",
+    "VISION-FACE": "bool?",
+    "VISION-DETECTION": "bool?",
+    "VISION-SCENE": "bool?",
+    "MODELSTORE-DETECTION": "bool?",
     "TZ": "str?"
   }
 }
