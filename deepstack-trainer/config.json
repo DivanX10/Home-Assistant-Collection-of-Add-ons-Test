@@ -13,4 +13,5 @@
   },
   "ports_description": {
     "80/tcp": "Optional. Port of your deepstack server"  
+  }
 }
