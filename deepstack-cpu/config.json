@@ -14,7 +14,7 @@
   "ports_description": {
     "5000/tcp": "Optional. Port of your deepstack server"
   },
-  "environment": {
+  "options": {
     "VISION-FACE": "True",
     "VISION-DETECTION": "True",
     "VISION-SCENE": "True",
