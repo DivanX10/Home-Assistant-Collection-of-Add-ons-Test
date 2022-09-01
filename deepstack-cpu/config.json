@@ -19,8 +19,8 @@
     "VISION-DETECTION": "True"
   },
   "schema": {
-    "TZ": "str?"
-    "VISION-FACE": "str?"
+    "TZ": "str?",
+    "VISION-FACE": "str?",
     "VISION-DETECTION": "str?"
   }
 }
