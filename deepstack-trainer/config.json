@@ -15,6 +15,6 @@
     "80/tcp": "Optional. Port of your deepstack server"  
   }
   "environment": {
-    "DEEPSTACK_HOST_ADDRESS": "",
+    "DEEPSTACK_HOST_ADDRESS": ""
   } 
 }
