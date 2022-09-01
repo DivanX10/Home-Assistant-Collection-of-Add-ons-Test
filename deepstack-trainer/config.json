@@ -16,9 +16,9 @@
     "8080/tcp": "Optional. Port of your deepstack server"
   },
   "environment": {
-    "DEEPSTACK_HOST_ADDRESS": "http://[HOST]:[PORT]"
+    "DEEPSTACK_HOST_ADDRESS": "http://127.0.0.1:7000"
   },
   "schema": {
-    "DEEPSTACK_HOST_ADDRESS": "str?"
+    "DEEPSTACK_HOST_ADDRESS": "match(^.+:\\d+$)"
   }
 }
