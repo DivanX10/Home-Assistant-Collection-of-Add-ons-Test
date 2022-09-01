@@ -14,7 +14,7 @@
   "ports_description": {
     "8080/tcp": "Optional. Port of your deepstack server"
   },
-  "host_network": "true",
+  "host_network": "false",
   "slug": "deepstack-trainer",
   "url": "https://github.com/t0mer/deepstack-trainer",
   "version": "2.2.0",
