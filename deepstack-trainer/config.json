@@ -19,7 +19,7 @@
   "url": "https://github.com/t0mer/deepstack-trainer",
   "version": "2.2.0",
   "panel_icon": "mdiFaceRecognition",
-  "webui": "http://[HOST]:[PORT:8080]",
+  "webui": "http://[HOST]:[PORT:8080]"
   "schema": {
   "DEEPSTACK_HOST_ADDRESS": "http://[HOST]:[PORT:7000]"
   }
