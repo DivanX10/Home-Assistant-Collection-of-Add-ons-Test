@@ -1,6 +1,6 @@
 ![amd64]amd64-shield
 
-# DeepStack (GPU)
+# DeepStack (CPU)
 
 [Документация DeepStack](https://docs.deepstack.cc)
 
