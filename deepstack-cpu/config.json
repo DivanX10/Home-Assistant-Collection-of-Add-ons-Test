@@ -15,10 +15,10 @@
     "5000/tcp": "Optional. Port of your deepstack server"
   },
   "options": {
-    "VISION-FACE": "True",
-    "VISION-DETECTION": "True",
-    "VISION-SCENE": "True",
-    "MODELSTORE-DETECTION": "True",
+    "VISION-FACE": "",
+    "VISION-DETECTION": "",
+    "VISION-SCENE": "",
+    "MODELSTORE-DETECTION": "",
     "TZ": ""  
   },
   "schema": {
