@@ -10,7 +10,6 @@
   "startup": "application",
   "boot": "auto",
   "hassio_role": "Client",
-  "hassio_api": "true",
   "ports": {
     "8080/tcp": 7100
   },
