@@ -2,7 +2,7 @@
   "arch": ["amd64"],
   "description": "DeepStack Trainer is a Flask powerd web application that helps us train and test Deepstack AI easelly as possible",
   "environment": {
-    "DEEPSTACK_HOST_ADDRESS": "null"
+    "DEEPSTACK_HOST_ADDRESS": "http://[HOST]:[PORT:7000]"
   },
   "name": "DeepStack Trainer",
   "options": {
@@ -19,8 +19,9 @@
   "url": "https://github.com/t0mer/deepstack-trainer",
   "version": "2.2.0",
   "panel_icon": "mdiFaceRecognition",
-  "webui": "http://[HOST]:[PORT:8080]"
+  "webui": "http://[HOST]:[PORT:8080]",
   "schema": {
   "DEEPSTACK_HOST_ADDRESS": "http://[HOST]:[PORT:7000]"
   }
+}
 }
