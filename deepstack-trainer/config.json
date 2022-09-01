@@ -1,10 +1,8 @@
 {
-  "arch": [
-    "amd64"
-  ],
+  "arch": ["amd64"],
   "description": "DeepStack Trainer is a Flask powerd web application that helps us train and test Deepstack AI easelly as possible",
   "environment": {
-    "DEEPSTACK_HOST_ADDRESS": "",
+    "DEEPSTACK_HOST_ADDRESS": ""
   },
   "name": "DeepStack Trainer",
   "options": {
