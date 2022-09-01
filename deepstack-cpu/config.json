@@ -21,13 +21,6 @@
     "MODELSTORE-DETECTION": "True",
     "TZ": ""  
   },
-  "options": {
-  "VISION-FACE": "True",
-  "VISION-DETECTION": "True",
-  "VISION-SCENE": "True",
-  "MODELSTORE-DETECTION": "True",
-  "TZ": ""
-  },
   "schema": {
     "VISION-FACE": "bool?",
     "VISION-DETECTION": "bool?",
