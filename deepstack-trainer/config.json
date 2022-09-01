@@ -2,11 +2,11 @@
   "arch": ["amd64"],
   "description": "DeepStack Trainer is a Flask powerd web application that helps us train and test Deepstack AI easelly as possible",
   "environment": {
-    "DEEPSTACK_HOST_ADDRESS": "http://[HOST]:[PORT:7000]"
+    "DEEPSTACK_HOST_ADDRESS": "http://8.8.8.8:7000"
   },
   "name": "DeepStack Trainer",
   "options": {
-    "DEEPSTACK_HOST_ADDRESS": "http://[HOST]:[PORT:8080]"
+    "DEEPSTACK_HOST_ADDRESS": "http://8.8.8.8:7000"
   },
   "ports": {
     "8080/tcp": 7100
