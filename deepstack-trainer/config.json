@@ -6,7 +6,7 @@
   },
   "name": "DeepStack Trainer",
   "options": {
-    "DEEPSTACK_HOST_ADDRESS": "$ip"
+    "DEEPSTACK_HOST_ADDRESS": "http://[HOST]:[PORT:7000]"
   },
   "ports": {
     "8080/tcp": 7100
