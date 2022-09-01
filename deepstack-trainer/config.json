@@ -21,7 +21,6 @@
   "panel_icon": "mdiFaceRecognition",
   "webui": "http://[HOST]:[PORT:8080]",
   "schema": {
-  "DEEPSTACK_HOST_ADDRESS": "str",
-  "networks": "match(^!secret [a-zA-Z0-9_\-]+$|[0-9a-z]{16})"
+  "DEEPSTACK_HOST_ADDRESS": "str"
   }
 }
