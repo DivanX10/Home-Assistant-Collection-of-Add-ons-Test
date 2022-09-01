@@ -7,17 +7,19 @@
   "panel_icon": "mdiFaceRecognition",
   "webui": "http://[HOST]:[PORT:8080]",
   "arch": ["amd64"],
+  "hassio_role": "Client",
   "startup": "application",
   "boot": "auto",
-  "hassio_role": "Client",
   "ports": {
     "8080/tcp": 7100
   },
   "ports_description": {
     "8080/tcp": "Optional. Port of your deepstack server"
   },
+  "environment": {
+    "DEEPSTACK_HOST_ADDRESS": "http://homeassistant:7000"
+  },
   "schema": {
-    "DEEPSTACK_HOST_ADDRESS": "str",
-    "leave_front_door_ope": "bool?"
+    "DEEPSTACK_HOST_ADDRESS": "str?"
   }
 }
