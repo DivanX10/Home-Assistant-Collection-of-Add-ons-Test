@@ -39,7 +39,9 @@
 
 Перейдите во внешний интерфейс своего домашнего помощника в Настройки -> Дополнения -> Магазин -> нажимаем на 3 точки (справа наверху) и добавьте этот URL-адрес в репозиторий:
 
-https://github.com/DivanX10/Home-Assistant-Add-on-Deepstack
+```
+https://github.com/DivanX10/Home-Assistant-Add-on-DeepStack-Edge
+```
 
 **Дополнения в этом репозитории**
 
