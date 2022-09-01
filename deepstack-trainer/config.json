@@ -16,9 +16,10 @@
     "8080/tcp": "Optional. Port of your deepstack server"
   },
   "environment": {
-    "DEEPSTACK_HOST_ADDRESS": "http://homeassistant:7000"
+    "DEEPSTACK_HOST_ADDRESS": "http://homeassistant:7000"   
   },
   "schema": {
-    "DEEPSTACK_HOST_ADDRESS": "str?"
+    "DEEPSTACK_HOST_ADDRESS": "str?",
+    "leave_front_door_ope": "bool?"
   }
 }
