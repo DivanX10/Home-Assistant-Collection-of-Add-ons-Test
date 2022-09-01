@@ -7,7 +7,6 @@
   "panel_icon": "mdiFaceRecognition",
   "webui": "http://[HOST]:[PORT:8080]",
   "arch": ["amd64"],
-  "hassio_role": "Client",
   "startup": "application",
   "boot": "auto",
   "ports": {
