@@ -9,8 +9,9 @@
   "arch": ["amd64"],
   "startup": "application",
   "boot": "auto",
-  "hassio_api": "true"
-  "auth_api": "true"
+  "hassio_role": "manager",
+  "hassio_api": "true",
+  "auth_api": "true",
   "ports": {
     "8080/tcp": 7100
   },
