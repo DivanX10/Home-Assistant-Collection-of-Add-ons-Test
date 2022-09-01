@@ -6,7 +6,7 @@
   },
   "name": "DeepStack Trainer",
   "options": {
-    "DEEPSTACK_HOST_ADDRESS": "[{ http://"HOST": "str" , "PORT": "str" }]"
+    "DEEPSTACK_HOST_ADDRESS": [{ http://"HOST": "str" , "PORT": "str" }]
   },
   "ports": {
     "8080/tcp": 7100
@@ -21,6 +21,6 @@
   "panel_icon": "mdiFaceRecognition",
   "webui": "http://[HOST]:[PORT:8080]",
   "schema": {
-  "DEEPSTACK_HOST_ADDRESS": "[{ http://"HOST": "str" , "PORT": "str" }]"
+  "DEEPSTACK_HOST_ADDRESS": [{ http://"HOST": "str" , "PORT": "str" }]
   }
 }
