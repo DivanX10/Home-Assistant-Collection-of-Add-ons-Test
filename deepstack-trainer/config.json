@@ -20,5 +20,6 @@
   },
   "schema": {
     "DEEPSTACK_HOST_ADDRESS": "str"
+    "leave_front_door_ope": "bool?"
   }
 }
