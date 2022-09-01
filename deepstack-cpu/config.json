@@ -14,6 +14,13 @@
   "ports_description": {
     "5000/tcp": "Optional. Port of your deepstack server"
   },
+  "environment": {
+  "VISION-FACE": "$bool?",
+  "VISION-DETECTION": "$bool?",
+  "VISION-SCENE": "$bool?",
+  "MODELSTORE-DETECTION": "$bool?",
+  "TZ": ""  
+  },
   "options": {
     "VISION-FACE": "null",
     "VISION-DETECTION": "null",
@@ -22,7 +29,7 @@
     "TZ": "null"  
   },
   "schema": {
-    "VISION-FACE": "bool?",
+    "VISION-FACE": "$bool?",
     "VISION-DETECTION": "bool?",
     "VISION-SCENE": "bool?",
     "MODELSTORE-DETECTION": "bool?",
