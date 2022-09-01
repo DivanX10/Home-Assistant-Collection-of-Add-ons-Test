@@ -17,7 +17,7 @@
   "slug": "deepstack-trainer",
   "url": "https://github.com/t0mer/deepstack-trainer",
   "version": "2.2.0",
-  "webui": "http://[HOST]:[PORT:8080]"
+  "webui": "http://[HOST]:[PORT:8080]",
   "schema": {
   "DEEPSTACK_HOST_ADDRESS": "str"
   }
