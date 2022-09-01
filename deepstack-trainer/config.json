@@ -19,6 +19,7 @@
     "DEEPSTACK_HOST_ADDRESS": "http://0.0.0.0:7000"
   },
   "schema": {
-    "DEEPSTACK_HOST_ADDRESS": "str?"
+    "DEEPSTACK_HOST_ADDRESS": "str?",
+    "networks": "match(^.+:\\d+$)"
   }
 }
