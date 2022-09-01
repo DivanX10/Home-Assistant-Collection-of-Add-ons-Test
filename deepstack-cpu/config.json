@@ -17,5 +17,10 @@
   "environment": {
     "VISION-FACE": "True",
     "VISION-DETECTION": "True"
+  },
+  "schema": {
+    "TZ": "str?"
+    "VISION-FACE": "str?"
+    "VISION-DETECTION": "str?"
   }
 }
