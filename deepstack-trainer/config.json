@@ -14,8 +14,7 @@
     "80/tcp": 7100
   },
   "ports_description": {
-    "80/tcp": "Plex DLNA Server",
-    "3005/tcp": "Optional. Port of your deepstack server"
+    "80/tcp": "Optional. Port of your deepstack server"
   },
   "schema": {
     "TZ": "str?"
