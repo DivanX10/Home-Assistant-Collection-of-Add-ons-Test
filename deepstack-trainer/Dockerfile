@@ -1,2 +1,1 @@
-extra_hosts:
-  - host.docker.internal:host-gateway
+ENV DEEPSTACK_HOST_ADDRESS=host-gateway
