@@ -18,9 +18,6 @@
   "ports_description": {
     "8080/tcp": "Optional. Port of your deepstack server"
   },
-  "environment": {
-    "DEEPSTACK_HOST_ADDRESS": "http://c9e52f35-deepstack-cpu:7000"
-  },
   "schema": {
     "DEEPSTACK_HOST_ADDRESS": "str",
     "leave_front_door_ope": "bool?"
