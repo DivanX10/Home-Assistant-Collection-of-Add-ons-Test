@@ -19,6 +19,6 @@
     "DEEPSTACK_HOST_ADDRESS": "http://c9e52f35-deepstack-cpu:7000"
   },
   "schema": {
-    "DEEPSTACK_HOST_ADDRESS": "match(^.+:\\d+$)"
+    "DEEPSTACK_HOST_ADDRESS": "str"
   }
 }
