@@ -16,15 +16,23 @@
   },
   "environment": {
     "VISION-FACE": "",
-    "VISION-DETECTION": ""
-    "VISION-SCENE": ""
-    "MODELSTORE-DETECTION": ""
+    "VISION-DETECTION": "",
+    "VISION-SCENE": "",
+    "MODELSTORE-DETECTION": "",
+    "TZ": ""  
+  },
+  "options": {
+  "VISION-FACE": "",
+  "VISION-DETECTION": "",
+  "VISION-SCENE": "",
+  "MODELSTORE-DETECTION": "",
+  "TZ": ""
   },
   "schema": {
-    "TZ": "str?",
     "VISION-FACE": "str?",
-    "VISION-DETECTION": "str?"
-    "VISION-SCENE": "str?"
-    "MODELSTORE-DETECTION": "str?"
+    "VISION-DETECTION": "str?",
+    "VISION-SCENE": "str?",
+    "MODELSTORE-DETECTION": "str?",
+    "TZ": "str?"
   }
 }
