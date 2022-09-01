@@ -1,0 +1,6 @@
+---
+build_from:
+  amd64: deepquestai/deepstack:cpu-2022.01.1
+
+args:
+  DeepStack_Server_CPU: 2022.01.1
