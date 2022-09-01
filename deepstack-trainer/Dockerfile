@@ -1,2 +1,2 @@
-ARG BUILD_FROM
-FROM $BUILD_FROM
+extra_hosts:
+  - host.docker.internal:host-gateway
