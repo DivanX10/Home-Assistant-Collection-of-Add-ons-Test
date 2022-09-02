@@ -20,5 +20,5 @@
   "environment": {
     "DEEPSTACK_HOST_ADDRESS": "http://homeassistant:7000"
   },
-  "image": "homeassistant/{arch}-addon-configurator",
+  "image": "homeassistant/{arch}-addon-configurator"
 }
