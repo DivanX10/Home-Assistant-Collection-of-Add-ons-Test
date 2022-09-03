@@ -17,5 +17,8 @@
 	"environment": {
 		"DEEPSTACK_HOST_ADDRESS": "http://homeassistant:7000"
 	},
+	"volumes": {
+		"./deepstack-trainer/db": "/opt/trainer/db"
+	},
 	"image": "techblog/deepstack-trainer"
 }
