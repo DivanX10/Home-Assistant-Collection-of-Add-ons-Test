@@ -1,7 +1,7 @@
 ARG BUILD_FROM
 FROM $BUILD_FROM
 
-COPY run.sh /
-RUN chmod a+x /run.sh
+COPY run.sh /opt
+RUN chmod a+x /opt/run.sh
 
-CMD [ "/run.sh" ]
+CMD [ "sh /opt/run.sh" ]
