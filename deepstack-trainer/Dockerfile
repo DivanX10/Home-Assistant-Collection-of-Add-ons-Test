@@ -1,2 +1,5 @@
 ARG BUILD_FROM
-ENV DATA_DIR=opt/trainer/photos/uploads
+FROM $BUILD_FROM
+ENV DATA_DIR=/data/database
+VOLUME opt/trainer/db
+VOLUME opt/trainer/photos/uploads
