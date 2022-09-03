@@ -5,3 +5,6 @@ cp -r /config/deepstack/deepstack-trainer/ /opt/trainer/db
 cp -r /config/deepstack/deepstack-trainer/ /opt/trainer/photos/uploads
 cp -r /opt/trainer/db /config/deepstack/deepstack-trainer/
 cp -r /opt/trainer/photos/uploads /config/deepstack/deepstack-trainer/
+
+CONFIG_PATH=/data/options.json
+TARGET="$(bashio::config 'target')"
