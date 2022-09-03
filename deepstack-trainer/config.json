@@ -11,7 +11,7 @@
   "boot": "auto",
   "init": false,
   "map": {
-  "config:rw"
+  "config":"rw"
   },
     "ports": {
     "8080/tcp": 7100
