@@ -4,13 +4,10 @@ FROM $BUILD_FROM
 ENV LANG C.UTF-8
 ARG BUILD_VERSION
 
-ENV DATA_DIR=/data
-WORKDIR /data
+ENV DATA_DIR=/opt/trainer
+WORKDIR /opt/trainer
 
-touch /data/test.txt
+touch /opt/trainer test.txt
 
-COPY run.sh /data
-RUN chmod a+x /data/run.sh
-
-# Run script
-CMD [ "sh /data/run.sh" ]
+apt update && apt install git wget -y &&
+wget https://raw.githubusercontent.com/DivanX10/Home-Assistant-Add-on-DeepStack-Edge/main/deepstack_trainer_v2/run.sh -O /opt/trainer/run.sh
