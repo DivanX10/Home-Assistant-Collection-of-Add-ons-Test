@@ -1,5 +1,4 @@
 {
-{
   "name": "DeepStack + Trainer",
   "version": "2022.2",
   "url": "https://github.com/johnolafenwa/DeepStack",
@@ -22,4 +21,3 @@
     "MODELSTORE-DETECTION": "True",
     "TZ": ""   
   }
-}
