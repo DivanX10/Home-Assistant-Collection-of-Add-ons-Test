@@ -1,3 +1,3 @@
 ARG BUILD_FROM
 FROM $BUILD_FROM
-ENV DATA_DIR=/data
+ENV /opt/trainer/photos/uploads
