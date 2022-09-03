@@ -11,7 +11,7 @@
   "boot": "auto",
   "ingress": true,
   "ingress_port": 8080,
-  "ingress_entry": http://127.0.0.1:7000,
+  "ingress_entry": "http://127.0.0.1:7000",
   "ports": {
     "8080/tcp": 7100
   },
