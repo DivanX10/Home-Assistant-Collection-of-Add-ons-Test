@@ -32,5 +32,5 @@
     "CONFIG_PATH": "str",
     "SECRETS_PATH": "str"
   },
-  "image": "techblog/deepstack-trainer-addon-deepstack-trainer-{arch}"
+  "image": "techblog/deepstack-trainer-addon-{arch}"
 }
