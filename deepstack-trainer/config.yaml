@@ -1,6 +1,6 @@
 ---
 version: 2.2.0
-slug: deepstack-trainer
+slug: deepstack_trainer
 name: DeepStack Trainer
 description: DeepStack Trainer - клиент c графическим интерфейсом
 url: https://github.com/t0mer/deepstack-trainer
