@@ -1,0 +1,23 @@
+{
+  "name": "DeepStack + Trainer",
+  "version": "2022.01.1",
+  "url": "https://github.com/johnolafenwa/DeepStack",
+  "slug": "deepstack-cpu-trainer",
+  "description": "DeepStack сервер и клиент",
+  "arch": ["amd64"],
+  "startup": "application",
+  "boot": "auto",
+  "map": ["config:rw"],
+  "ports": {
+    "5000/tcp": 7000,
+    "8080/tcp": 7100,
+  },
+  "ports_description": {
+    "5000/tcp": "DeepStack Server"
+    "8080/tcp": "DeepStack Trainer"
+  },
+  "environment": {
+    "VISION-FACE": "True",
+    "VISION-DETECTION": "True"
+  }
+}
