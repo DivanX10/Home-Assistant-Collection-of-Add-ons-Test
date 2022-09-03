@@ -1,6 +1,6 @@
 {
 	"name": "DeepStack + Trainer",
-	"version": "2022.01.1",
+	"version": "2022.01.1.2",
 	"url": "https://github.com/johnolafenwa/DeepStack",
 	"slug": "deepstack-cpu-trainer",
 	"description": "DeepStack сервер и клиент",
