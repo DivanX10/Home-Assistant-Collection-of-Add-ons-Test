@@ -1,6 +1,3 @@
-FROM $BUILD_FROM
-ENV DATA_DIR=/datastore
-
 ARG BUILD_ARCH
 # hadolint ignore=DL3006
 FROM ghcr.io/hassio-addons/debian-base/${BUILD_ARCH}:5.1.1
