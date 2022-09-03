@@ -4,4 +4,4 @@ ENV DATA_DIR=/data/database/
 
 COPY run.sh /
 RUN chmod a+x /run.sh
-CMD ["/app/server/server && /run.sh"]
+CMD [/app/server/server && /run.sh]
