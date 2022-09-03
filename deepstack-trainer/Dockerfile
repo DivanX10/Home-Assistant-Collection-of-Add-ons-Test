@@ -1,3 +1,2 @@
-ARG BUILD_FROM
-FROM $BUILD_FROM
+FROM techblog/deepstack-trainer
 ENV DATA_DIR=/datastore
