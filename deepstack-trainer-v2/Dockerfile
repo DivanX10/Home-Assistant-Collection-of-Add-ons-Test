@@ -1,0 +1,1 @@
+FROM techblog/deepstack-trainer:2.2.0
