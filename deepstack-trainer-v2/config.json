@@ -28,6 +28,6 @@
   "schema": {
     "STORAGE_PATH": "str",
     "CONFIG_PATH": "str",
-    "SECRETS_PATH": "str",
+    "SECRETS_PATH": "str"
   }
 }
