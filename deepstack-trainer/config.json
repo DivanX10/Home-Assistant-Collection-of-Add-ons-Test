@@ -10,9 +10,9 @@
   "startup": "application",
   "boot": "auto",
   "init": false,
-  "map": {
-  "config":"rw"
-  },
+  "map": [
+  "config: rw"
+  ],
     "ports": {
     "8080/tcp": 7100
   },
