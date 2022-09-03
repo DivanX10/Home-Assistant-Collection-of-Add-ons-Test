@@ -11,7 +11,10 @@
   "boot": "auto",
   "init": false,
   "map": [
-  "config: rw"
+    "media:rw",
+    "config:rw",
+    "share:rw",
+    "ssl"
   ],
     "ports": {
     "8080/tcp": 7100
