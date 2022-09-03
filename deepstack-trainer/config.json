@@ -9,7 +9,6 @@
   "arch": ["amd64"],
   "startup": "application",
   "boot": "auto",
-  "ingress": true,
   "init": false,
   "ports": {
     "8080/tcp": 7100
