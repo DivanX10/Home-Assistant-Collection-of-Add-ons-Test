@@ -1,20 +1,23 @@
-name: DeepStack Trainer
+---
 version: 2.2.0
-url: https://github.com/t0mer/deepstack-trainer
 slug: deepstack-trainer
+name: DeepStack Trainer
 description: DeepStack Trainer - клиент c графическим интерфейсом
+url: https://github.com/t0mer/deepstack-trainer
 webui: http://[HOST]:[PORT:8080]
 codenotary: divanx10
-panel_icon: mdiFaceRecognition
+panel_icon: mdi:FaceRecognition
 arch:
-- amd64
-homeassistant_api: true
+  - amd64
+hassio_api: true
+host_network: true
 image: techblog/deepstack-trainer
-startup: application
-boot: auto
 init: false
 map:
-- config:rw
+  - config:rw
+  - media:rw
+startup: application
+boot: auto
 ports:
   8080/tcp: 7100
 ports_description:
