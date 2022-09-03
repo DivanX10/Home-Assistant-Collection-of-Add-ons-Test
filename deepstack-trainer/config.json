@@ -10,11 +10,8 @@
   "startup": "application",
   "boot": "auto",
   "init": false,
-  "map": [
-    "media:rw",
-    "config:rw",
-    "share:rw",
-    "ssl"
+  "map": ["config"],
+  "legacy": true,
   ],
     "ports": {
     "8080/tcp": 7100
