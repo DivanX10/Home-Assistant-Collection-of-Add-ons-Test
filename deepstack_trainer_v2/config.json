@@ -18,19 +18,5 @@
 	"environment": {
 		"DEEPSTACK_HOST_ADDRESS": "http://homeassistant:7000"
 	},
-	"image": "techblog/deepstack-trainer",
-	"options": {
-		"data_path": "/config/deepstack/deepstack-trainer",
-		"VISION-FACE": "bool",
-		"VISION-DETECTION": "bool",
-		"VISION-SCENE": "bool",
-		"MODELSTORE-DETECTION": "bool"
-	},
-	"schema": {
-		"data_path": "str",
-		"VISION-FACE": "bool",
-		"VISION-DETECTION": "bool",
-		"VISION-SCENE": "bool",
-		"MODELSTORE-DETECTION": "bool"
-	}
+	"image": "techblog/deepstack-trainer"
 }
