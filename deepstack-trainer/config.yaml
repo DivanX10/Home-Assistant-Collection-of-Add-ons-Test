@@ -1,0 +1,23 @@
+name: DeepStack Trainer
+version: 2.2.0
+url: https://github.com/t0mer/deepstack-trainer
+slug: deepstack-trainer
+description: DeepStack Trainer - клиент c графическим интерфейсом
+webui: http://[HOST]:[PORT:8080]
+codenotary: divanx10
+panel_icon: mdiFaceRecognition
+arch:
+- amd64
+homeassistant_api: true
+image: techblog/deepstack-trainer
+startup: application
+boot: auto
+init: false
+map:
+- config:rw
+ports:
+  8080/tcp: 7100
+ports_description:
+  8080/tcp: Optional. Port of your deepstack server
+environment:
+  DEEPSTACK_HOST_ADDRESS: http://homeassistant:7000
