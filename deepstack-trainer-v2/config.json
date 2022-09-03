@@ -23,7 +23,7 @@
   "options": {
     "STORAGE_PATH": "/opt/trainer/photos/uploads",
     "CONFIG_PATH": "/config/deepstack-trainer",
-    "SECRETS_PATH": "/config",
+    "SECRETS_PATH": "/config"
   },
   "schema": {
     "STORAGE_PATH": "str",
