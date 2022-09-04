@@ -1,5 +1,5 @@
-FROM techblog/fastapi:latest
-
+ARG BUILD_FROM
+FROM $BUILD_FROM
 LABEL maintainer="tomer.klein@gmail.com"
 ENV DEEPSTACK_HOST_ADDRESS=""
 ENV DEEPSTACK_API_KEY=""
