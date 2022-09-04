@@ -27,5 +27,3 @@ EXPOSE 8080
 WORKDIR /opt/trainer/
 
 ENTRYPOINT ["/usr/bin/python3", "trainer.py"]
-
-RUN --mount=type=bind,option=/mnt/data/supervisor/homeassistant/deepstack/deepstack-trainer/uploads,option=/opt/trainer/photos/uploads
