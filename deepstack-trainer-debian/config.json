@@ -1,6 +1,6 @@
 {
 	"name": "DeepStack Trainer Debian 11",
-	"version": "2.2.0",
+	"version": "11",
 	"url": "https://github.com/geerlingguy/docker-debian11-ansible",
 	"slug": "deepstack-trainer-debian",
 	"description": "DeepStack Trainer на Debian",
