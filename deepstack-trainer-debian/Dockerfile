@@ -21,11 +21,13 @@ COPY trainer /opt/trainer
 
 COPY run.sh /
 RUN chmod a+x /run.sh
-CMD [ "/run.sh" ]
+
  
 EXPOSE 8080
  
 WORKDIR /opt/trainer/
 
-CMD ["/lib/systemd/systemd"]
+CMD [ "/run.sh" ]
 ENTRYPOINT ["/usr/bin/python3", "trainer.py"]
+
+touch /opt/trainer/test_file.txt
