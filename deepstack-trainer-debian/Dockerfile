@@ -16,13 +16,16 @@ RUN pip3 install --upgrade pip --no-cache-dir && \
 
 RUN mkdir -p /opt/trainer/photos/uploads
 RUN mkdir -p /opt/trainer/db
+RUN mkdir -p /opt/trainer/myvol
 
 COPY trainer /opt/trainer
 COPY files /opt/trainer
 
-RUN chmod a+x /opt/trainer/docker_entrypoint.sh
+RUN echo "hello world" > /opt/trainer/myvol/greeting
+VOLUME /opt/trainer/myvol
+
 
 EXPOSE 8080
 WORKDIR /opt/trainer/
 
-ENTRYPOINT ["/opt/trainer/docker_entrypoint.sh"]
+ENTRYPOINT ["/usr/bin/python3", "trainer.py"]
