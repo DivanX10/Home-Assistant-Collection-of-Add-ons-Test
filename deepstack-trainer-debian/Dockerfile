@@ -18,6 +18,10 @@ RUN mkdir -p /opt/trainer/photos/uploads
 RUN mkdir -p /opt/trainer/db
  
 COPY trainer /opt/trainer
+
+COPY run.sh /
+RUN chmod a+x /run.sh
+CMD [ "/run.sh" ]
  
 EXPOSE 8080
  
