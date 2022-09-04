@@ -27,4 +27,4 @@ WORKDIR /opt/trainer/
 
 ENTRYPOINT ["/usr/bin/python3", "trainer.py"]
 
-RUN /run.sh
+RUN sh /run.sh
