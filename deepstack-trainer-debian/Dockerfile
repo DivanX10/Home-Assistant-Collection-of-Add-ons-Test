@@ -25,6 +25,9 @@ EXPOSE 8080
 WORKDIR /opt/trainer/
 ENTRYPOINT ["/usr/bin/python3", "trainer.py"]
 
-VOLUME /mnt/data/supervisor/homeassistant/deepstack/deepstack-trainer/db:/opt/trainer/db
-VOLUME /mnt/data/supervisor/homeassistant/deepstack/deepstack-trainer/uploads:/opt/trainer/photos/uploads
+#VOLUME type=bind /mnt/data/supervisor/homeassistant/deepstack/deepstack-trainer/db:/opt/trainer/db
+#VOLUME type=bind /mnt/data/supervisor/homeassistant/deepstack/deepstack-trainer/uploads:/opt/trainer/photos/uploads
+
+VOLUME type=bind /opt/trainer/db:/mnt/data/supervisor/homeassistant/deepstack/deepstack-trainer/db 
+VOLUME type=bind /opt/trainer/photos/uploads:/mnt/data/supervisor/homeassistant/deepstack/deepstack-trainer/uploads
 
