@@ -20,6 +20,7 @@ RUN mkdir -p /opt/trainer/db
 COPY trainer /opt/trainer
 COPY rootfs /
 RUN chmod a+x /run.sh
+RUN chmod a+x /start.sh
 
 EXPOSE 8080
 WORKDIR /opt/trainer/
