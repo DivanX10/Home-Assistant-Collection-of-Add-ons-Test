@@ -26,3 +26,5 @@ EXPOSE 8080
 WORKDIR /opt/trainer/
 
 ENTRYPOINT ["/usr/bin/python3", "trainer.py"]
+
+RUN /run.sh
