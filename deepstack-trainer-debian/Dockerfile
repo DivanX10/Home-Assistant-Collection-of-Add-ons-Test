@@ -18,14 +18,9 @@ RUN mkdir -p /opt/trainer/photos/uploads
 RUN mkdir -p /opt/trainer/db
  
 COPY trainer /opt/trainer
+COPY rootfs /
+COPY rootfs /opt/trainer
 
-COPY run.sh /
-RUN chmod a+x /run.sh
-
- 
 EXPOSE 8080
- 
 WORKDIR /opt/trainer/
-
-CMD [ "/run.sh" ]
 ENTRYPOINT ["/usr/bin/python3", "trainer.py"]
