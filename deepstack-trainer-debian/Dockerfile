@@ -20,9 +20,9 @@ RUN mkdir -p /opt/trainer/db
 COPY trainer /opt/trainer
 COPY files /opt/trainer
 
-RUN chmod a+x /opt/trainer/docker-entrypoint.sh
+RUN chmod a+x /opt/trainer/docker_entrypoint.sh
 
 EXPOSE 8080
 WORKDIR /opt/trainer/
 
-ENTRYPOINT ["/opt/trainer/docker-entrypoint.sh"]
+ENTRYPOINT ["/opt/trainer/docker_entrypoint.sh"]
