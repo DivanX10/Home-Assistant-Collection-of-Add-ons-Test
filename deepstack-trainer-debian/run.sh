@@ -2,4 +2,4 @@
 set -e
 
 exec /usr/bin/python3 trainer.py &
-exec /bin/sh -c /opt/trainer/backup.sh
+exec /usr/bin/python3 backup.py
