@@ -1,2 +1,5 @@
 #!/bin/bash
-ENTRYPOINT ["/usr/bin/python3", "trainer.py"]
+set -e
+
+exec python3 trainer.py &
+exec python3 backup.py 
