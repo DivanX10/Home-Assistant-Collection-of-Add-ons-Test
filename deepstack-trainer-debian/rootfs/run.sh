@@ -2,6 +2,7 @@
 
 chmod a+x /run.sh
 
+sleep 10
 #creating a folder
 mkdir -p /config/deepstack/deepstack-trainer /config/deepstack/deepstack-trainer/db/  /config/deepstack/deepstack-trainer/uploads/
 
