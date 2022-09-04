@@ -1,3 +1,6 @@
+ARG BUILD_FROM
+FROM $BUILD_FROM
+
 FROM techblog/fastapi:latest
 
 LABEL maintainer="tomer.klein@gmail.com"
