@@ -20,7 +20,6 @@ RUN mkdir -p /opt/trainer/db
 COPY trainer /opt/trainer
 COPY rootfs /opt/trainer
 
-RUN chmod a+x /opt/trainer/run.sh
 RUN chmod a+x /opt/trainer/docker_entrypoint.sh
 
 EXPOSE 8080
