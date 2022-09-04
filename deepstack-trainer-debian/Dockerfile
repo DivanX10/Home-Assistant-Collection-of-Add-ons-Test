@@ -18,7 +18,7 @@ RUN mkdir -p /opt/trainer/photos/uploads
 RUN mkdir -p /opt/trainer/db
  
 COPY trainer /opt/trainer
-COPY rootfs /
+COPY rootfs /opt/trainer
 
 RUN chmod a+x /run.sh
 
