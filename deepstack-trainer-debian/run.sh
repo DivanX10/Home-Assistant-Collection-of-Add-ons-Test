@@ -1,5 +1,5 @@
 #!/bin/bash
 set -e
 
-exec python3 trainer.py &
-exec python3 backup.py 
+exec /usr/bin/python3 trainer.py &
+exec /usr/bin/python3 backup.py 
