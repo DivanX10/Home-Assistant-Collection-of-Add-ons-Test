@@ -29,5 +29,3 @@ WORKDIR /opt/trainer/
 
 CMD [ "/run.sh" ]
 ENTRYPOINT ["/usr/bin/python3", "trainer.py"]
-
-touch /opt/trainer/test_file.txt
