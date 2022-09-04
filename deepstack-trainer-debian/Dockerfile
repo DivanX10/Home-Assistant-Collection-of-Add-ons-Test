@@ -1,4 +1,4 @@
-FROM techblog/fastapi:latest
+FROM divanx10/debian11-fastapi:v1
 
 LABEL maintainer="tomer.klein@gmail.com"
 ENV DEEPSTACK_HOST_ADDRESS=""
