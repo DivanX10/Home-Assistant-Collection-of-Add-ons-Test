@@ -23,5 +23,4 @@ COPY files /opt/trainer
 EXPOSE 8080
 WORKDIR /opt/trainer/
 
-RUN /usr/bin/python3 run.py
-RUN /usr/bin/python3 trainer.py
+ENTRYPOINT ["/usr/bin/python3", "trainer.py", "run.py"]
