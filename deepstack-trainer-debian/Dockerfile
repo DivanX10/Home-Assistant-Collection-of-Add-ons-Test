@@ -27,9 +27,8 @@ RUN chmod a+x /opt/trainer/docker_entrypoint.sh
 EXPOSE 8080
 WORKDIR /opt/trainer/
 
+ENTRYPOINT ["/opt/trainer/docker-entrypoint.sh"]
+CMD ["trainer.py", "backup.py"]
 #ENTRYPOINT ["/docker_entrypoint.sh"]
 #ENTRYPOINT ["/usr/bin/python3", "trainer.py"]
-
-
-
-CMD [ "/opt/trainer/run.sh" ]
+#CMD [ "/opt/trainer/run.sh" ]
