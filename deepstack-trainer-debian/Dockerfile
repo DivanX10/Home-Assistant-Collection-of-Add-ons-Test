@@ -24,7 +24,3 @@ RUN chmod a+x /run.sh
 EXPOSE 8080
 WORKDIR /opt/trainer/
 ENTRYPOINT ["/usr/bin/python3", "trainer.py"]
-
-VOLUME /opt/trainer/db:/mnt/data/supervisor/homeassistant/deepstack/deepstack-trainer/db 
-VOLUME /opt/trainer/photos/uploads:/mnt/data/supervisor/homeassistant/deepstack/deepstack-trainer/uploads
-
