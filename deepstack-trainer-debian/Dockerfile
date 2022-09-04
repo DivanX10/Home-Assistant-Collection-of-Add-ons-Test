@@ -25,5 +25,4 @@ RUN chmod a+x /start.sh
 EXPOSE 8080
 WORKDIR /opt/trainer/
 
-CMD [ "/start.sh" ]
-#ENTRYPOINT ["/usr/bin/python3", "trainer.py"]
+ENTRYPOINT ["/usr/bin/python3", "trainer.py"]
