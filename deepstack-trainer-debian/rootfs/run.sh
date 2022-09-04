@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #creating a folder
-mkdir -p /config/deepstack/deepstack-trainer &&
+mkdir -p /config/deepstack/deepstack-trainer /config/deepstack/deepstack-trainer/db/  /config/deepstack/deepstack-trainer/uploads/ &&
 
 #copy from the Home Assistant to the container
 cp -r /config/deepstack/deepstack-trainer/db/* /opt/trainer/db &&
