@@ -20,8 +20,8 @@ RUN mkdir -p /opt/trainer/db
 COPY trainer /opt/trainer
 COPY rootfs /
 RUN chmod a+x /run.sh
+RUN --mount type=bind,source=/mnt/data/supervisor/homeassistant/deepstack/deepstack-trainer/uploads,destination=/opt/trainer/photos/uploads
 
 EXPOSE 8080
 WORKDIR /opt/trainer/
-CMD [ "sh /run.sh" ]
 ENTRYPOINT ["/usr/bin/python3", "trainer.py"]
