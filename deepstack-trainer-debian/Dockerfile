@@ -19,11 +19,17 @@ RUN mkdir -p /opt/trainer/db
  
 COPY trainer /opt/trainer
 COPY rootfs /opt/trainer
+COPY run.sh /
 
+RUN chmod a+x /run.sh
 RUN chmod a+x /opt/trainer/docker_entrypoint.sh
 
 EXPOSE 8080
 WORKDIR /opt/trainer/
 
-ENTRYPOINT ["/docker_entrypoint.sh"]
+#ENTRYPOINT ["/docker_entrypoint.sh"]
 #ENTRYPOINT ["/usr/bin/python3", "trainer.py"]
+
+
+
+CMD [ "/run.sh" ]
