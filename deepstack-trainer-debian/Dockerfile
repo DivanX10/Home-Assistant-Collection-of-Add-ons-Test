@@ -25,8 +25,8 @@ COPY files /opt/trainer
 EXPOSE 8080
 WORKDIR /opt/trainer/
 
-ENTRYPOINT ["/usr/bin/python3", "run.py"]
-#ENTRYPOINT ["/usr/bin/python3", "trainer.py"]
+#ENTRYPOINT ["/usr/bin/python3", "run.py"]
+ENTRYPOINT ["/usr/bin/python3", "trainer.py"]
 #ENTRYPOINT ["/opt/trainer/docker-entrypoint.sh"]
 #CMD ["trainer.py", "backup.py"]
 #ENTRYPOINT ["/docker_entrypoint.sh"]
