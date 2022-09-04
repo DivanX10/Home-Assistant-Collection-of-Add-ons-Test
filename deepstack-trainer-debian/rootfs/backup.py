@@ -1,2 +1,2 @@
 import subprocess
-subprocess.call(['sh', './run.sh'])
+subprocess.call(['sh', '/opt/trainer/backup.sh'])
