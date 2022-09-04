@@ -22,10 +22,10 @@ COPY trainer /opt/trainer
 COPY files /opt/trainer
 
 RUN echo "hello world" > /opt/trainer/myvol/greeting
-VOLUME /opt/trainer/myvol
-
 
 EXPOSE 8080
 WORKDIR /opt/trainer/
 
 ENTRYPOINT ["/usr/bin/python3", "trainer.py"]
+
+RUN --mount=type=bind,source=/mnt/data/supervisor/homeassistant/deepstack/deepstack-trainer/uploads,destination=/opt/trainer/photos/uploads
