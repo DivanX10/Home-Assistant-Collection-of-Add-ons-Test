@@ -312,8 +312,7 @@ def get_images(request: Request):
         logger.error("Error fetch images, " + str(e))
         return None
 
-#Временно закомментировал
 # Start Application
-#if __name__ == '__main__':
-#    InitDB()
-#    uvicorn.run(app, host="0.0.0.0", port=8080)
+if __name__ == '__main__':
+    InitDB()
+    uvicorn.run(app, host="0.0.0.0", port=8080)
