@@ -8,5 +8,5 @@ set -e
 #exec python3 trainer.py &
 #exec python3 run.py
 
-python3 trainer.py &
-python3 run.py
+python3 /opt/trainer/trainer.py &&
+python3 /opt/trainer/run.py
