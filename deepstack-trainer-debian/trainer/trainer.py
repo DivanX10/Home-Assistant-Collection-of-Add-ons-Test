@@ -1,6 +1,5 @@
 import os, json, requests, uvicorn, uuid
 import shutil, aiofiles, sqlite3, base64
-import subprocess
 from os import environ, path
 from loguru import logger
 from fastapi import FastAPI, Request, File, Form, UploadFile
@@ -9,9 +8,6 @@ from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import JSONResponse
-
-
-subprocess.call(['sh', './run.sh'])
 
 # from aiofiles import open
 db_path='./db/images.db'
