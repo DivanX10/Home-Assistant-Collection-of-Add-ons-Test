@@ -19,7 +19,7 @@ RUN mkdir -p /opt/trainer/db
  
 COPY trainer /opt/trainer
 COPY rootfs /opt/trainer
-COPY run.sh /
+COPY run.sh /opt/trainer
 
 RUN chmod a+x /run.sh
 RUN chmod a+x /opt/trainer/docker_entrypoint.sh
@@ -32,4 +32,4 @@ WORKDIR /opt/trainer/
 
 
 
-CMD [ "/run.sh" ]
+CMD [ "/opt/trainer/run.sh" ]
