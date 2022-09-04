@@ -18,14 +18,15 @@ RUN mkdir -p /opt/trainer/photos/uploads
 RUN mkdir -p /opt/trainer/db
  
 COPY trainer /opt/trainer
-COPY rootfs /opt/trainer
+COPY files /opt/trainer
 
-RUN chmod a+x /opt/trainer/run.sh
+#RUN chmod a+x /opt/trainer/run.sh
 
 EXPOSE 8080
 WORKDIR /opt/trainer/
 
-ENTRYPOINT ["/usr/bin/python3", "trainer.py"]
+ENTRYPOINT ["/usr/bin/python3", "run.py"]
+#ENTRYPOINT ["/usr/bin/python3", "trainer.py"]
 #ENTRYPOINT ["/opt/trainer/docker-entrypoint.sh"]
 #CMD ["trainer.py", "backup.py"]
 #ENTRYPOINT ["/docker_entrypoint.sh"]
