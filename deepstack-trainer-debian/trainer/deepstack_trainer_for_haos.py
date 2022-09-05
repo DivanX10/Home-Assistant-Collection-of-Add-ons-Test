@@ -1,5 +1,5 @@
 import os, json, requests, uvicorn, uuid
-import shutil, aiofiles, sqlite3, base64, subprocess
+import shutil, aiofiles, sqlite3, base64, subprocess, distutils, distutils.core
 from os import environ, path
 from loguru import logger
 from fastapi import FastAPI, Request, File, Form, UploadFile
