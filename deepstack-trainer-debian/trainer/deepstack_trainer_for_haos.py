@@ -15,16 +15,14 @@ db_path='./db/images.db'
 deepstack_host_address = os.getenv("DEEPSTACK_HOST_ADDRESS")
 deepstack_api_key = os.getenv("DEEPSTACK_API_KEY")
 min_confidence = os.getenv("MIN_CONFIDANCE")
-dest_file_db = os.getenv("HOMEASSISTANT_FOLDER_PATH_FOR_DATABASE")
-dest_file_photos = os.getenv("HOMEASSISTANT_FOLDER_PATH_FOR_PHOTOS")
 
 #copy the database from docker to homeassistant
 src_file_db='/opt/trainer/db'
-#dest_file_db='$homeassistant_folder_path_for_database'
+dest_file_db = os.getenv("HOMEASSISTANT_FOLDER_PATH_FOR_DATABASE")
 
 #copy the photos from docker to homeassistant
 src_file_photos= '/opt/trainer/photos/uploads'
-#dest_file_photos= '$homeassistant_folder_path_for_photos'
+dest_file_photos = os.getenv("HOMEASSISTANT_FOLDER_PATH_FOR_PHOTOS")
 
 
 if not min_confidence:
