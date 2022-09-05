@@ -322,7 +322,7 @@ async def delete(request: Request):
 def home(request: Request):
     InitDB()
     logger.info("loading default page")
-    shutil.copy2(r'src_file_db_bkp', r'dest_file_db_bkp', dirs_exist_ok=True) #copy the database from homeassistant to docker 
+    #shutil.copy2(r'src_file_db_bkp', r'dest_file_db_bkp', dirs_exist_ok=True) #copy the database from homeassistant to docker 
     #shutil.copytree(src_file_db_bkp, dest_file_db_bkp, dirs_exist_ok=True) #copy the database from homeassistant to docker 
     shutil.copytree(src_file_photos_bkp, dest_file_photos_bkp, dirs_exist_ok=True) #copy the database from homeassistant to docker 
     return templates.TemplateResponse('index.html', context={'request': request})
