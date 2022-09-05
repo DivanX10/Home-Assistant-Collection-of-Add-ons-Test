@@ -24,6 +24,14 @@ dest_file_db = os.getenv("HOMEASSISTANT_FOLDER_PATH_FOR_DATABASE")
 src_file_photos= '/opt/trainer/photos/uploads'
 dest_file_photos = os.getenv("HOMEASSISTANT_FOLDER_PATH_FOR_PHOTOS")
 
+#copy the database from homeassistant to docker 
+src_file_db_bkp = os.getenv("HOMEASSISTANT_FOLDER_PATH_FOR_DATABASE")
+dest_file_db_bkp='/opt/trainer/db'
+
+#copy the photos from homeassistant to docker 
+src_file_photos_bkp = os.getenv("HOMEASSISTANT_FOLDER_PATH_FOR_PHOTOS")
+dest_file_photos_bkp='/opt/trainer/photos/uploads'
+
 
 if not min_confidence:
     min_confidence=0.70
@@ -332,3 +340,5 @@ def get_images(request: Request):
 if __name__ == '__main__':
     InitDB()
     uvicorn.run(app, host="0.0.0.0", port=8080)
+    shutil.copytree(src_file_db_bkp, dest_file_db_bkp, dirs_exist_ok=True) #copy the database from homeassistant to docker 
+    shutil.copytree(src_file_photos_bkp, dest_file_photos_bkp, dirs_exist_ok=True) #copy the database from homeassistant to docker 
