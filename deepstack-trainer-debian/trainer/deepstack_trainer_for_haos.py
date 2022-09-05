@@ -18,7 +18,7 @@ min_confidence = os.getenv("MIN_CONFIDANCE")
 homeassistant_folder_path = os.getenv("HOMEASSISTANT_FOLDER_PATH")
 photos='/opt/trainer/photos/uploads'
 test='/config/deepstack/'
-localdir='/opt/trainer/test/'
+localdir='/opt/trainer/photos'
 
 if not min_confidence:
     min_confidence=0.70
@@ -82,11 +82,11 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in "jpg,png,gif,bmp,jpeg"
 
 #copy the files to the homeassistant folder
-def SaveImage(localdir, test, file, path):
+def SaveImage(localdir, file, path):
     logger.info("Saving the image to the file system")
     try:
         with open(path, "wb") as buffer:
-            shutil.copyfileobj(localdir, test, file, buffer) 
+            shutil.copyfileobj(localdir, file, buffer) 
         logger.info("File saved Divan")
     except Exception as e:
         logger.error("Unable to save file " + str(e))
@@ -163,7 +163,6 @@ app.mount("/img", StaticFiles(directory="dist/img"), name="img")
 app.mount("/uploads", StaticFiles(directory="photos/uploads"), name="img")
 templates = Jinja2Templates(directory="templates/")
 
-#my comment localdir
 @app.post('/teach')
 def teach(person: str = Form(...) ,teach_file: UploadFile = File(...)):
     logger.info("Start learning new face for: " + person)
@@ -171,7 +170,7 @@ def teach(person: str = Form(...) ,teach_file: UploadFile = File(...)):
         InitDB()
         if teach_file and allowed_file(teach_file.filename):
             image_file = os.path.join('./photos/uploads', generate_file_name(teach_file.filename))
-            SaveImage(teach_file.file, image_file, localdir)
+            SaveImage(teach_file.file, image_file)
             logger.info("Sending the image to deepstack server")
             response = teachme(person,image_file)
             success = str(response['success']).lower()
