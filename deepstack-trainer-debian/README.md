@@ -1,7 +1,7 @@
 # Home assistant add-on: DeepStack Trainer - Client
 ## README Translation
 
-[Русский]()
+[Русский](https://github.com/DivanX10/Home-Assistant-Add-on-DeepStack-Edge/blob/main/deepstack-trainer-debian/readme-ru.md)
 
 A client with a graphical interface
 ## Installation
