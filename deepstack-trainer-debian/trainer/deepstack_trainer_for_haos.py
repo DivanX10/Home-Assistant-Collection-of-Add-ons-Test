@@ -18,7 +18,9 @@ min_confidence = os.getenv("MIN_CONFIDANCE")
 homeassistant_folder_path = os.getenv("HOMEASSISTANT_FOLDER_PATH")
 #photos='/opt/trainer/photos/uploads'
 #test='/config/deepstack/'
-localdir='/opt/trainer/photos/'
+#localdir='/opt/trainer/photos/'
+src= '/opt/trainer/photos/uploads'
+dest='/opt/trainer/photos'
 
 if not min_confidence:
     min_confidence=0.70
@@ -81,11 +83,12 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in "jpg,png,gif,bmp,jpeg"
 
-def SaveImage(file, path, localdir):
+def SaveImage(file, path):
     logger.info("Saving the image to the file system")
     try:
         with open(path, "wb") as buffer:
-            shutil.copyfileobj(file, localdir, buffer)
+            shutil.copyfileobj(file, buffer)
+            shutil.copystat(src, dest)
         logger.info("File saved Divan")
     except Exception as e:
         logger.error("Unable to save file " + str(e))
