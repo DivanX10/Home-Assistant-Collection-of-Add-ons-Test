@@ -16,11 +16,8 @@ deepstack_host_address = os.getenv("DEEPSTACK_HOST_ADDRESS")
 deepstack_api_key = os.getenv("DEEPSTACK_API_KEY")
 min_confidence = os.getenv("MIN_CONFIDANCE")
 homeassistant_folder_path = os.getenv("HOMEASSISTANT_FOLDER_PATH")
-#photos='/opt/trainer/photos/uploads'
-#test='/config/deepstack/'
-#localdir='/opt/trainer/photos/'
 src_file= '/opt/trainer/photos/uploads'
-dest_file='/opt/trainer/photos'
+dest_file='/opt/trainer/test'
 
 
 if not min_confidence:
@@ -89,7 +86,7 @@ def SaveImage(file, path):
     try:
         with open(path, "wb") as buffer:
             shutil.copyfileobj(file, buffer)
-            shutil.copy(src_file, dest_file)
+            shutil.copytree(src_file, dest_file)
         logger.info("File saved Divan")
         logger.info("Double message File saved Divan")
     except Exception as e:
