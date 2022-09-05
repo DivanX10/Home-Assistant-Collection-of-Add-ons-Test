@@ -1,5 +1,6 @@
 import os, json, requests, uvicorn, uuid
-import shutil, aiofiles, sqlite3, base64, subprocess, distutils, distutils.core
+import shutil, aiofiles, sqlite3, base64, subprocess, distutils
+
 from os import environ, path
 from loguru import logger
 from fastapi import FastAPI, Request, File, Form, UploadFile
@@ -8,6 +9,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import JSONResponse
+from distutils import dir_util
 
 
 # from aiofiles import open
