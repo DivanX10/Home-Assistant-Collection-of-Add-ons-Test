@@ -16,9 +16,9 @@ deepstack_host_address = os.getenv("DEEPSTACK_HOST_ADDRESS")
 deepstack_api_key = os.getenv("DEEPSTACK_API_KEY")
 min_confidence = os.getenv("MIN_CONFIDANCE")
 homeassistant_folder_path = os.getenv("HOMEASSISTANT_FOLDER_PATH")
-photos='/opt/trainer/photos/uploads'
-test='/config/deepstack/'
-localdir='/opt/trainer/photos'
+#photos='/opt/trainer/photos/uploads'
+#test='/config/deepstack/'
+localdir='/opt/trainer/photos/'
 
 if not min_confidence:
     min_confidence=0.70
@@ -81,12 +81,11 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in "jpg,png,gif,bmp,jpeg"
 
-#copy the files to the homeassistant folder
-def SaveImage(localdir, file, path):
+def SaveImage(file, path, localdir):
     logger.info("Saving the image to the file system")
     try:
         with open(path, "wb") as buffer:
-            shutil.copyfileobj(localdir, file, buffer) 
+            shutil.copyfileobj(file, localdir, buffer)
         logger.info("File saved Divan")
     except Exception as e:
         logger.error("Unable to save file " + str(e))
