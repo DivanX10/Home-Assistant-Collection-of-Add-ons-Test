@@ -89,7 +89,7 @@ def SaveImage(file, path):
     try:
         with open(path, "wb") as buffer:
             shutil.copyfileobj(file, buffer)
-            shutil.copy(src_file, dest_file, *, follow_symlinks=True)
+            shutil.copy(src_file, dest_file)
         logger.info("File saved Divan")
         logger.info("Double message File saved Divan")
     except Exception as e:
