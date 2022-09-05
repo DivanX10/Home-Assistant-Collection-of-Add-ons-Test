@@ -1,5 +1,5 @@
 import os, json, requests, uvicorn, uuid
-import shutil, aiofiles, sqlite3, base64
+import shutil, aiofiles, sqlite3, base64, subprocess
 from os import environ, path
 from loguru import logger
 from fastapi import FastAPI, Request, File, Form, UploadFile
@@ -77,7 +77,7 @@ def allowed_file(filename):
     logger.info("Validating file type")
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in "jpg,png,gif,bmp,jpeg"
-
+#copy the files to the homeassistant folder
 def SaveImage(file, path):
     logger.info("Saving the image to the file system")
     try:
