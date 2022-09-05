@@ -19,13 +19,5 @@
   "DEEPSTACK_HOST_ADDRESS": "http://homeassistant:7000",
   "HOMEASSISTANT_FOLDER_PATH_FOR_DATABASE": "/config/deepstack/db",
   "HOMEASSISTANT_FOLDER_PATH_FOR_PHOTOS": "/config/deepstack/photos"
-  },
-"options": {
-  "HOMEASSISTANT_FOLDER_PATH_FOR_DATABASE": "/config/deepstack/db",
-  "HOMEASSISTANT_FOLDER_PATH_FOR_PHOTOS": "/config/deepstack/photos"
-  },
-"schema": {
-  "HOMEASSISTANT_FOLDER_PATH_FOR_DATABASE": "str",
-  "HOMEASSISTANT_FOLDER_PATH_FOR_PHOTOS": "str"
   }
 }
