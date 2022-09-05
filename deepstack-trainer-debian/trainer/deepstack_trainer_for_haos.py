@@ -102,8 +102,7 @@ def SaveImage(file, path):
     try:
         with open(path, "wb") as buffer:
             shutil.copyfileobj(file, buffer)
-#            shutil.copy2(src_file_images_db, dest_file_db) #copy the database from docker to homeassistant
-            os.replace(src_file_images_db, dest_file_db) #copy the database from docker to homeassistant
+            shutil.move(src_file_images_db, dest_file_db) #copy the database from docker to homeassistant
             shutil.copytree(src_file_photos, dest_file_photos, dirs_exist_ok=True) #copy the photos from docker to homeassistant
         logger.info("File saved Divan")
         logger.info("Double message File saved Divan")
