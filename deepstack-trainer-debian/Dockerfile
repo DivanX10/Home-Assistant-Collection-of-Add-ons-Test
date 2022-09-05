@@ -2,6 +2,7 @@ FROM divanx10/debian11-fastapi:v1
 
 LABEL maintainer="tomer.klein@gmail.com"
 ENV DEEPSTACK_HOST_ADDRESS=""
+ENV HOMEASSISTANT_FOLDER_PATH=""
 ENV DEEPSTACK_API_KEY=""
 ENV MIN_CONFIDANCE=0.70
 ENV PYTHONIOENCODING=utf-8
@@ -16,12 +17,8 @@ RUN pip3 install --upgrade pip --no-cache-dir && \
 
 RUN mkdir -p /opt/trainer/photos/uploads
 RUN mkdir -p /opt/trainer/db
-RUN mkdir -p /opt/trainer/myvol
 
 COPY trainer /opt/trainer
-#COPY files /opt/trainer
-
-RUN echo "hello world" > /opt/trainer/myvol/greeting
 
 EXPOSE 8080
 WORKDIR /opt/trainer/
