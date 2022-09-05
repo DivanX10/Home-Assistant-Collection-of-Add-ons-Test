@@ -1,4 +1,7 @@
 # Home assistant add-on: DeepStack Trainer - Client
+## README Translation
+
+[Русский]()
 
 A client with a graphical interface
 ## Installation
