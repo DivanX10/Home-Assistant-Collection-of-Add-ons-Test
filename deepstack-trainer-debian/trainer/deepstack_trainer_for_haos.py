@@ -17,8 +17,8 @@ deepstack_api_key = os.getenv("DEEPSTACK_API_KEY")
 min_confidence = os.getenv("MIN_CONFIDANCE")
 
 #copy the database from docker to homeassistant
-src_file_db=r'/opt/trainer/db'
-dest_file_db = r'os.getenv("HOMEASSISTANT_FOLDER_PATH_FOR_DATABASE")'
+src_file_db='/opt/trainer/db'
+dest_file_db = os.getenv("HOMEASSISTANT_FOLDER_PATH_FOR_DATABASE")
 
 #copy the photos from docker to homeassistant
 src_file_photos= '/opt/trainer/photos/uploads'
@@ -101,7 +101,7 @@ def SaveImage(file, path):
     try:
         with open(path, "wb") as buffer:
             shutil.copyfileobj(file, buffer)
-            shutil.copy(src_file_db, dest_file_db) #copy the database from docker to homeassistant
+            shutil.copy2(src_file_db, dest_file_db, follow_symlinks=True) #copy the database from docker to homeassistant
             shutil.copytree(src_file_photos, dest_file_photos, dirs_exist_ok=True) #copy the photos from docker to homeassistant
         logger.info("File saved Divan")
         logger.info("Double message File saved Divan")
