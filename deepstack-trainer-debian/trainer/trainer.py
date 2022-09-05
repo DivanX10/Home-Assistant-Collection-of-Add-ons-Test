@@ -1,5 +1,6 @@
 import os, json, requests, uvicorn, uuid
 import shutil, aiofiles, sqlite3, base64
+import subprocess
 from os import environ, path
 from loguru import logger
 from fastapi import FastAPI, Request, File, Form, UploadFile
@@ -173,6 +174,7 @@ def teach(person: str = Form(...) ,teach_file: UploadFile = File(...)):
                 logger.info("Saving image to Database")
                 if success=='true':
                     insertBLOB(person,image_file)
+                    subprocess.call(['sh', './opt/trainer/backup.sh'])
                 else:
                     delete_image(image_file)
                 return JSONResponse(content = '{"message":"'+message+'","success":"'+success+'"}')
