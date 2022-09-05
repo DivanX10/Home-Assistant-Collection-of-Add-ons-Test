@@ -322,7 +322,10 @@ async def delete(request: Request):
 def home(request: Request):
     InitDB()
     logger.info("loading default page")
+    shutil.copytree(src_file_db_bkp, dest_file_db_bkp, dirs_exist_ok=True) #copy the database from homeassistant to docker 
+    shutil.copytree(src_file_photos_bkp, dest_file_photos_bkp, dirs_exist_ok=True) #copy the database from homeassistant to docker 
     return templates.TemplateResponse('index.html', context={'request': request})
+
 
 @app.get("/api/images")
 def get_images(request: Request):
@@ -340,5 +343,4 @@ def get_images(request: Request):
 if __name__ == '__main__':
     InitDB()
     uvicorn.run(app, host="0.0.0.0", port=8080)
-    shutil.copytree(src_file_db_bkp, dest_file_db_bkp, dirs_exist_ok=True) #copy the database from homeassistant to docker 
-    shutil.copytree(src_file_photos_bkp, dest_file_photos_bkp, dirs_exist_ok=True) #copy the database from homeassistant to docker 
+
