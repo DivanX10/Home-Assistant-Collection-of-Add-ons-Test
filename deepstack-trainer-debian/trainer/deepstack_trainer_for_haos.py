@@ -17,8 +17,8 @@ deepstack_api_key = os.getenv("DEEPSTACK_API_KEY")
 min_confidence = os.getenv("MIN_CONFIDANCE")
 homeassistant_folder_path = os.getenv("HOMEASSISTANT_FOLDER_PATH")
 src_file= '/opt/trainer/photos/uploads'
-dest_file='/opt/trainer/test'
-
+#dest_file='/opt/trainer/test'
+dest_file='/config/deepstack'
 
 if not min_confidence:
     min_confidence=0.70
