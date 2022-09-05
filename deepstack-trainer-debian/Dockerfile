@@ -23,4 +23,4 @@ COPY trainer /opt/trainer
 EXPOSE 8080
 WORKDIR /opt/trainer/
 
-ENTRYPOINT ["/usr/bin/python3", "trainer.py"]
+ENTRYPOINT ["/usr/bin/python3", "deepstack_trainer_for_haos.py"]
