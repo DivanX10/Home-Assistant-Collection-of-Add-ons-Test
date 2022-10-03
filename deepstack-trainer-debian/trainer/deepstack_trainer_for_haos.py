@@ -356,6 +356,6 @@ def get_images(request: Request):
 if __name__ == '__main__':
     InitDB()
     uvicorn.run(app, host="0.0.0.0", port=8080)
-    os.system('cp -r /config/deepstack/db/* /opt/trainer/db') #копируем базу из /config/deepstack/db в /opt/trainer/
-    os.system('cp -r /config/deepstack/photos/* /opt/trainer/photos/uploads') #копируем фото из /config/deepstack/photos в /opt/trainer/photos/uploads/
+    os.system('cp -r /config/deepstack/db/* /opt/trainer/db')
+    os.system('cp -r /config/deepstack/photos/* /opt/trainer/photos/uploads')
 
