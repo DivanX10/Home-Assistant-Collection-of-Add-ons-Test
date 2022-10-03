@@ -23,8 +23,8 @@ src_file_images_db='/opt/trainer/db/images.db'
 src_file_db='/opt/trainer/db'
 dest_file_db = os.getenv("HOMEASSISTANT_FOLDER_PATH_FOR_DATABASE")
 
-root_src_dir = '/opt/trainer/db'
-root_dst_dir = os.getenv("HOMEASSISTANT_FOLDER_PATH_FOR_DATABASE")
+srcDir = '/opt/trainer/db'
+dstDir = os.getenv("HOMEASSISTANT_FOLDER_PATH_FOR_DATABASE")
 
 
 #copy the photos from docker to homeassistant
@@ -108,21 +108,7 @@ def SaveImage(file, path):
     try:
         with open(path, "wb") as buffer:
             shutil.copyfileobj(file, buffer)
-            shutil.copytree(src_file_photos, dest_file_photos, dirs_exist_ok=True) #copy the photos from docker to homeassistant
-            for src_dir, dirs, files in os.walk(root_src_dir):
-                dst_dir = src_dir.replace(root_src_dir, root_dst_dir, 1)
-                if not os.path.exists(dst_dir):
-                   os.makedirs(dst_dir)
-                for file_ in files:
-                   src_file = os.path.join(src_dir, file_)
-                   dst_file = os.path.join(dst_dir, file_)
-                   if os.path.exists(dst_file):
-                       # in case of the src and dst are the same file
-                   if os.path.samefile(src_file, dst_file):
-                       continue
-                   os.remove(dst_file)
-                shutil.move(src_file, dst_dir)
-          
+            shutil.copytree(src_file_photos, dest_file_photos, dirs_exist_ok=True) #copy the photos from docker to homeassistant         
 #            os.popen(cp -f src_file_db, dest_file_db, mode='r', buffering=-1)
 #            shutil.copy(src_file_images_db, dest_file_db) #copy the database from docker to homeassistant
 #            shutil.copyfileobj(f_src, f_dest)
@@ -133,6 +119,42 @@ def SaveImage(file, path):
     except Exception as e:
         logger.error("Unable to save file " + str(e))
         raise Exception(str(e))
+
+def forceMergeFlatDir(srcDir, dstDir):
+    if not os.path.exists(dstDir):
+        os.makedirs(dstDir)
+    for item in os.listdir(srcDir):
+        srcFile = os.path.join(srcDir, item)
+        dstFile = os.path.join(dstDir, item)
+        forceCopyFile(srcFile, dstFile)
+
+def forceCopyFile (sfile, dfile):
+    if os.path.isfile(sfile):
+        shutil.copy2(sfile, dfile)
+
+def isAFlatDir(sDir):
+    for item in os.listdir(sDir):
+        sItem = os.path.join(sDir, item)
+        if os.path.isdir(sItem):
+            return False
+    return True
+
+
+def copyTree(src, dst):
+    for item in os.listdir(src):
+        s = os.path.join(src, item)
+        d = os.path.join(dst, item)
+        if os.path.isfile(s):
+            if not os.path.exists(dst):
+                os.makedirs(dst)
+            forceCopyFile(s,d)
+        if os.path.isdir(s):
+            isRecursive = not isAFlatDir(s)
+            if isRecursive:
+                copyTree(s, d)
+            else:
+                forceMergeFlatDir(s, d)        
+ 
 ################################################################################        
 
 def convertToBinaryData(filename):
