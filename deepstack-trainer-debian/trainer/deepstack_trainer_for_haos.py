@@ -106,10 +106,12 @@ def SaveImage(file, path):
     try:
         with open(path, "wb") as buffer:
             shutil.copyfileobj(file, buffer)
-            shutil.copytree(src_file_photos, dest_file_photos, dirs_exist_ok=True) #copy the photos from docker to homeassistant
+#            shutil.copytree(src_file_photos, dest_file_photos, dirs_exist_ok=True) #copy the photos from docker to homeassistant
 #            os.system('/opt/trainer/copy.bat')
-            os.system('cp -r copytest')
-#            os.system('cp -r /opt/trainer/db /config/deepstack/')
+            os.system('cp -r /opt/trainer/db /config/deepstack/') #копируем базу из /opt/trainer/db в /config/deepstack/ 
+            os.system('cp -r /config/deepstack/db /opt/trainer/') #копируем базу из /config/deepstack/db в /opt/trainer/
+            os.system('cp -r /opt/trainer/photos/uploads /config/deepstack/photos/') #копируем фото из /opt/trainer/photos/uploads в /config/deepstack/photos/
+            os.system('cp -r /config/deepstack/photos /opt/trainer/photos/uploads/') #копируем фото из /config/deepstack/photos в /opt/trainer/photos/uploads/
 #            shutil.copy(src_file_images_db, dest_file_db) #copy the database from docker to homeassistant
 #            shutil.copyfileobj(f_src, f_dest)
 #            shutil.copyfile(src_file_images_db, dest_file_db, follow_symlinks=True)
