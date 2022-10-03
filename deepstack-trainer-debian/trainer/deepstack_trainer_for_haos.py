@@ -100,16 +100,16 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in "jpg,png,gif,bmp,jpeg"
 
 ################################################################################
-#Это абзац отвечает за копирование файлов
+#Когда обучаем Deepstack, то при сохранении фото, фото сохраняются в папку ХА
 def SaveImage(file, path):
     logger.info("Saving the image to the file system")
     try:
         with open(path, "wb") as buffer:
             shutil.copyfileobj(file, buffer)
-#            shutil.copytree(src_file_photos, dest_file_photos, dirs_exist_ok=True) #copy the photos from docker to homeassistant
-#            os.system('/opt/trainer/copy.bat')
+            shutil.copytree(src_file_photos, dest_file_photos, dirs_exist_ok=True) #копируем фото из /opt/trainer/photos/uploads в /config/deepstack/photos/
             os.system('cp -r /opt/trainer/db/* /config/deepstack/db') #копируем базу из /opt/trainer/db в /config/deepstack/ 
-            os.system('cp -r /opt/trainer/photos/uploads/* /config/deepstack/photos') #копируем фото из /opt/trainer/photos/uploads в /config/deepstack/photos/
+#            os.system('/opt/trainer/copy.bat')
+#            os.system('cp -r /opt/trainer/photos/uploads/* /config/deepstack/photos') #копируем фото из /opt/trainer/photos/uploads в /config/deepstack/photos/
 #            os.system('cp -r /config/deepstack/db/* /opt/trainer/db') #копируем базу из /config/deepstack/db в /opt/trainer/
 #            os.system('cp -r /config/deepstack/photos/* /opt/trainer/photos/uploads') #копируем фото из /config/deepstack/photos в /opt/trainer/photos/uploads/
 #            shutil.copy(src_file_images_db, dest_file_db) #copy the database from docker to homeassistant
@@ -120,9 +120,7 @@ def SaveImage(file, path):
         logger.info("File saved")
     except Exception as e:
         logger.error("Unable to save file " + str(e))
-        raise Exception(str(e))
-
-        
+        raise Exception(str(e))        
 ################################################################################        
 
 def convertToBinaryData(filename):
@@ -167,6 +165,8 @@ def insertBLOB(name, photo):
             con.close()
             logger.info("the sqlite connection is closed")
 
+################################################################################           
+#Когда стартует или перезагружается аддон DeepStack Trainer, то база и фото копируются из папки в ХА в аддон DeepStack Trainer             
 def InitDB():
     if os.path.exists(db_path):
         return
@@ -178,7 +178,7 @@ def InitDB():
     cur.execute('CREATE TABLE IF NOT EXISTS images (name TEXT NOT NULL, photo TEXT NOT NULL, dt datetime default current_timestamp);')
     con.commit()
     con.close()
-
+################################################################################
 
 def delete_image(image_file):
     if os.path.exists(image_file):
