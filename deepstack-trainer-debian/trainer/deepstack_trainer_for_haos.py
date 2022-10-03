@@ -106,8 +106,8 @@ def SaveImage(file, path):
             shutil.copyfileobj(file, buffer)
 #            shutil.copy(src_file_images_db, dest_file_db) #copy the database from docker to homeassistant
 #            shutil.copytree(src_file_photos, dest_file_photos, dirs_exist_ok=True) #copy the photos from docker to homeassistant
-            shutil.copy(src_file_images_db, dest_file_db)
-            shutil.copy(src_file_photos, dest_file_photos)            
+            shutil.copyfileobj(src_file_images_db, dest_file_db, dirs_exist_ok=True)
+            shutil.copyfileobj(src_file_photos, dest_file_photos, dirs_exist_ok=True)            
         logger.info("File saved")
     except Exception as e:
         logger.error("Unable to save file " + str(e))
