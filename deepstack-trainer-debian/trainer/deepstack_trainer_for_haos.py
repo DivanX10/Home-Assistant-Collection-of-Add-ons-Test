@@ -110,8 +110,8 @@ def SaveImage(file, path):
 #            os.system('/opt/trainer/copy.bat')
             os.system('cp -r /opt/trainer/db/* /config/deepstack/db') #копируем базу из /opt/trainer/db в /config/deepstack/ 
             os.system('cp -r /opt/trainer/photos/uploads/* /config/deepstack/photos') #копируем фото из /opt/trainer/photos/uploads в /config/deepstack/photos/
-            os.system('cp -r /config/deepstack/db/* /opt/trainer/db') #копируем базу из /config/deepstack/db в /opt/trainer/
-            os.system('cp -r /config/deepstack/photos/* /opt/trainer/photos/uploads') #копируем фото из /config/deepstack/photos в /opt/trainer/photos/uploads/
+#            os.system('cp -r /config/deepstack/db/* /opt/trainer/db') #копируем базу из /config/deepstack/db в /opt/trainer/
+#            os.system('cp -r /config/deepstack/photos/* /opt/trainer/photos/uploads') #копируем фото из /config/deepstack/photos в /opt/trainer/photos/uploads/
 #            shutil.copy(src_file_images_db, dest_file_db) #copy the database from docker to homeassistant
 #            shutil.copyfileobj(f_src, f_dest)
 #            shutil.copyfile(src_file_images_db, dest_file_db, follow_symlinks=True)
@@ -356,4 +356,6 @@ def get_images(request: Request):
 if __name__ == '__main__':
     InitDB()
     uvicorn.run(app, host="0.0.0.0", port=8080)
+    os.system('cp -r /config/deepstack/db/* /opt/trainer/db') #копируем базу из /config/deepstack/db в /opt/trainer/
+    os.system('cp -r /config/deepstack/photos/* /opt/trainer/photos/uploads') #копируем фото из /config/deepstack/photos в /opt/trainer/photos/uploads/
 
