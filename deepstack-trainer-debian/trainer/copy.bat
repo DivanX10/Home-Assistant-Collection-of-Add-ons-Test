@@ -1,0 +1,1 @@
+cp -f /opt/trainer/db /config/deepstack/db
