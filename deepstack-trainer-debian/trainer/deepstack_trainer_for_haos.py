@@ -171,8 +171,8 @@ def InitDB():
     if os.path.exists(db_path):
         return
     logger.info("Initializing Database")
-    os.system('cp -r /config/deepstack/db/* /opt/trainer/db') #копируем базу из /config/deepstack/db в /opt/trainer/
-    os.system('rsync -havuz --delete /opt/trainer/photos/uploads/ /config/deepstack/photos/') #Удаление файлов, отсутствующих в исходном каталоге
+    os.system('cp -r /config/deepstack/db/* /opt/trainer/db') #копируем базу из /config/deepstack/db/* в /opt/trainer/db
+    os.system('cp -r /config/deepstack/photos/* /opt/trainer/photos/uploads/') #копируем фото из /config/deepstack/photos/* в /opt/trainer/photos/uploads/
     con = sqlite3.connect(db_path)
     cur = con.cursor()
     cur.execute('CREATE TABLE IF NOT EXISTS images (name TEXT NOT NULL, photo TEXT NOT NULL, dt datetime default current_timestamp);')
@@ -306,6 +306,7 @@ async def rename(request: Request ):
         cur = conn.cursor()
         cur.execute(sql, (data['text'], data['img']))
         conn.commit()
+        os.system('cp -r /opt/trainer/db/* /config/deepstack/db') #копируем базу из /opt/trainer/db в /config/deepstack/
         return JSONResponse(content = '{"message":"Person renamed","success":"true"}')
     except Exception as e:
         error = "Aw Snap! something went wrong " + str(e)
@@ -330,7 +331,8 @@ async def delete(request: Request):
             cur = conn.cursor()
             cur.execute(sql)
             conn.commit()
-            os.system('cp -r /opt/trainer/db/* /config/deepstack/db') #копируем базу из /opt/trainer/db в /config/deepstack/ 
+            os.system('cp -r /opt/trainer/db/* /config/deepstack/db') #копируем базу из /opt/trainer/db в /config/deepstack/
+            os.system('rsync -havuz --delete /opt/trainer/photos/uploads/ /config/deepstack/photos/') #Удаление файлов, отсутствующих в исходном каталоге
             return JSONResponse(content = '{"message":"Image Deleted","success":"true"}')
         else:
             return JSONResponse(content = '{"error":"Unable to delete image","success":"false"}')
