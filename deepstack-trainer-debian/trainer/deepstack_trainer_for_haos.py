@@ -18,6 +18,9 @@ deepstack_host_address = os.getenv("DEEPSTACK_HOST_ADDRESS")
 deepstack_api_key = os.getenv("DEEPSTACK_API_KEY")
 min_confidence = os.getenv("MIN_CONFIDANCE")
 
+#создать папки
+create_folders='/config/deepstack/db /config/deepstack/photos/uploads'
+
 #копируем базу из аддона deepstack trainer в homeassistant
 copy_base_to_haos='/opt/trainer/db /config/deepstack'
 
@@ -29,9 +32,6 @@ copy_base_to_docker='/config/deepstack/db/* /opt/trainer/db/'
 
 #копируем фото из homeassistant в аддон deepstack trainer
 copy_photos_to_docker='/config/deepstack/photos/uploads/* /opt/trainer/photos/uploads'
-
-#создать папки
-create_folders='/config/deepstack/db /config/deepstack/photos/uploads'
 
 
 if not min_confidence:
