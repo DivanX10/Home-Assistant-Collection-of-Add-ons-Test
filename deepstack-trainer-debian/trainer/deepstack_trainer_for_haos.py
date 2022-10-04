@@ -171,12 +171,12 @@ def InitDB():
 ################################################################################
 
 ################################################################################           
-#Когда удаляем фото из базы, то идет перезапись базы   
+#Когда удаляем фото из базы, то идет перезапись базы и удаляются фото из папки  
 def delete_image(image_file):
     if os.path.exists(image_file):
         os.remove(image_file)
-        os.system('cp -rf /opt/trainer/db/* /config/deepstack/db') #копируем базу из /opt/trainer/db в /config/deepstack/
-        os.system('rsync -havuz --delete /opt/trainer/photos/uploads/ /config/deepstack/photos/') #Удаление файлов, отсутствующих в исходном каталоге
+        os.system('cp -rf {src_file_db}/* {dest_file_db}') #копируем базу из /opt/trainer/db в /config/deepstack/
+        os.system('rsync -havuz --delete {src_file_photos}/ {dest_file_photos}/') #Удаление файлов, отсутствующих в исходном каталоге
         return True
     else:
         return False
@@ -300,7 +300,7 @@ async def rename(request: Request ):
         cur = conn.cursor()
         cur.execute(sql, (data['text'], data['img']))
         conn.commit()
-        os.system('cp -rf /opt/trainer/db/* /config/deepstack/db') #копируем базу из /opt/trainer/db в /config/deepstack/
+        os.system('cp -rf {src_file_db}/* {dest_file_db}') #копируем базу из /opt/trainer/db в /config/deepstack/
         return JSONResponse(content = '{"message":"Person renamed","success":"true"}')
     except Exception as e:
         error = "Aw Snap! something went wrong " + str(e)
