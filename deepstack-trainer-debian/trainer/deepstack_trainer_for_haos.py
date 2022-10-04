@@ -165,6 +165,7 @@ def InitDB():
     if os.path.exists(db_path):
         return
     logger.info("Initializing Database")
+    os.system('mkdir -p /config/deepstack/db')
     os.system(f'cp -rf {copy_base_to_docker}')
     os.system(f'cp -rf {copy_photos_to_docker}')
     con = sqlite3.connect(db_path)
