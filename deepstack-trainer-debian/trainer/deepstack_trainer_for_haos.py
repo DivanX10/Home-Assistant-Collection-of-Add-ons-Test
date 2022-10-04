@@ -20,13 +20,11 @@ min_confidence = os.getenv("MIN_CONFIDANCE")
 
 #copy the database from docker to homeassistant
 src_file_images_db='/opt/trainer/db/images.db'
-src_file_db='/opt/trainer/db'
+src_file_db='/opt/trainer/db/*'
 dest_file_db = os.getenv("HOMEASSISTANT_FOLDER_PATH_FOR_DATABASE")
-copytest='/opt/trainer/db /config/deepstack/'
-
 
 #copy the photos from docker to homeassistant
-src_file_photos= '/opt/trainer/photos/uploads'
+src_file_photos= '/opt/trainer/photos/uploads/'
 dest_file_photos = os.getenv("HOMEASSISTANT_FOLDER_PATH_FOR_PHOTOS")
 
 #copy the database from homeassistant to docker 
@@ -154,8 +152,8 @@ def insertBLOB(name, photo):
         if con:
             con.close()
             logger.info("the sqlite connection is closed")
-            os.system('cp -rf /opt/trainer/db/* /config/deepstack/db') #копируем базу из /opt/trainer/db в /config/deepstack/
-            os.system('rsync -havuz --delete /opt/trainer/photos/uploads/ /config/deepstack/photos/') #Удаление файлов, отсутствующих в исходном каталоге
+            os.system(f'cp -rf src_file_db dest_file_db') #копируем базу из /opt/trainer/db в /config/deepstack/
+            os.system(f'rsync -havuz --delete src_file_photos dest_file_photos') #Удаление файлов, отсутствующих в исходном каталоге
 
 ################################################################################           
 #Когда стартует или перезагружается аддон DeepStack Trainer, то база и фото копируются из папки в ХА в аддон DeepStack Trainer             
