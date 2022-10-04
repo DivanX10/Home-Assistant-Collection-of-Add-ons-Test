@@ -22,18 +22,22 @@ min_confidence = os.getenv("MIN_CONFIDANCE")
 src_file_images_db='/opt/trainer/db/images.db'
 src_file_db='/opt/trainer/db'
 dest_file_db='/config/deepstack'
+copy_base_to_haos='/opt/trainer/db /config/deepstack'
 
 #копируем фото из аддона deepstack trainer в homeassistant
 src_file_photos='/opt/trainer/photos/uploads'
 dest_file_photos='/config/deepstack/photos'
+copy_photos_to_haos='/opt/trainer/photos/uploads /config/deepstack/photos'
 
 #копируем базу из homeassistant в аддон deepstack trainer
 src_file_db_bkp='/config/deepstack/db/*'
 dest_file_db_bkp='/opt/trainer/db/'
+copy_base_to_docker='/config/deepstack/db/* /opt/trainer/db/'
 
 #копируем фото из homeassistant в аддон deepstack trainer
 src_file_photos_bkp='/config/deepstack/photos/uploads/*'
 dest_file_photos_bkp='/opt/trainer/photos/uploads'
+copy_photos_to_docker='/config/deepstack/photos/uploads/* /opt/trainer/photos/uploads'
 
 
 if not min_confidence:
@@ -144,8 +148,8 @@ def insertBLOB(name, photo):
         cur.execute(sqlite_insert_blob_query, data_tuple)
         con.commit()
         logger.info("Image and file inserted successfully as a BLOB into a table")
-        os.system(f'cp -rf {src_file_db} {dest_file_db}')
-        os.system(f'rsync -havuz --delete {src_file_photos} {dest_file_photos}')
+        os.system(f'cp -rf {copy_base_to_haos}')
+        os.system(f'rsync -havuz --delete {copy_photos_to_haos}')
         con.close()
     except Exception as error:
         logger.error("Failed to insert blob data into sqlite table " +  str(error))
@@ -156,13 +160,13 @@ def insertBLOB(name, photo):
 
 
 ################################################################################           
-#Когда стартует или перезагружается аддон DeepStack Trainer, то база и фото копируются из папки в ХА в аддон DeepStack Trainer             
+#Когда стартует или перезагружается аддон DeepStack Trainer, то база и фото копируются из папки ХА в аддон DeepStack Trainer             
 def InitDB():
     if os.path.exists(db_path):
         return
     logger.info("Initializing Database")
-    os.system(f'cp -rf {src_file_db_bkp} {dest_file_db_bkp}')
-    os.system(f'cp -rf {src_file_photos_bkp} {dest_file_photos_bkp}')
+    os.system(f'cp -rf {copy_base_to_docker}')
+    os.system(f'cp -rf {copy_photos_to_docker}')
     con = sqlite3.connect(db_path)
     cur = con.cursor()
     cur.execute('CREATE TABLE IF NOT EXISTS images (name TEXT NOT NULL, photo TEXT NOT NULL, dt datetime default current_timestamp);')
@@ -175,8 +179,8 @@ def InitDB():
 def delete_image(image_file):
     if os.path.exists(image_file):
         os.remove(image_file)
-        os.system(f'cp -rf {src_file_db} {dest_file_db}')
-        os.system(f'rsync -havuz --delete {src_file_photos} {dest_file_photos}')
+        os.system(f'cp -rf {copy_base_to_haos}')
+        os.system(f'rsync -havuz --delete {copy_photos_to_haos}')
         return True
     else:
         return False
@@ -300,7 +304,7 @@ async def rename(request: Request ):
         cur = conn.cursor()
         cur.execute(sql, (data['text'], data['img']))
         conn.commit()
-        os.system(f'cp -rf {src_file_db} {dest_file_db}')
+        os.system(f'cp -rf {copy_base_to_haos}')
         return JSONResponse(content = '{"message":"Person renamed","success":"true"}')
     except Exception as e:
         error = "Aw Snap! something went wrong " + str(e)
