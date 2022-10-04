@@ -105,19 +105,10 @@ def SaveImage(file, path):
     logger.info("Saving the image to the file system")
     try:
         with open(path, "wb") as buffer:
-            shutil.copyfileobj(file, buffer)
-            shutil.copytree(src_file_photos, dest_file_photos, dirs_exist_ok=True) #копируем фото из /opt/trainer/photos/uploads в /config/deepstack/photos/
-            os.system('cp -r /opt/trainer/db/* /config/deepstack/db') #копируем базу из /opt/trainer/db в /config/deepstack/ 
-#            os.system('/opt/trainer/copy.bat')
-#            os.system('cp -r /opt/trainer/photos/uploads/* /config/deepstack/photos') #копируем фото из /opt/trainer/photos/uploads в /config/deepstack/photos/
-#            os.system('cp -r /config/deepstack/db/* /opt/trainer/db') #копируем базу из /config/deepstack/db в /opt/trainer/
-#            os.system('cp -r /config/deepstack/photos/* /opt/trainer/photos/uploads') #копируем фото из /config/deepstack/photos в /opt/trainer/photos/uploads/
-#            shutil.copy(src_file_images_db, dest_file_db) #copy the database from docker to homeassistant
-#            shutil.copyfileobj(f_src, f_dest)
-#            shutil.copyfile(src_file_images_db, dest_file_db, follow_symlinks=True)
-#            shutil.copyfile(src_file_photos, dest_file_photos, follow_symlinks=True)
-             
+            shutil.copyfileobj(file, buffer)         
         logger.info("File saved")
+ #       shutil.copytree(src_file_photos, dest_file_photos, dirs_exist_ok=True) #копируем фото из /opt/trainer/photos/uploads в /config/deepstack/photos/
+ #       os.system('cp -r /opt/trainer/db/* /config/deepstack/db') #копируем базу из /opt/trainer/db в /config/deepstack/ 
     except Exception as e:
         logger.error("Unable to save file " + str(e))
         raise Exception(str(e))        
@@ -215,6 +206,8 @@ def teach(person: str = Form(...) ,teach_file: UploadFile = File(...)):
             if 'message' in str(response):
                 message = response['message']
                 logger.info("Saving image to Database")
+                shutil.copytree(src_file_photos, dest_file_photos, dirs_exist_ok=True) #копируем фото из /opt/trainer/photos/uploads в /config/deepstack/photos/
+                os.system('cp -r /opt/trainer/db/* /config/deepstack/db') #копируем базу из /opt/trainer/db в /config/deepstack/ 
                 if success=='true':
                     insertBLOB(person,image_file)
                 else:
