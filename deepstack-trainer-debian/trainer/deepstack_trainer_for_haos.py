@@ -19,25 +19,19 @@ deepstack_api_key = os.getenv("DEEPSTACK_API_KEY")
 min_confidence = os.getenv("MIN_CONFIDANCE")
 
 #копируем базу из аддона deepstack trainer в homeassistant
-src_file_images_db='/opt/trainer/db/images.db'
-src_file_db='/opt/trainer/db'
-dest_file_db='/config/deepstack'
 copy_base_to_haos='/opt/trainer/db /config/deepstack'
 
 #копируем фото из аддона deepstack trainer в homeassistant
-src_file_photos='/opt/trainer/photos/uploads'
-dest_file_photos='/config/deepstack/photos'
 copy_photos_to_haos='/opt/trainer/photos/uploads /config/deepstack/photos'
 
 #копируем базу из homeassistant в аддон deepstack trainer
-src_file_db_bkp='/config/deepstack/db/*'
-dest_file_db_bkp='/opt/trainer/db/'
 copy_base_to_docker='/config/deepstack/db/* /opt/trainer/db/'
 
 #копируем фото из homeassistant в аддон deepstack trainer
-src_file_photos_bkp='/config/deepstack/photos/uploads/*'
-dest_file_photos_bkp='/opt/trainer/photos/uploads'
 copy_photos_to_docker='/config/deepstack/photos/uploads/* /opt/trainer/photos/uploads'
+
+#создать папки
+create_folders='/config/deepstack/db /config/deepstack/photos/uploads'
 
 
 if not min_confidence:
@@ -165,7 +159,7 @@ def InitDB():
     if os.path.exists(db_path):
         return
     logger.info("Initializing Database")
-    os.system('mkdir -p /config/deepstack/db')
+    os.system(f'mkdir -p {create_folders}')
     os.system(f'cp -rf {copy_base_to_docker}')
     os.system(f'cp -rf {copy_photos_to_docker}')
     con = sqlite3.connect(db_path)
