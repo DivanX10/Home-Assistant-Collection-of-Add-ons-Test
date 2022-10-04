@@ -99,20 +99,16 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in "jpg,png,gif,bmp,jpeg"
 
-################################################################################
-#Когда обучаем Deepstack, то при сохранении фото, фото сохраняются в папку ХА
 def SaveImage(file, path):
     logger.info("Saving the image to the file system")
     try:
         with open(path, "wb") as buffer:
             shutil.copyfileobj(file, buffer)         
         logger.info("File saved")
- #       shutil.copytree(src_file_photos, dest_file_photos, dirs_exist_ok=True) #копируем фото из /opt/trainer/photos/uploads в /config/deepstack/photos/
- #       os.system('cp -rf /opt/trainer/db/* /config/deepstack/db') #копируем базу из /opt/trainer/db в /config/deepstack/ 
     except Exception as e:
         logger.error("Unable to save file " + str(e))
         raise Exception(str(e))        
-################################################################################        
+      
 
 def convertToBinaryData(filename):
     logger.info("Converting To Binary Data: " + filename)
@@ -136,6 +132,9 @@ def generate_file_name(file):
         logger.error("Unable to rename " + str(e))
         return file
 
+################################################################################      
+#Когда фото сохраняется в базу, то идет перезапись базы и синхронизация файлов с последующим удалением
+#Когда обучаем Deepstack, то при сохранении фото, фото сохраняются в папку ХА
 def insertBLOB(name, photo):
     try:
         con = sqlite3.connect(db_path)
@@ -147,7 +146,6 @@ def insertBLOB(name, photo):
         cur.execute(sqlite_insert_blob_query, data_tuple)
         con.commit()
         logger.info("Image and file inserted successfully as a BLOB into a table")
-        os.system('cp -rf /opt/trainer/db/* /config/deepstack/db') #копируем базу из /opt/trainer/db в /config/deepstack/
         con.close()
 
     except Exception as error:
@@ -156,6 +154,8 @@ def insertBLOB(name, photo):
         if con:
             con.close()
             logger.info("the sqlite connection is closed")
+            os.system('cp -rf /opt/trainer/db/* /config/deepstack/db') #копируем базу из /opt/trainer/db в /config/deepstack/
+            os.system('rsync -havuz --delete /opt/trainer/photos/uploads/ /config/deepstack/photos/') #Удаление файлов, отсутствующих в исходном каталоге
 
 ################################################################################           
 #Когда стартует или перезагружается аддон DeepStack Trainer, то база и фото копируются из папки в ХА в аддон DeepStack Trainer             
@@ -164,7 +164,7 @@ def InitDB():
         return
     logger.info("Initializing Database")
     os.system('cp -rf /config/deepstack/db/* /opt/trainer/db') #копируем базу из /config/deepstack/db/* в /opt/trainer/db
-    os.system('cp -rf /config/deepstack/photos/* /opt/trainer/photos/uploads/') #копируем фото из /config/deepstack/photos/* в /opt/trainer/photos/uploads/
+    os.system('cp -rf /config/deepstack/photos/* /opt/trainer/photos/uploads') #копируем фото из /config/deepstack/photos/* в /opt/trainer/photos/uploads
     con = sqlite3.connect(db_path)
     cur = con.cursor()
     cur.execute('CREATE TABLE IF NOT EXISTS images (name TEXT NOT NULL, photo TEXT NOT NULL, dt datetime default current_timestamp);')
@@ -207,8 +207,6 @@ def teach(person: str = Form(...) ,teach_file: UploadFile = File(...)):
             if 'message' in str(response):
                 message = response['message']
                 logger.info("Saving image to Database")
-                shutil.copytree(src_file_photos, dest_file_photos, dirs_exist_ok=True) #копируем фото из /opt/trainer/photos/uploads в /config/deepstack/photos/
-                os.system('cp -rf /opt/trainer/db/* /config/deepstack/db') #копируем базу из /opt/trainer/db в /config/deepstack/ 
                 if success=='true':
                     insertBLOB(person,image_file)
                 else:
