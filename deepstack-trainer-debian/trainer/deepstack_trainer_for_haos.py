@@ -25,15 +25,15 @@ dest_file_db='/config/deepstack'
 
 #копируем фото из аддона deepstack trainer в homeassistant
 src_file_photos='/opt/trainer/photos/uploads'
-dest_file_photos='/config/deepstack/photos/'
+dest_file_photos='/config/deepstack/photos'
 
 #копируем базу из homeassistant в аддон deepstack trainer
 src_file_db_bkp='/config/deepstack/db/*'
 dest_file_db_bkp='/opt/trainer/db/'
 
 #копируем фото из homeassistant в аддон deepstack trainer
-src_file_photos_bkp='/config/deepstack/photos/*'
-dest_file_photos_bkp='/opt/trainer/photos/uploads/'
+src_file_photos_bkp='/config/deepstack/photos/uploads/*'
+dest_file_photos_bkp='/opt/trainer/photos/uploads'
 
 
 if not min_confidence:
