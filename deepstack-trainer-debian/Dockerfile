@@ -11,7 +11,7 @@ ENV LANG=C.UTF-8
 
 RUN apt update -yqq
 
-RUN apt -yqq install python3-pip
+RUN apt -yqq install python3-pip rsync mc nano
 
 RUN pip3 install --upgrade pip --no-cache-dir && \
     pip3 install --upgrade setuptools --no-cache-dir
