@@ -183,6 +183,8 @@ def InitDB():
 def delete_image(image_file):
     if os.path.exists(image_file):
         os.remove(image_file)
+        os.system('cp -r /opt/trainer/db/* /config/deepstack/db') #копируем базу из /opt/trainer/db в /config/deepstack/
+        os.system('rsync -havuz --delete /opt/trainer/photos/uploads/ /config/deepstack/photos/') #Удаление файлов, отсутствующих в исходном каталоге
         return True
     else:
         return False
@@ -331,8 +333,8 @@ async def delete(request: Request):
             cur = conn.cursor()
             cur.execute(sql)
             conn.commit()
-            os.system('cp -r /opt/trainer/db/* /config/deepstack/db') #копируем базу из /opt/trainer/db в /config/deepstack/
-            os.system('rsync -havuz --delete /opt/trainer/photos/uploads/ /config/deepstack/photos/') #Удаление файлов, отсутствующих в исходном каталоге
+#            os.system('cp -r /opt/trainer/db/* /config/deepstack/db') #копируем базу из /opt/trainer/db в /config/deepstack/
+#            os.system('rsync -havuz --delete /opt/trainer/photos/uploads/ /config/deepstack/photos/') #Удаление файлов, отсутствующих в исходном каталоге
             return JSONResponse(content = '{"message":"Image Deleted","success":"true"}')
         else:
             return JSONResponse(content = '{"error":"Unable to delete image","success":"false"}')
