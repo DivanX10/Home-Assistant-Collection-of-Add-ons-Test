@@ -172,7 +172,7 @@ def InitDB():
         return
     logger.info("Initializing Database")
     os.system('cp -r /config/deepstack/db/* /opt/trainer/db') #копируем базу из /config/deepstack/db в /opt/trainer/
-    os.system('cp -r /config/deepstack/photos/* /opt/trainer/photos/uploads') #копируем фото из /config/deepstack/photos в /opt/trainer/photos/uploads/
+    os.system('rsync -havuz --delete /opt/trainer/photos/uploads/ /config/deepstack/photos/') #Удаление файлов, отсутствующих в исходном каталоге
     con = sqlite3.connect(db_path)
     cur = con.cursor()
     cur.execute('CREATE TABLE IF NOT EXISTS images (name TEXT NOT NULL, photo TEXT NOT NULL, dt datetime default current_timestamp);')
