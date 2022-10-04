@@ -21,19 +21,19 @@ min_confidence = os.getenv("MIN_CONFIDANCE")
 #копируем базу из аддона deepstack trainer в homeassistant
 src_file_images_db='/opt/trainer/db/images.db'
 src_file_db='/opt/trainer/db/*'
-dest_file_db = os.getenv("HOMEASSISTANT_FOLDER_PATH_FOR_DATABASE")
+dest_file_db = '/config/deepstack/db/'
 
 #копируем фото из аддона deepstack trainer в homeassistant
 src_file_photos= '/opt/trainer/photos/uploads/'
-dest_file_photos = os.getenv("HOMEASSISTANT_FOLDER_PATH_FOR_PHOTOS")
+dest_file_photos = '/config/deepstack/photos/'
 
 #копируем базу из homeassistant в аддон deepstack trainer
-src_file_db_bkp = os.getenv("HOMEASSISTANT_FOLDER_PATH_FOR_DATABASE")
-dest_file_db_bkp='/opt/trainer/db'
+src_file_db_bkp = '/config/deepstack/db/*'
+dest_file_db_bkp='/opt/trainer/db/'
 
 #копируем фото из homeassistant в аддон deepstack trainer
-src_file_photos_bkp = os.getenv("HOMEASSISTANT_FOLDER_PATH_FOR_PHOTOS")
-dest_file_photos_bkp='/opt/trainer/photos/uploads'
+src_file_photos_bkp = '/config/deepstack/photos/*'
+dest_file_photos_bkp='/opt/trainer/photos/uploads/'
 
 
 if not min_confidence:
@@ -161,8 +161,8 @@ def InitDB():
     if os.path.exists(db_path):
         return
     logger.info("Initializing Database")
-    os.system(f'cp -rf {src_file_db_bkp}/* /opt/trainer/db') #копируем базу из /config/deepstack/db/* в /opt/trainer/db
-    os.system(f'cp -rf {src_file_photos_bkp}/* {dest_file_photos_bkp}') #копируем фото из /config/deepstack/photos/* в /opt/trainer/photos/uploads
+    os.system(f'cp -rf {src_file_db_bkp} {dest_file_db_bkp}') #копируем базу из /config/deepstack/db/* в /opt/trainer/db
+    os.system(f'cp -rf {src_file_photos_bkp} {dest_file_photos_bkp}') #копируем фото из /config/deepstack/photos/* в /opt/trainer/photos/uploads
     con = sqlite3.connect(db_path)
     cur = con.cursor()
     cur.execute('CREATE TABLE IF NOT EXISTS images (name TEXT NOT NULL, photo TEXT NOT NULL, dt datetime default current_timestamp);')
@@ -175,8 +175,8 @@ def InitDB():
 def delete_image(image_file):
     if os.path.exists(image_file):
         os.remove(image_file)
-        os.system(f'cp -rf {src_file_db}/* {dest_file_db}') #копируем базу из /opt/trainer/db в /config/deepstack/
-        os.system(f'rsync -havuz --delete {src_file_photos}/ {dest_file_photos}/') #удаление файлов, отсутствующих в исходном каталоге
+        os.system(f'cp -rf {src_file_db} {dest_file_db}') #копируем базу из /opt/trainer/db в /config/deepstack/
+        os.system(f'rsync -havuz --delete {src_file_photos} {dest_file_photos}') #удаление файлов, отсутствующих в исходном каталоге
         return True
     else:
         return False
@@ -300,7 +300,7 @@ async def rename(request: Request ):
         cur = conn.cursor()
         cur.execute(sql, (data['text'], data['img']))
         conn.commit()
-        os.system(f'cp -rf {src_file_db}/* {dest_file_db}') #копируем базу из /opt/trainer/db в /config/deepstack/
+        os.system(f'cp -rf {src_file_db} {dest_file_db}') #копируем базу из /opt/trainer/db в /config/deepstack/
         return JSONResponse(content = '{"message":"Person renamed","success":"true"}')
     except Exception as e:
         error = "Aw Snap! something went wrong " + str(e)
