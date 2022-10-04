@@ -161,8 +161,8 @@ def InitDB():
     if os.path.exists(db_path):
         return
     logger.info("Initializing Database")
-    os.system('cp -rf {src_file_db_bkp}/* /opt/trainer/db') #копируем базу из /config/deepstack/db/* в /opt/trainer/db
-    os.system('cp -rf {src_file_photos_bkp}/* {dest_file_photos_bkp}') #копируем фото из /config/deepstack/photos/* в /opt/trainer/photos/uploads
+    os.system(f'cp -rf {src_file_db_bkp}/* /opt/trainer/db') #копируем базу из /config/deepstack/db/* в /opt/trainer/db
+    os.system(f'cp -rf {src_file_photos_bkp}/* {dest_file_photos_bkp}') #копируем фото из /config/deepstack/photos/* в /opt/trainer/photos/uploads
     con = sqlite3.connect(db_path)
     cur = con.cursor()
     cur.execute('CREATE TABLE IF NOT EXISTS images (name TEXT NOT NULL, photo TEXT NOT NULL, dt datetime default current_timestamp);')
@@ -175,8 +175,8 @@ def InitDB():
 def delete_image(image_file):
     if os.path.exists(image_file):
         os.remove(image_file)
-        os.system('cp -rf {src_file_db}/* {dest_file_db}') #копируем базу из /opt/trainer/db в /config/deepstack/
-        os.system('rsync -havuz --delete {src_file_photos}/ {dest_file_photos}/') #удаление файлов, отсутствующих в исходном каталоге
+        os.system(f'cp -rf {src_file_db}/* {dest_file_db}') #копируем базу из /opt/trainer/db в /config/deepstack/
+        os.system(f'rsync -havuz --delete {src_file_photos}/ {dest_file_photos}/') #удаление файлов, отсутствующих в исходном каталоге
         return True
     else:
         return False
@@ -300,7 +300,7 @@ async def rename(request: Request ):
         cur = conn.cursor()
         cur.execute(sql, (data['text'], data['img']))
         conn.commit()
-        os.system('cp -rf {src_file_db}/* {dest_file_db}') #копируем базу из /opt/trainer/db в /config/deepstack/
+        os.system(f'cp -rf {src_file_db}/* {dest_file_db}') #копируем базу из /opt/trainer/db в /config/deepstack/
         return JSONResponse(content = '{"message":"Person renamed","success":"true"}')
     except Exception as e:
         error = "Aw Snap! something went wrong " + str(e)
