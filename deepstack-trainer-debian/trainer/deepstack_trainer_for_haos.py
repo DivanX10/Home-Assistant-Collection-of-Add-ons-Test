@@ -180,6 +180,8 @@ def InitDB():
     con.close()
 ################################################################################
 
+################################################################################           
+#Когда удаляем фото из базы, то идет перезапись базы   
 def delete_image(image_file):
     if os.path.exists(image_file):
         os.remove(image_file)
@@ -188,7 +190,7 @@ def delete_image(image_file):
         return True
     else:
         return False
-
+################################################################################  
 
 logger.info("Configuring app")
 app = FastAPI(title="Deepstack Trainer", description="Train your deepstack AI server", version="1.0.0")
@@ -317,8 +319,7 @@ async def rename(request: Request ):
 ################################################################################   
     
     
-################################################################################           
-#Когда удаляем фото из базы, то идет перезапись базы   
+
 @app.post('/api/delete')
 async def delete(request: Request):
     logger.info("Deleting")
@@ -333,8 +334,6 @@ async def delete(request: Request):
             cur = conn.cursor()
             cur.execute(sql)
             conn.commit()
-#            os.system('cp -r /opt/trainer/db/* /config/deepstack/db') #копируем базу из /opt/trainer/db в /config/deepstack/
-#            os.system('rsync -havuz --delete /opt/trainer/photos/uploads/ /config/deepstack/photos/') #Удаление файлов, отсутствующих в исходном каталоге
             return JSONResponse(content = '{"message":"Image Deleted","success":"true"}')
         else:
             return JSONResponse(content = '{"error":"Unable to delete image","success":"false"}')
@@ -342,7 +341,7 @@ async def delete(request: Request):
         error = "Aw Snap! something went wrong " + str(e)
         logger.error(error)
         return JSONResponse(content = '{"error":"'+error+'","success":"false"}')
-################################################################################   
+
 
 @app.get("/")
 def home(request: Request):
