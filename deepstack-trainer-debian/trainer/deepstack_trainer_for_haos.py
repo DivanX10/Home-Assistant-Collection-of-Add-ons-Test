@@ -292,7 +292,8 @@ def scene(scene_file: UploadFile = File(...)):
         logger.info("Deleting file to save space")
         delete_image(image_file)
 
-
+################################################################################           
+#Когда переименовываем фото в галерее фото, то идет перезапись базы   
 @app.post('/api/rename')
 async def rename(request: Request ):
     data = await request.json()
@@ -310,8 +311,11 @@ async def rename(request: Request ):
         error = "Aw Snap! something went wrong " + str(e)
         logger.error(error)
         return JSONResponse(content = '{"error":"'+error+'","success":"false"}')
-
-
+################################################################################   
+    
+    
+################################################################################           
+#Когда удаляем фото из базы, то идет перезапись базы   
 @app.post('/api/delete')
 async def delete(request: Request):
     logger.info("Deleting")
@@ -326,6 +330,7 @@ async def delete(request: Request):
             cur = conn.cursor()
             cur.execute(sql)
             conn.commit()
+            os.system('cp -r /opt/trainer/db/* /config/deepstack/db') #копируем базу из /opt/trainer/db в /config/deepstack/ 
             return JSONResponse(content = '{"message":"Image Deleted","success":"true"}')
         else:
             return JSONResponse(content = '{"error":"Unable to delete image","success":"false"}')
@@ -333,7 +338,7 @@ async def delete(request: Request):
         error = "Aw Snap! something went wrong " + str(e)
         logger.error(error)
         return JSONResponse(content = '{"error":"'+error+'","success":"false"}')
-
+################################################################################   
 
 @app.get("/")
 def home(request: Request):
