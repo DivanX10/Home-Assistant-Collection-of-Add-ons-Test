@@ -21,7 +21,7 @@ min_confidence = os.getenv("MIN_CONFIDANCE")
 #копируем базу из аддона deepstack trainer в homeassistant
 src_file_images_db='/opt/trainer/db/images.db'
 src_file_db='/opt/trainer/db'
-dest_file_db = '/config/deepstack/db/'
+dest_file_db = '/config/deepstack/'
 
 #копируем фото из аддона deepstack trainer в homeassistant
 src_file_photos= '/opt/trainer/photos/uploads'
