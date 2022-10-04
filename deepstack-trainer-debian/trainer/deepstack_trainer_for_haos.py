@@ -18,20 +18,20 @@ deepstack_host_address = os.getenv("DEEPSTACK_HOST_ADDRESS")
 deepstack_api_key = os.getenv("DEEPSTACK_API_KEY")
 min_confidence = os.getenv("MIN_CONFIDANCE")
 
-#copy the database from docker to homeassistant
+#копируем базу из аддона deepstack trainer в homeassistant
 src_file_images_db='/opt/trainer/db/images.db'
-src_file_db='/opt/trainer/db/*'
+src_file_db='/opt/trainer/db'
 dest_file_db = os.getenv("HOMEASSISTANT_FOLDER_PATH_FOR_DATABASE")
 
-#copy the photos from docker to homeassistant
-src_file_photos= '/opt/trainer/photos/uploads/'
+#копируем фото из аддона deepstack trainer в homeassistant
+src_file_photos= '/opt/trainer/photos/uploads'
 dest_file_photos = os.getenv("HOMEASSISTANT_FOLDER_PATH_FOR_PHOTOS")
 
-#copy the database from homeassistant to docker 
+#копируем базу из homeassistant в аддон deepstack trainer
 src_file_db_bkp = os.getenv("HOMEASSISTANT_FOLDER_PATH_FOR_DATABASE")
 dest_file_db_bkp='/opt/trainer/db'
 
-#copy the photos from homeassistant to docker 
+#копируем фото из homeassistant в аддон deepstack trainer
 src_file_photos_bkp = os.getenv("HOMEASSISTANT_FOLDER_PATH_FOR_PHOTOS")
 dest_file_photos_bkp='/opt/trainer/photos/uploads'
 
@@ -152,7 +152,7 @@ def insertBLOB(name, photo):
         if con:
             con.close()
             logger.info("the sqlite connection is closed")
-            os.system(f'cp -rf {src_file_db} {dest_file_db}') #копируем базу из /opt/trainer/db в /config/deepstack/
+            os.system(f'cp -rf {src_file_db} {dest_file_db}') #копируем базу из /opt/trainer/db/* в /config/deepstack/
             os.system(f'rsync -havuz --delete {src_file_photos} {dest_file_photos}') #Удаление файлов, отсутствующих в исходном каталоге
 
 ################################################################################           
