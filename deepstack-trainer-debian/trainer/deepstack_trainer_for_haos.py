@@ -108,7 +108,7 @@ def SaveImage(file, path):
             shutil.copyfileobj(file, buffer)         
         logger.info("File saved")
  #       shutil.copytree(src_file_photos, dest_file_photos, dirs_exist_ok=True) #копируем фото из /opt/trainer/photos/uploads в /config/deepstack/photos/
- #       os.system('cp -r /opt/trainer/db/* /config/deepstack/db') #копируем базу из /opt/trainer/db в /config/deepstack/ 
+ #       os.system('cp -rf /opt/trainer/db/* /config/deepstack/db') #копируем базу из /opt/trainer/db в /config/deepstack/ 
     except Exception as e:
         logger.error("Unable to save file " + str(e))
         raise Exception(str(e))        
@@ -147,6 +147,7 @@ def insertBLOB(name, photo):
         cur.execute(sqlite_insert_blob_query, data_tuple)
         con.commit()
         logger.info("Image and file inserted successfully as a BLOB into a table")
+        os.system('cp -rf /opt/trainer/db/* /config/deepstack/db') #копируем базу из /opt/trainer/db в /config/deepstack/
         con.close()
 
     except Exception as error:
@@ -162,8 +163,8 @@ def InitDB():
     if os.path.exists(db_path):
         return
     logger.info("Initializing Database")
-    os.system('cp -r /config/deepstack/db/* /opt/trainer/db') #копируем базу из /config/deepstack/db/* в /opt/trainer/db
-    os.system('cp -r /config/deepstack/photos/* /opt/trainer/photos/uploads/') #копируем фото из /config/deepstack/photos/* в /opt/trainer/photos/uploads/
+    os.system('cp -rf /config/deepstack/db/* /opt/trainer/db') #копируем базу из /config/deepstack/db/* в /opt/trainer/db
+    os.system('cp -rf /config/deepstack/photos/* /opt/trainer/photos/uploads/') #копируем фото из /config/deepstack/photos/* в /opt/trainer/photos/uploads/
     con = sqlite3.connect(db_path)
     cur = con.cursor()
     cur.execute('CREATE TABLE IF NOT EXISTS images (name TEXT NOT NULL, photo TEXT NOT NULL, dt datetime default current_timestamp);')
@@ -176,7 +177,7 @@ def InitDB():
 def delete_image(image_file):
     if os.path.exists(image_file):
         os.remove(image_file)
-        os.system('cp -r /opt/trainer/db/* /config/deepstack/db') #копируем базу из /opt/trainer/db в /config/deepstack/
+        os.system('cp -rf /opt/trainer/db/* /config/deepstack/db') #копируем базу из /opt/trainer/db в /config/deepstack/
         os.system('rsync -havuz --delete /opt/trainer/photos/uploads/ /config/deepstack/photos/') #Удаление файлов, отсутствующих в исходном каталоге
         return True
     else:
@@ -207,7 +208,7 @@ def teach(person: str = Form(...) ,teach_file: UploadFile = File(...)):
                 message = response['message']
                 logger.info("Saving image to Database")
                 shutil.copytree(src_file_photos, dest_file_photos, dirs_exist_ok=True) #копируем фото из /opt/trainer/photos/uploads в /config/deepstack/photos/
-                os.system('cp -r /opt/trainer/db/* /config/deepstack/db') #копируем базу из /opt/trainer/db в /config/deepstack/ 
+                os.system('cp -rf /opt/trainer/db/* /config/deepstack/db') #копируем базу из /opt/trainer/db в /config/deepstack/ 
                 if success=='true':
                     insertBLOB(person,image_file)
                 else:
@@ -303,7 +304,7 @@ async def rename(request: Request ):
         cur = conn.cursor()
         cur.execute(sql, (data['text'], data['img']))
         conn.commit()
-        os.system('cp -r /opt/trainer/db/* /config/deepstack/db') #копируем базу из /opt/trainer/db в /config/deepstack/
+        os.system('cp -rf /opt/trainer/db/* /config/deepstack/db') #копируем базу из /opt/trainer/db в /config/deepstack/
         return JSONResponse(content = '{"message":"Person renamed","success":"true"}')
     except Exception as e:
         error = "Aw Snap! something went wrong " + str(e)
