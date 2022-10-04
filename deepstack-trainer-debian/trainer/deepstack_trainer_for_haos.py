@@ -153,7 +153,7 @@ def insertBLOB(name, photo):
             con.close()
             logger.info("the sqlite connection is closed")
             os.system(f'cp -rf {src_file_db}/* {dest_file_db}') #копируем базу из /opt/trainer/db/* в /config/deepstack/
-            os.system(f'rsync -havuz --delete {src_file_photos}/ {dest_file_photos}/') #Удаление файлов, отсутствующих в исходном каталоге
+            os.system(f'rsync -havuz --delete {src_file_photos}/ {dest_file_photos}/') #удаление файлов, отсутствующих в исходном каталоге
 
 ################################################################################           
 #Когда стартует или перезагружается аддон DeepStack Trainer, то база и фото копируются из папки в ХА в аддон DeepStack Trainer             
@@ -176,7 +176,7 @@ def delete_image(image_file):
     if os.path.exists(image_file):
         os.remove(image_file)
         os.system('cp -rf {src_file_db}/* {dest_file_db}') #копируем базу из /opt/trainer/db в /config/deepstack/
-        os.system('rsync -havuz --delete {src_file_photos}/ {dest_file_photos}/') #Удаление файлов, отсутствующих в исходном каталоге
+        os.system('rsync -havuz --delete {src_file_photos}/ {dest_file_photos}/') #удаление файлов, отсутствующих в исходном каталоге
         return True
     else:
         return False
