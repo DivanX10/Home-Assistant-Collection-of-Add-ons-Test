@@ -1,7 +1,7 @@
 {
   "name": "Agent DVR",
   "version": "4.2.9.0",
-  "url": "https://registry.hub.docker.com/r/doitandbedone/ispyagentdvr",
+  "url": "https://www.ispyconnect.com/",
   "slug": "ispyagentdvr",
   "description": "iSpy's Agent DVR, a standalone DVR service to manage IP cameras.",
   "webui": "http://[HOST]:[PORT:8090]",
