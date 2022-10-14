@@ -1,6 +1,0 @@
----
-build_from:
-  amd64: doitandbedone/ispyagentdvr:4.2.9.0
-codenotary:
-  base_image: doitandbedone
-  signer: doitandbedone
