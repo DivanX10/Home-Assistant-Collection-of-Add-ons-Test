@@ -2,6 +2,10 @@
 
 ### iSpy's Agent DVR, a standalone DVR service to manage IP cameras
 
+![amd64][amd64-shield]
+
+[amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
+
 ![image](https://user-images.githubusercontent.com/64090632/195932021-ce3d4674-9d1a-4f16-861e-bf0b67e8f3f8.png)
 
 * [About Agent DVR](https://www.ispyconnect.com/)
