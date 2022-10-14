@@ -9,4 +9,4 @@
 * [Documentation AgentDVR](https://www.ispyconnect.com/userguide-agent-dvr.aspx)
 * [Images on docker hub](https://registry.hub.docker.com/r/doitandbedone/ispyagentdvr)
 * [iSpy Agent DVR docker](https://github.com/doitandbedone/ispyagentdvr-docker)
-* [Help and contact](https://github.com/doitandbedone/ispyagentdvr-docker)
+* [Help and contact](https://github.com/doitandbedone/ispyagentdvr-docker/issues)
