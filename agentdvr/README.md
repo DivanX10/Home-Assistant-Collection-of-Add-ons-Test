@@ -1,4 +1,4 @@
-# Home Assistant add-on: Agent DVR
+# Home Assistant Add-on: Agent DVR
 
 ### iSpy's Agent DVR, a standalone DVR service to manage IP cameras
 
