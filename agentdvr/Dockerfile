@@ -14,3 +14,5 @@ EXPOSE 3478/udp
 EXPOSE 50000-50010/udp
 
 WORKDIR /agent
+
+VOLUME /config/AgentDVR
