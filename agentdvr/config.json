@@ -12,9 +12,14 @@
   "ports": {
     "8090/tcp": 8090
   },  
-  "environment": {
-    "Config": "/AgentDVR/Config",
-    "Media": "/AgentDVR/Media",
-    "Commands": "/AgentDVR/Commands"
+  "options": {
+  "Config": "/AgentDVR/Config",
+  "Media": "/AgentDVR/Media",
+  "Commands": "/AgentDVR/Commands"
+  },
+  "schema": {
+  "Config": "str?",
+  "Media": "str?",
+  "Commands": "str?" 
   }
  }
