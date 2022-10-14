@@ -7,4 +7,13 @@ RUN apt install rsync mc nano -yqq
 
 EXPOSE 8090
 
+# STUN server port
+EXPOSE 3478/udp
+
+# TURN server UDP port range
+EXPOSE 50000-50010/udp
+
+# Data volumes
+VOLUME ["/agent/Media/XML", "/agent/Media/WebServerRoot/Media", "/agent/Commands"]
+
 WORKDIR /agent
