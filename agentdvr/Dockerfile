@@ -1,9 +1,4 @@
 FROM doitandbedone/ispyagentdvr:4.2.9.0
-ARG ELK_VERSION
-FROM docker.elastic.co/elasticsearch/elasticsearch:${ELK_VERSION}
-ADD --chown=elasticsearch:root elasticsearch-single-node.yml /usr/share/elasticsearch/config/elasticsearch.yml
-
-
 LABEL maintainer="doitandbedone"
 
 RUN apt update -yqq
@@ -18,7 +13,5 @@ RUN apt install rsync mc nano -yqq
 
 # TURN server UDP port range
 #EXPOSE 50000-50010/udp
-
-COPY docker-compose-es-single-node.yml /agent
 
 WORKDIR /agent
