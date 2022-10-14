@@ -14,6 +14,4 @@ RUN apt install rsync mc nano -yqq
 # TURN server UDP port range
 #EXPOSE 50000-50010/udp
 
-RUN --mount source=/config/AgentDVR, target=/mnt
-
 WORKDIR /agent
