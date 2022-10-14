@@ -14,6 +14,6 @@ EXPOSE 3478/udp
 EXPOSE 50000-50010/udp
 
 # Data volumes
-VOLUME ["/agent/Media/XML", "/agent/Media/WebServerRoot/Media", "/agent/Commands"]
+VOLUME ["/mnt/data/supervisor/homeassistant/AgentDVR/Commands:/agent/Commands", "/mnt/data/supervisor/homeassistant/AgentDVR/Media:/agent/Media/WebServerRoot/Media", "/mnt/data/supervisor/homeassistant/AgentDVR/Config:/agent/Media/XML"]
 
 WORKDIR /agent
