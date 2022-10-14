@@ -1,8 +1,10 @@
 FROM doitandbedone/ispyagentdvr:4.2.9.0
+
 LABEL maintainer="doitandbedone"
-EXPOSE 8090
 
 RUN apt update -yqq
-RUN apt -yqq install rsync mc nano
+RUN apt install rsync mc nano -yqq
 
+EXPOSE 8090
 
+WORKDIR /agent
