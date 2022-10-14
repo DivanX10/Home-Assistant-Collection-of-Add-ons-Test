@@ -15,4 +15,8 @@ RUN apt install rsync mc nano -yqq
 # TURN server UDP port range
 #EXPOSE 50000-50010/udp
 
+COPY docker-compose-agentdvr.yml /agent
+
+ADD docker-compose-agentdvr.yml /agent
+
 WORKDIR /agent
