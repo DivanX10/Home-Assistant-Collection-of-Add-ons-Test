@@ -10,7 +10,12 @@
   "boot": "auto",
   "map": ["config:rw"],
   "ports": {
-    "8090/tcp": 8090
+    "8090/tcp": 8090,
+  "environment": {
+    "Config": "/AgentDVR/Config",
+    "Media": "/AgentDVR/Media",
+    "Commands": "/AgentDVR/Commands"
   }
+ }
 }
 
