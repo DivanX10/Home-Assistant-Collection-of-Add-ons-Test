@@ -10,7 +10,7 @@
 "boot": "auto",
 "map": ["config:rw"],
 "ports": {
-  "5000/tcp": 7000
+  "5000/tcp": 7000,
   "8080/tcp": 7200
   },
 "ports_description": {
