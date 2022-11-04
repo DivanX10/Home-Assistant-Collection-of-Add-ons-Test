@@ -10,13 +10,15 @@
 "boot": "auto",
 "map": ["config:rw"],
 "ports": {
+  "7000/tcp": 7000
   "8080/tcp": 7200
   },
 "ports_description": {
   "8080/tcp": "Optional. Port of your deepstack server"
   },
 "environment": {
-  "DEEPSTACK_HOST_ADDRESS": "http://homeassistant:7000",
+  "DEEPSTACK_HOST": "http://homeassistant",
+  "DEEPSTACK_PORT": "[PORT:7000]",
   "HOMEASSISTANT_FOLDER_PATH_FOR_DATABASE": "/config/deepstack/db",
   "HOMEASSISTANT_FOLDER_PATH_FOR_PHOTOS": "/config/deepstack/photos"
   },
