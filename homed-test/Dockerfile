@@ -4,12 +4,14 @@ LABEL maintainer="u236"
 COPY rootfs /
 WORKDIR /etc/homed/
 
+ENTRYPOINT ["/docker-entrypoint.sh"]
+
 # Add Tini
-ENV TINI_VERSION v0.19.0
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/bin/tini
+#ENV TINI_VERSION v0.19.0
+#ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/bin/tini
 #RUN chmod +x /tini
 #ENTRYPOINT ["/tini", "--", "bash", "docker-entrypoint.sh"]
-ENTRYPOINT ["/usr/bin/tini", "/docker-entrypoint.sh"]
+#ENTRYPOINT ["/usr/bin/tini", "/docker-entrypoint.sh"]
 
 
 
