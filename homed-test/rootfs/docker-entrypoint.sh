@@ -1,16 +1,14 @@
-#!/usr/bin/env bashio
+#!/usr/bin/with-contenv bash
 
-bashio::log.info "Preparing to start..."
+# Путь к файлу homed-zigbee.conf внутри контейнера
+DOCKER_HOMED_CONF="/etc/homed/homed-zigbee.conf"
 
-bashio::config.require 'data_path'
+# Путь к файлу homed-zigbee.conf на хосте (папка config/homed)
+HOST_HOMED_CONF="/config/homed/homed-zigbee.conf"
 
-export HOMED_DATA="$(bashio::config 'data_path')"
-if ! bashio::fs.file_exists "$HOMED_DATA/homed-zigbee.conf"; then
-    mkdir -p "$HOMED_DATA" || bashio::exit.nok "Could not create $HOMED_DATA"
-
-    cat <<EOF > "$HOMED_DATA/homed-zigbee.conf"
-homeassistant: true
-EOF
+# Копируем файл, если он существует на хосте
+if [ -f "$HOST_HOMED_CONF" ]; then
+    cp "$HOST_HOMED_CONF" "$DOCKER_HOMED_CONF"
 fi
 
 bashio::log.info "Starting HOMED-Zigbee..."
