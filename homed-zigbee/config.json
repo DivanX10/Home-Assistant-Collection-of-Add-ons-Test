@@ -1,9 +1,9 @@
 {
   "name": "HOMEd ZigBee",
-  "version": "0.0.0.1",
+  "version": "3.4.4",
   "url": "https://wiki.homed.dev/page/HOMEd",
   "slug": "homed",
-  "description": "HOMEd ZigBee это попытка создать простую и понятную альтернативу популярному Z2M. По своей сути приложение является мостом между ZigBee сетью и MQTT-брокером.",
+  "description": "HOMEd ZigBee альтернативный вариант популярному Z2M",
   "webui": "http://[HOST]:[PORT:8080]",
   "arch": ["amd64"],
   "startup": "application",
