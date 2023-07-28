@@ -2,7 +2,6 @@ FROM docker.u236.org/homed-zigbee:3.4.4
 LABEL maintainer="u236"
 
 COPY rootfs /
+WORKDIR /etc/homed/
 
-WORKDIR /homed
-
-ENTRYPOINT [ "/sbin/tini", "--", "/docker-entrypoint.sh"]
+ENTRYPOINT [ "/usr/bin", "/docker-entrypoint.sh"]
