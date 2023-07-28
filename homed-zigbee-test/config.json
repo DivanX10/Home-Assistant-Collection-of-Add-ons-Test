@@ -1,54 +1,45 @@
 {
-  "name": "HOMEd ZigBee Test",
-  "version": "3.4.0",
-  "slug": "homedzigbee",
-  "description": "HOMEd ZigBee тестовый вариант",
-  "uart": true,
-  "url": "https://wiki.homed.dev/page/HOMEd",
-  "startup": "application",
-  "services": [
-    "mqtt:need"
-  ],
-  "arch": [
-    "amd64",
-    "arm64",
-    "armv7"
-  ],
-  "boot": "auto",
-  "init": false,
-  "ingress": true,
-  "timeout": 30,
-  "panel_icon": "mdi:zigbee",
-  "map": [
-    "share:rw",
-    "config:rw"
-  ],
-  "ports": {
-    "8080/tcp": 8080
-  },
-  "options": {
-    "data_path": "/config/homed"
-    },
-    "mqtt": {},
-    "serial": {}
-  },
-  "schema": {
-    "data_path": "str"
-    },
-    "mqtt": {
-      "server": "str?",
-      "ca": "str?",
-      "key": "str?",
-      "cert": "str?",
-      "user": "str?",
-      "password": "str?"
-    },
-    "serial": {
-      "port": "str?",
-      "adapter": "match(zstack|deconz|zigate|ezsp)?",
-      "baudrate": "int?",
-      "rtscts": "bool?"
-    }
-  },
-  "image": "docker.u236.org/homed-web"
+	"name": "HOMEd ZigBee Test",
+	"version": "3.4.0",
+	"slug": "homedzigbee",
+	"description": "HOMEd ZigBee тестовый вариант",
+	"uart": true,
+	"url": "https://wiki.homed.dev/page/HOMEd",
+	"startup": "application",
+	"services": [
+		"mqtt:need"
+	],
+	"arch": [
+		"amd64",
+		"arm64",
+		"armv7"
+	],
+	"boot": "auto",
+	"init": false,
+	"ingress": true,
+	"timeout": 30,
+	"panel_icon": "mdi:zigbee",
+	"map": [
+		"share:rw",
+		"config:rw"
+	],
+	"ports": {
+		"8080/tcp": 8080
+	},
+	"options": {
+		"data_path": "/config/zigbee2mqtt",
+		"mqtt": {},
+		"serial": {}
+	},
+	"schema": {
+		"data_path": "str"
+	},
+	"mqtt": {
+		"server": "str?",
+		"ca": "str?",
+		"key": "str?",
+		"cert": "str?",
+		"user": "str?",
+		"password": "str?"
+	}
 }
