@@ -27,7 +27,7 @@
 		"8080/tcp": 8080
 	},
 	"options": {
-		"data_path": "/config/zigbee2mqtt",
+		"data_path": "/config/homed",
 		"mqtt": {},
 		"serial": {}
 	},
