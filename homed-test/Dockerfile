@@ -4,7 +4,7 @@ LABEL maintainer="u236"
 COPY rootfs /etc/homed/
 
 #Установка пакетов, необходимые для bashio
-RUN apt-get update && apt-get install -y curl mc nano
+RUN apt-get update && apt-get install -y tini curl mc nano
 
 #Установка bashio
 #RUN curl -sL https://raw.githubusercontent.com/home-assistant/bashio/master/installer.sh | bash -
