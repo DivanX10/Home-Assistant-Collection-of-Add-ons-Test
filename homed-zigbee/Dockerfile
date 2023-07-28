@@ -5,3 +5,5 @@ EXPOSE 1883/tcp
 EXPOSE 9001/tcp
 
 WORKDIR /homed
+
+COPY homed-zigbee.conf /etc/homed/homed-zigbee.conf
