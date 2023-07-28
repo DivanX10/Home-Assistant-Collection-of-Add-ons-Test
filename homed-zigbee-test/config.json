@@ -1,8 +1,8 @@
 {
   "name": "HOMEd ZigBee Test",
   "version": "3.4.0",
-  "slug": "homed",
-  "description": "HOMEd ZigBee альтернативный вариант популярному Z2M",
+  "slug": "homedzigbee",
+  "description": "HOMEd ZigBee тестовый вариант",
   "uart": true,
   "url": "https://wiki.homed.dev/page/HOMEd",
   "startup": "application",
