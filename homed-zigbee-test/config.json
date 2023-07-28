@@ -6,23 +6,10 @@
   "uart": true,
   "url": "https://wiki.homed.dev/page/HOMEd",
   "startup": "application",
-  "services": [
-    "mqtt:need"
-  ],
-  "arch": [
-    "amd64",
-    "arm64",
-    "armv7"
-  ],
+  "services": ["mqtt:need"],
+  "arch": ["amd64", "arm64", "armv7"],
   "boot": "auto",
-  "init": false,
-  "ingress": true,
-  "timeout": 30,
-  "panel_icon": "mdi:zigbee",
-  "map": [
-    "share:rw",
-    "config:rw"
-  ],
+  "map": ["share:rw", "config:rw"],
   "ports": {
     "8080/tcp": 8080
   },
