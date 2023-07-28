@@ -1,4 +1,4 @@
-FROM docker.u236.org/homed-web
+FROM docker.u236.org/homed-zigbee:3.4.4
 LABEL maintainer="u236"
 
 EXPOSE 1883/tcp
