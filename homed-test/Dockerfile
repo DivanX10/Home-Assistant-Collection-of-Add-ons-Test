@@ -1,12 +1,11 @@
 FROM docker.u236.org/homed-zigbee:3.4.4
 LABEL maintainer="u236"
 
-COPY rootfs/docker-entrypoint.sh /sbin/docker-entrypoint.sh
-
-RUN apt-get install tini
-RUN chmod +x /sbin/docker-entrypoint.sh
-
-ENTRYPOINT ["/usr/bin/tini", "--", "/docker-entrypoint.sh"]
+COPY rootfs /
+RUN apk add --no-cache tini
+RUN chmod +x /docker-entrypoint.sh
+# Tini is now available at /sbin/tini
+ENTRYPOINT ["/sbin/tini", "--", "/docker-entrypoint.sh"]
 
 WORKDIR /etc/homed/
 
@@ -19,8 +18,12 @@ WORKDIR /etc/homed/
 #ENTRYPOINT ["/tini", "--", "bash", "docker-entrypoint.sh"]
 #ENTRYPOINT ["/usr/bin/tini", "/docker-entrypoint.sh"]
 
+#COPY rootfs/docker-entrypoint.sh /sbin/docker-entrypoint.sh
+
+#RUN apt-get install tini
+#RUN chmod +x /sbin/docker-entrypoint.sh
+
+#ENTRYPOINT ["/usr/bin/tini", "--", "/docker-entrypoint.sh"]
 
 
-#RUN apk add --no-cache tini
-# Tini is now available at /sbin/tini
-#ENTRYPOINT ["/sbin/tini", "--", "/docker-entrypoint.sh"]
+
