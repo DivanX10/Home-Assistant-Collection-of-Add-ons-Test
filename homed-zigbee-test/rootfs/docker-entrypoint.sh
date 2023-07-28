@@ -13,21 +13,5 @@ homeassistant: true
 EOF
 fi
 
-export HOMED_CONFIG_FRONTEND='{"port": 8080}'
-
-# Expose addon configuration through environment variables.
-function export_config() {
-    local key=${1}
-    local subkey
-
-    if bashio::config.is_empty "${key}"; then
-        return
-    fi
-
-    for subkey in $(bashio::jq "$(bashio::config "${key}")" 'keys[]'); do
-        export "HOMED_CONFIG_$(bashio::string.upper "${key}")_$(bashio::string.upper "${subkey}")=$(bashio::config "${key}.${subkey}")"
-    done
-}
-
 bashio::log.info "Starting HOMED-Zigbee..."
 
