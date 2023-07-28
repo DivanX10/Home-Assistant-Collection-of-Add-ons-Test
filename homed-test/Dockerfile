@@ -5,7 +5,7 @@ COPY rootfs /etc/homed/
 
 RUN apt-get install -y tini mc
 RUN chmod +x /usr/bin/tini
-RUN chmod +x /etc/homed/homed-zigbee.conf
+#RUN chmod +x /etc/homed/homed-zigbee.conf
 RUN chmod 777 /etc/homed/docker-entrypoint.sh
 
 WORKDIR /etc/homed/
