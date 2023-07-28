@@ -11,5 +11,4 @@ if [ -f "$HOST_HOMED_CONF" ]; then
     cp "$HOST_HOMED_CONF" "$DOCKER_HOMED_CONF"
 fi
 
-bashio::log.info "Starting HOMED-Zigbee..."
-
+echo "Starting HOMED-Zigbee..."
