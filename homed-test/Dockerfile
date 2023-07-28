@@ -10,9 +10,8 @@ RUN apt-get update && apt-get install -y tini curl mc nano
 #RUN curl -sL https://raw.githubusercontent.com/home-assistant/bashio/master/installer.sh | bash -
 
 # Остальные команды и настройки Dockerfile
-RUN chmod +x /usr/local/bin/tini
 RUN chmod +x /usr/bin/tini
-RUN chmod 777 /etc/homed/docker-entrypoint.sh
+RUN chmod +x /etc/homed/docker-entrypoint.sh
 
 WORKDIR /etc/homed/
 
