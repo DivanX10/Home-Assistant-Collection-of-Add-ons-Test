@@ -5,7 +5,8 @@ LABEL maintainer="u236"
 RUN apt-get update && apt-get install -y tini curl mc nano
 
 # Копируем ваш скрипт docker-entrypoint.sh внутрь контейнера
-COPY rootfs/docker-entrypoint.sh /etc/homed/
+#COPY rootfs/docker-entrypoint.sh /etc/homed/
+COPY rootfs/ /etc/homed/
 
 # Устанавливаем права на выполнение для вашего скрипта
 RUN chmod +x /etc/homed/docker-entrypoint.sh
