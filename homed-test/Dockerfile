@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y tini curl mc nano
 COPY rootfs/ /etc/homed/
 
 # Устанавливаем права на выполнение для вашего скрипта
+RUN chmod +x /usr/bin/tini
 RUN chmod +x /etc/homed/docker-entrypoint.sh
 
 # Указываем Tini как PID 1 и регистрируем его как subreaper
