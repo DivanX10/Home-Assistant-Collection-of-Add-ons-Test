@@ -1,6 +1,6 @@
 {
   "name": "HOMEd ZigBee Test",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "url": "https://wiki.homed.dev/page/HOMEd",
   "slug": "homedzigbee",
   "description": "HOMEd ZigBee альтернативный вариант Zigbee2MQTT",
@@ -13,9 +13,9 @@
     "8080/tcp": 8080
   },
   "options": {
-    "Config": "/config/homed"
+    "data_path": "/config/homed"
   },
   "schema": {
-    "Config": "str?"
+    "data_path": "str?"
   }
 }
