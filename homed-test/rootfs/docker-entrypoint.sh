@@ -8,7 +8,7 @@ HOST_HOMED_CONF="/config/homed/homed-zigbee.conf"
 
 # Копируем файл, если он существует на хосте
 if [ -f "$HOST_HOMED_CONF" ]; then
-    cp "$HOST_HOMED_CONF" "$DOCKER_HOMED_CONF"
+    cat <<EOF > "HOST_HOMED_CONF"
 fi
 
 echo "Starting HOMED-Zigbee..."
