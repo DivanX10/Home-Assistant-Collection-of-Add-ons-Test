@@ -13,9 +13,9 @@
     "8080/tcp": 8080
   },
   "options": {
-    "Config": "/config/homed",
+    "Config": "/config/homed"
   },
   "schema": {
-    "Config": "str?",
+    "Config": "str?"
   }
  }
