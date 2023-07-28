@@ -1,7 +1,0 @@
-{
-  "build_from": {
-    "amd64": "docker.u236.org/homed-zigbee:3.4.4"
-    "arm64": "docker.u236.org/homed-zigbee:3.4.4"
-    "armv7": "docker.u236.org/homed-zigbee:3.4.4"
-  }
-}
