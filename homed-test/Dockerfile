@@ -3,7 +3,7 @@ LABEL maintainer="u236"
 
 COPY rootfs /
 WORKDIR /etc/homed/
-
+RUN chmod +x /docker-entrypoint.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
 # Add Tini
