@@ -13,19 +13,9 @@
     "8080/tcp": 8080
   },
   "options": {
-  "Config": "/etc/homed/homed-zigbee.conf",
-  "Database": "/opt/homed-zigbee/database.json",
-  "Properties": "/opt/homed-zigbee/properties.json",
-  "Options": "/opt/homed-zigbee/options.json",
-  "External": "/opt/homed-zigbee/external",
-  "Library": "/usr/share/homed-zigbee"
+    "Config": "/config/homed",
   },
   "schema": {
-  "Config": "str?",
-  "Database": "str",
-  "Properties": "str",
-  "Options": "str",
-  "External": "str",
-  "Library": "str"
+    "Config": "str?",
   }
  }
