@@ -29,18 +29,5 @@ function export_config() {
     done
 }
 
-export_config 'mqtt'
-export_config 'serial'
-
-if bashio::config.is_empty 'mqtt' && bashio::var.has_value "$(bashio::services 'mqtt')"; then
-    if bashio::var.true "$(bashio::services 'mqtt' 'ssl')"; then
-        export HOMED_CONFIG_MQTT_SERVER="mqtts://$(bashio::services 'mqtt' 'host'):$(bashio::services 'mqtt' 'port')"
-    else
-        export HOMED_CONFIG_MQTT_SERVER="mqtt://$(bashio::services 'mqtt' 'host'):$(bashio::services 'mqtt' 'port')"
-    fi
-    export HOMED_CONFIG_MQTT_USER="$(bashio::services 'mqtt' 'username')"
-    export HOMED_CONFIG_MQTT_PASSWORD="$(bashio::services 'mqtt' 'password')"
-fi
-
 bashio::log.info "Starting HOMED-Zigbee..."
 
