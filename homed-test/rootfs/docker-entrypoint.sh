@@ -19,5 +19,8 @@ fi
 
 echo "Done setting up Homed-zigbee configuration."
 
+# Вечный процесс для предотвращения завершения контейнера
+tail -f /dev/null
+
 
 
