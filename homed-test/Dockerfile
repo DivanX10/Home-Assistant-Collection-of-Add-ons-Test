@@ -4,4 +4,4 @@ LABEL maintainer="u236"
 COPY rootfs /
 WORKDIR /etc/homed/
 
-ENTRYPOINT ["/sbin/tini", "/docker-entrypoint.sh"]
+ENTRYPOINT ["/etc/homed", "--", "bash", "docker-entrypoint.sh"]
