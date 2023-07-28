@@ -1,5 +1,7 @@
 #!/usr/bin/with-contenv bash
 
+touch /etc/homed/homed-zigbee.conf
+
 # Путь к файлу homed-zigbee.conf внутри контейнера
 DOCKER_HOMED_CONF="/etc/homed/homed-zigbee.conf"
 
@@ -11,5 +13,5 @@ if [ -f "$HOST_HOMED_CONF" ]; then
     cp -p "$HOST_HOMED_CONF" "$DOCKER_HOMED_CONF"
 fi
 
-echo "Starting HOMED-Zigbee..."
+echo "Done copy config Homed-zigbee"
 
