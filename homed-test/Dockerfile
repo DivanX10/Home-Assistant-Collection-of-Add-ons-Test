@@ -3,7 +3,7 @@ LABEL maintainer="u236"
 
 COPY rootfs /etc/homed/
 
-RUN apt-get install tini
+RUN apt-get install -y tini mc
 RUN chmod +x /usr/bin/tini
 RUN chmod 777 /etc/homed/docker-entrypoint.sh
 
