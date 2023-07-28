@@ -12,12 +12,11 @@ RUN apt-get update && apt-get install -y curl mc nano
 # Остальные команды и настройки Dockerfile
 RUN apt-get install -y tini mc
 RUN chmod +x /usr/bin/tini
-#RUN chmod +x /etc/homed/homed-zigbee.conf
 RUN chmod 777 /etc/homed/docker-entrypoint.sh
 
 WORKDIR /etc/homed/
 
-#ENTRYPOINT ["/usr/bin/tini", "--", "bash", "/etc/homed/docker-entrypoint.sh"]
+ENTRYPOINT ["/usr/bin/tini", "--", "bash", "/etc/homed/docker-entrypoint.sh"]
 
 
 
