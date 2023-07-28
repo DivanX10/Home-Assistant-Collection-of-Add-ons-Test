@@ -3,6 +3,13 @@ LABEL maintainer="u236"
 
 COPY rootfs /etc/homed/
 
+# Установка пакетов, необходимые для bashio
+RUN apt-get update && apt-get install -y curl jq
+
+# Установка bashio
+RUN curl -sL https://raw.githubusercontent.com/home-assistant/bashio/master/installer.sh | bash -
+
+# Остальные команды и настройки Dockerfile
 RUN apt-get install -y tini mc
 RUN chmod +x /usr/bin/tini
 #RUN chmod +x /etc/homed/homed-zigbee.conf
