@@ -9,6 +9,7 @@ RUN chmod 777 /etc/homed/docker-entrypoint.sh
 
 WORKDIR /etc/homed/
 
+ENTRYPOINT ["/usr/bin/tini", "--", "bash", "/etc/homed/docker-entrypoint.sh"]
 
 
 
