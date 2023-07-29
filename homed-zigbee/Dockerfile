@@ -1,4 +1,4 @@
-FROM docker.u236.org/homed-zigbee:1.0.5
+FROM docker.u236.org/homed-zigbee:1.04
 
 # Установите пакеты, необходимые для bashio и Tini
 RUN apt-get update && apt-get install -y tini curl mc nano jq
