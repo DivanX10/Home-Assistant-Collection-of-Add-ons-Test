@@ -29,3 +29,6 @@ echo "Done setting up Homed-zigbee configuration."
 
 # Вечный процесс для предотвращения завершения контейнера
 tail -f /dev/null
+
+# Запускаем homed-web
+exec /usr/bin/homed-web
