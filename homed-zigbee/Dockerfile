@@ -1,10 +1,4 @@
-#FROM docker.u236.org/homed-zigbee:3.4.4
-ARG BUILD_FROM
-FROM $BUILD_FROM as base
-
-ENV LANG C.UTF-8
-ARG BUILD_VERSION
-
+FROM docker.u236.org/homed-zigbee:3.4.4
 
 # Установите пакеты, необходимые для bashio и Tini
 RUN apt-get update && apt-get install -y tini curl mc nano jq
