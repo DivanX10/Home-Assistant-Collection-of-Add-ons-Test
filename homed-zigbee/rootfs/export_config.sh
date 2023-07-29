@@ -22,13 +22,11 @@ else
     # Создаем пустой файл homed-zigbee.conf, если его нет на хосте
     touch "$DOCKER_HOMED_CONF"
     # Копируем содержимое файла на хосте в новый файл внутри контейнера
-    cat "$HOST_HOMED_CONF" > "$DOCKER_HOMED_CONF"
+    cat "$DOCKER_HOMED_CONF" > "$HOST_HOMED_CONF"
 fi
 
 echo "Done setting up Homed-zigbee configuration."
 
-# Вечный процесс для предотвращения завершения контейнера
-tail -f /dev/null
-
 # Запускаем homed-web
 exec /usr/bin/homed-web
+
