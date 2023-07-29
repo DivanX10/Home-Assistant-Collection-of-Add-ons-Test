@@ -1,4 +1,4 @@
-FROM ddocker.u236.org/homed-web:1.0.5
+FROM docker.u236.org/homed-web:1.0.5
 
 # Установите пакеты, необходимые для bashio и Tini
 RUN apt-get update && apt-get install -y tini curl mc nano jq
