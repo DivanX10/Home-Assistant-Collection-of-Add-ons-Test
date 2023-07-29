@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y tini curl mc nano jq
 COPY rootfs/export_config.sh /tmp
 
 # Устанавливаем права на выполнение для вашего скрипта
-#RUN chmod +x /tmp/export_config.sh
+RUN chmod +x /tmp/export_config.sh
 
 # Указываем Tini как PID 1 и регистрируем его как subreaper
 ENTRYPOINT ["/usr/bin/tini", "-s", "--", "bash", "/tmp/export_config.sh"]
