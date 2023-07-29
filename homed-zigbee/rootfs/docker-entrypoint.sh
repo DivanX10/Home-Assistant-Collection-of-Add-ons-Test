@@ -3,8 +3,16 @@
 # Путь к файлу homed-zigbee.conf внутри контейнера
 DOCKER_HOMED_CONF="/etc/homed/homed-zigbee.conf"
 
+# Извлекаем значение "config" из файла options.json
+CONFIG_PATH=$(jq -r '.config' < /data/options.json)
+
+# Если значение не определено или пусто, используем значение по умолчанию
+if [ -z "$CONFIG_PATH" ]; then
+    CONFIG_PATH="/config/homed"
+fi
+
 # Путь к файлу homed-zigbee.conf на хосте (папка config/homed)
-HOST_HOMED_CONF="/config/homed/homed-zigbee.conf"
+HOST_HOMED_CONF="$CONFIG_PATH/homed-zigbee.conf"
 
 # Проверяем, существует ли файл homed-zigbee.conf на хосте
 if [ -f "$HOST_HOMED_CONF" ]; then
