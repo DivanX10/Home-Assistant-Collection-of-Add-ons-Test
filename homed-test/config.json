@@ -1,6 +1,6 @@
 {
   "name": "HOMEd ZigBee Test",
-  "version": "0.0.5",
+  "version": "0.0.1",
   "url": "https://wiki.homed.dev/page/HOMEd",
   "slug": "homedzigbee",
   "description": "HOMEd ZigBee альтернативный вариант Zigbee2MQTT",
