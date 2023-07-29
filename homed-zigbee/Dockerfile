@@ -11,7 +11,7 @@ COPY rootfs/homed.log /var/log/
 RUN chmod +x /etc/homed/export_config.sh
 
 # Указываем Tini как PID 1 и регистрируем его как subreaper
-ENTRYPOINT ["/usr/bin/tini", "-s", "--", "bash", "/etc/homed/export_config.sh"]
+#ENTRYPOINT ["/usr/bin/tini", "-s", "--", "bash", "/etc/homed/export_config.sh"]
 
 LABEL \
   io.hass.version="VERSION" \
