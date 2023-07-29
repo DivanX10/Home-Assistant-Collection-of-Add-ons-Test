@@ -17,13 +17,11 @@ create_homed_config() {
     fi
 }
 
-# Проверяем, существует ли переменная data_path и не пустая ли она
-if [ -n "$data_path" ]; then
-    # Преобразуем относительный путь в абсолютный с помощью realpath
-    local config_path_absolute=$(realpath "$data_path")
-    create_homed_config "$config_path_absolute"
+# Проверяем, передана ли переменная окружения data_path
+if [ -n "$CONFIG_PATH_ABSOLUTE" ]; then
+    create_homed_config "$CONFIG_PATH_ABSOLUTE"
 else
-    echo "Error: 'data_path' is not specified in the addon configuration."
+    echo "Error: 'data_path' is not specified in the environment variables."
 fi
 
 # Вечный процесс для предотвращения завершения контейнера
