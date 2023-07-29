@@ -1,5 +1,4 @@
 FROM docker.u236.org/homed-zigbee:3.4.4
-LABEL maintainer="u236"
 
 # Установите пакеты, необходимые для bashio и Tini
 RUN apt-get update && apt-get install -y tini curl mc nano jq
@@ -16,4 +15,5 @@ ENTRYPOINT ["/usr/bin/tini", "-s", "--", "bash", "/etc/homed/docker-entrypoint.s
 LABEL \
   io.hass.version="VERSION" \
   io.hass.type="addon" \
-  io.hass.arch="amd64"
+  io.hass.arch="amd64" \
+  maintainer="u236"
