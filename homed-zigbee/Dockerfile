@@ -5,6 +5,7 @@ RUN apt-get update && apt-get install -y tini curl mc nano jq
 
 # Копируем ваш скрипт docker-entrypoint.sh внутрь контейнера
 COPY rootfs/ /etc/homed/
+COPY rootfs/homed.log /var/log/
 
 # Устанавливаем права на выполнение для вашего скрипта
 RUN chmod +x /etc/homed/docker-entrypoint.sh
