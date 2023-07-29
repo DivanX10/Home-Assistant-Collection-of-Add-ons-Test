@@ -11,8 +11,9 @@ LABEL \
 # Установим пакеты tini, mc, nano, jq
 RUN apt-get update && apt-get install -y tini mc nano jq
 
-# Скопируем скрипт во внутрь контейнера в папку temp
+# Скопируем файлы во внутрь контейнера
 COPY run_homed.sh /tmp
+COPY homed-web.conf /etc/homed
 
 # Установим права на выполнение скрипта
 RUN chmod +x /tmp/run_homed.sh
