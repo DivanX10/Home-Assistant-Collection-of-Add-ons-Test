@@ -3,32 +3,21 @@
 # Путь к файлу homed-zigbee.conf внутри контейнера
 DOCKER_HOMED_CONF="/etc/homed/homed-zigbee.conf"
 
-# Функция для создания homed-zigbee.conf
-create_homed_config() {
-    local config_path="$1"
+# Путь к файлу homed-zigbee.conf на хосте (папка config/homed)
+HOST_HOMED_CONF="/config/homed/homed-zigbee.conf"
 
-    # Проверяем, существует ли файл homed-zigbee.conf по указанному пути
-    if [ -f "$config_path/homed-zigbee.conf" ]; then
-        # Копируем содержимое файла из указанного пути внутри контейнера
-        cat "$config_path/homed-zigbee.conf" > "$DOCKER_HOMED_CONF"
-        echo "Done setting up Homed-zigbee configuration."
-    else
-        echo "Error: File homed-zigbee.conf not found at path: $config_path"
-    fi
-}
-
-# Проверяем, доступна ли переменная окружения HASSIO_ADDON_CONFIG
-if [ -n "$HASSIO_ADDON_CONFIG" ]; then
-    # Извлекаем значение переменной data_path из HASSIO_ADDON_CONFIG
-    data_path=$(echo "$HASSIO_ADDON_CONFIG" | jq -r '.data_path')
-    if [ -n "$data_path" ]; then
-        create_homed_config "$data_path"
-    else
-        echo "Error: 'data_path' is not specified in the addon configuration."
-    fi
+# Проверяем, существует ли файл homed-zigbee.conf на хосте
+if [ -f "$HOST_HOMED_CONF" ]; then
+    # Копируем содержимое файла на хосте в новый файл внутри контейнера
+    cat "$HOST_HOMED_CONF" > "$DOCKER_HOMED_CONF"
 else
-    echo "Error: HASSIO_ADDON_CONFIG environment variable is not available."
+    # Создаем пустой файл homed-zigbee.conf, если его нет на хосте
+    touch "$DOCKER_HOMED_CONF"
+    # Копируем содержимое файла на хосте в новый файл внутри контейнера
+    cat "$HOST_HOMED_CONF" > "$DOCKER_HOMED_CONF"
 fi
+
+echo "Done setting up Homed-zigbee configuration."
 
 # Вечный процесс для предотвращения завершения контейнера
 tail -f /dev/null
