@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y tini curl mc nano jq
 #COPY rootfs/homed.log /var/log/
 
 # Устанавливаем права на выполнение для вашего скрипта
-RUN chmod +x /etc/homed/export_config.sh
+#RUN chmod +x /etc/homed/export_config.sh
 
 # Указываем Tini как PID 1 и регистрируем его как subreaper
 #ENTRYPOINT ["/usr/bin/tini", "-s", "--", "bash", "/etc/homed/export_config.sh"]
