@@ -11,8 +11,8 @@ boot: auto
 map: 
   - config:rw
 ports:
-  8080/tcp: 8080
+  8080/tcp: "8080"
 options:
-   data_path: /config/homed
+   data_path: "/config/homed"
 schema:
   data_path: str
