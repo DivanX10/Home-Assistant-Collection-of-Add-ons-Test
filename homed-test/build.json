@@ -1,7 +1,0 @@
-{
-  "build_from": {
-    "amd64": "docker.u236.org/homed-web"
-    "arm64": "docker.u236.org/homed-web"
-    "armv7": "docker.u236.org/homed-web"
-  }
-}
