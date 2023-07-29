@@ -1,4 +1,4 @@
-FROM docker.u236.org/homed-zigbee:3.4.4
+FROM docker.u236.org/homed-web
 LABEL maintainer="u236"
 
 # Установите пакеты, необходимые для bashio и Tini
