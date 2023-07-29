@@ -13,9 +13,9 @@
     "8080/tcp": 8080
   },
   "options": {
-    "data_path": "/config/homed"
+    "config": "/config/homed"
   },
   "schema": {
-    "data_path": "str?"
+    "config": "str?"
   }
 }
