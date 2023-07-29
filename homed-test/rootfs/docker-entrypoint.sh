@@ -17,6 +17,11 @@ else
     cat "$HOST_HOMED_CONF" > "$DOCKER_HOMED_CONF"
 fi
 
+echo "Done setting up Homed-zigbee configuration."
+
+# Вечный процесс для предотвращения завершения контейнера
+tail -f /dev/null
+
 
 
 
