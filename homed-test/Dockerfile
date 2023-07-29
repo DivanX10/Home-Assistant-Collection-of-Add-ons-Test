@@ -2,7 +2,7 @@ FROM docker.u236.org/homed-zigbee:3.4.4
 LABEL maintainer="u236"
 
 # Установите пакеты, необходимые для bashio и Tini
-RUN apt-get update && apt-get install -y tini curl mc nano
+RUN apt-get update && apt-get install -y tini curl mc nano jq
 
 # Копируем ваш скрипт docker-entrypoint.sh внутрь контейнера
 #COPY rootfs/docker-entrypoint.sh /etc/homed/
