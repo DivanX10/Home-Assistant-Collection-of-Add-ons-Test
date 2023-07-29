@@ -1,8 +1,5 @@
 #!/usr/bin/with-contenv bash
 
-# Сообщение о запуске настройки конфигурации для HomedZigbee
-echo "Starting configuration settings for HomedZigbee"
-
 # Путь к файлу homed-zigbee.conf внутри контейнера
 DOCKER_HOMED_CONF="/etc/homed/homed-zigbee.conf"
 
@@ -28,12 +25,5 @@ else
     cat "$DOCKER_HOMED_CONF" > "$HOST_HOMED_CONF"
 fi
 
-# Сообщение что настройка выполнена
-echo "Done setting up Homed-zigbee configuration."
-
 # Запускаем homed-web
 exec /usr/bin/homed-web
-
-# Сообщение что homed-web запущен
-echo "Done homed-web launched"
-
