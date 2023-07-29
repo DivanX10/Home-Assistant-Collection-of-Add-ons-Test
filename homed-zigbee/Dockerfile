@@ -4,8 +4,8 @@ FROM docker.u236.org/homed-web:1.0.5
 RUN apt-get update && apt-get install -y tini curl mc nano jq
 
 # Копируем ваш скрипт docker-entrypoint.sh внутрь контейнера
-COPY rootfs/ /etc/homed/
-COPY rootfs/homed.log /var/log/
+#COPY rootfs/ /etc/homed/
+#COPY rootfs/homed.log /var/log/
 
 # Устанавливаем права на выполнение для вашего скрипта
 RUN chmod +x /etc/homed/export_config.sh
