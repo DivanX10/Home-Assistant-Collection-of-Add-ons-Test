@@ -18,3 +18,5 @@ LABEL \
   io.hass.type="addon" \
   io.hass.arch="amd64" \
   maintainer="u236"
+
+CMD ["/usr/bin/homed-web"]  
