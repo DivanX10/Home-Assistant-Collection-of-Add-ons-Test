@@ -20,4 +20,4 @@ RUN chmod +x /tmp/export_config.sh
 # Указываем Tini как PID 1 и регистрируем его как subreaper
 ENTRYPOINT ["/usr/bin/tini", "-s", "--", "bash", "/tmp/export_config.sh"]
 
-CMD ["/usr/bin/homed-web"]  
+#CMD ["/usr/bin/homed-web"]  
