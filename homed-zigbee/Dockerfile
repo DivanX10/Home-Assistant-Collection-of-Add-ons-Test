@@ -1,5 +1,5 @@
 # Используем базовый образ
-FROM docker.u236.org/homed-web
+FROM docker.u236.org/homed-web:1.0.5
 
 # Добавим метаданные к образу
 LABEL \
