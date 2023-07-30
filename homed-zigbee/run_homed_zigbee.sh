@@ -25,5 +25,5 @@ else
     cat "$DOCKER_HOMED_CONF" > "$HOST_HOMED_CONF"
 fi
 
-# Запускаем homed-web
+# Запускаем homed-zigbee
 /usr/bin/homed-zigbee
