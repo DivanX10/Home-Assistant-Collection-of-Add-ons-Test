@@ -26,7 +26,7 @@ else
 fi
 
 # Запускаем homed-web
-#exec /usr/bin/homed-web
+exec /usr/bin/homed-web
 
 # Вечный процесс для предотвращения завершения контейнера
-tail -f /dev/null
+#tail -f /dev/null
