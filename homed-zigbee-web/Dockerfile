@@ -19,7 +19,7 @@ COPY scripts/run_homed_web.sh /tmp
 RUN chmod +x /tmp/run_homed_web.sh
 
 # Укажем Tini как PID 1 и зарегистрируем его как subreaper
-ENTRYPOINT ["/usr/bin/tini", "-s", "--", "bash", "/tmp/run_homed_web.sh"]
+#ENTRYPOINT ["/usr/bin/tini", "-s", "--", "bash", "/tmp/run_homed_web.sh"]
 
 # Используем базовый образ homed-zigbee
 FROM docker.u236.org/homed-zigbee:3.4.4
@@ -41,4 +41,4 @@ COPY scripts/run_homed_zigbee.sh /tmp
 RUN chmod +x /tmp/run_homed_zigbee.sh
 
 # Укажем Tini как PID 1 и зарегистрируем его как subreaper
-ENTRYPOINT ["/usr/bin/tini", "-s", "--", "bash", "/tmp/run_homed_zigbee.sh"]
+#ENTRYPOINT ["/usr/bin/tini", "-s", "--", "bash", "/tmp/run_homed_zigbee.sh"]
