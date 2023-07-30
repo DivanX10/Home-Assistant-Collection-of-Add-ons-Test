@@ -18,4 +18,4 @@ COPY run_homed_zigbee.sh /tmp
 RUN chmod +x /tmp/run_homed_zigbee.sh
 
 # Укажем Tini как PID 1 и зарегистрируем его как subreaper
-ENTRYPOINT ["/usr/bin/tini", "-s", "--", "bash", "/tmp/run_homed_zigbee.sh"]
+#ENTRYPOINT ["/usr/bin/tini", "-s", "--", "bash", "/tmp/run_homed_zigbee.sh"]
