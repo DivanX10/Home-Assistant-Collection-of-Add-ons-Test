@@ -8,6 +8,8 @@
 [amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
 
 * [About HOMEd](https://wiki.homed.dev/page/ZigBee)
+* [HOMEd ZigBee](https://github.com/u236/homed-service-zigbee)
+* [HOMEd Web](https://github.com/u236/homed-service-web/tree/master)
 * [HOMEd Wiki](https://wiki.homed.dev/page/HOMEd)
 * [HOMEd docker](https://wiki.homed.dev/page/ZigBee/Installation/Docker)
 * [ZigBee: Конфигурация](https://wiki.homed.dev/page/ZigBee/Configuration)
