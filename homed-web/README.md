@@ -8,11 +8,12 @@
 [amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
 
 * [About HOMEd](https://wiki.homed.dev/page/ZigBee)
+* [HOMEd Wiki](https://wiki.homed.dev/page/HOMEd)
 * [HOMEd ZigBee](https://github.com/u236/homed-service-zigbee)
 * [HOMEd Web](https://github.com/u236/homed-service-web/tree/master)
-* [HOMEd Wiki](https://wiki.homed.dev/page/HOMEd)
+* [HOMEd ZigBee: Конфигурация](https://wiki.homed.dev/page/ZigBee/Configuration)
+* [HOMEd WEB: Конфигурация](https://github.com/u236/homed-service-web/blob/master/deploy/data/etc/homed/homed-web.conf)
 * [HOMEd docker](https://wiki.homed.dev/page/ZigBee/Installation/Docker)
-* [ZigBee: Конфигурация](https://wiki.homed.dev/page/ZigBee/Configuration)
 
 ### Описание
 Идея HOMEd ZigBee это попытка создать простую и понятную альтернативу популярному Z2M. По своей сути приложение является мостом между ZigBee сетью и MQTT-брокером.
