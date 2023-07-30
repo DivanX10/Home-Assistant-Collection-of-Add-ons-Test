@@ -12,6 +12,6 @@
     "config_zigbee": "/config/homed"
   },
   "schema": {
-    "config": "str?"
+    "config_zigbee": "str?"
   }
 }
