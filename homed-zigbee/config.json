@@ -1,5 +1,5 @@
 {
-  "name": "HOMEd ZigBee",
+  "name": "HOMEd WEB",
   "version": "0.0.1",
   "url": "https://wiki.homed.dev/page/HOMEd",
   "slug": "homedzigbee",
@@ -13,7 +13,7 @@
     "8080/tcp": 8080
   },
   "options": {
-    "config": "/config/homed"
+    "config_web": "/config/homed/web"
   },
   "schema": {
     "config": "str?"
