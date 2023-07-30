@@ -1,7 +1,7 @@
 #!/usr/bin/with-contenv bash
 
 # Путь к файлу homed-zigbee.conf внутри контейнера
-DOCKER_HOMED_CONF="/etc/homed/homed-zigbee.conf"
+DOCKER_HOMED_CONF="/data/homed-zigbee.conf"
 
 # Извлекаем значение "config" из файла options.json
 CONFIG_PATH=$(jq -r '.config' < /data/options.json)
