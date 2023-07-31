@@ -1,6 +1,6 @@
 {
   "name": "HOMEd WEB",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "url": "https://wiki.homed.dev/page/HOMEd",
   "slug": "homedweb",
   "description": "HOMEd WEB",
@@ -16,6 +16,9 @@
   },
   "ports_description": {
     "8080/tcp": "Web interface (not required for Home Assistant ingress)"
+  },
+  "environment": {
+    "HA_ADDON": "true"
   },
   "options": {
     "config_web": "/config/homed"
