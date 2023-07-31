@@ -1,5 +1,5 @@
 # Используем базовый образ
-FROM docker.u236.org/homed-zigbee:3.4.4
+FROM docker.u236.org/homed-zigbee
 
 # Добавим метаданные к образу
 LABEL \
