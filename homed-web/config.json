@@ -9,12 +9,9 @@
   "boot": "auto",
   "map": ["config:rw"],
   "ingress": true,
-  "ingress_port": 8099,
+  "ingress_port": 8080,
   "webui": "http://[HOST]:[INGRESS_PORT]/",
   "panel_icon": "mdi:zigbee",
-  "ports": {
-    "8080/tcp": 8080
-  },
   "options": {
     "config_web": "/config/homed"
   },
