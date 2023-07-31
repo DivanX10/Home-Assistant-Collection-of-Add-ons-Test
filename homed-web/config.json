@@ -1,6 +1,6 @@
 {
   "name": "HOMEd WEB",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "url": "https://wiki.homed.dev/page/HOMEd",
   "slug": "homedweb",
   "description": "HOMEd WEB",
@@ -9,10 +9,8 @@
   "boot": "auto",
   "map": ["config:rw"],
   "ingress": true,
+  "ingress_port": 0,
   "panel_icon": "mdi:zigbee",
-  "ports": {
-    "8099/tcp": null
-  },
   "options": {
     "config_web": "/config/homed"
   },
