@@ -1,6 +1,6 @@
 {
   "name": "HOMEd WEB",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "url": "https://wiki.homed.dev/page/HOMEd",
   "slug": "homedweb",
   "description": "HOMEd WEB",
@@ -10,7 +10,7 @@
   "map": ["config:rw"],
   "ingress": true,
   "panel_icon": "mdi:zigbee",
-  "webui": "http://[HOST]:[PORT:8080]",
+  "webui": "[PROTO:use_ssl]://[HOST]:[PORT:8080]",
   "ports": {
     "8080/tcp": 8080
   },
