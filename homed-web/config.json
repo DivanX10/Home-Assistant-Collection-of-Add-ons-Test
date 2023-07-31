@@ -9,6 +9,9 @@
   "startup": "application",
   "boot": "auto",
   "map": ["config:rw"],
+  "ingress": true,
+  "timeout": 30,
+  "panel_icon": "mdi:zigbee",
   "ports": {
     "8080/tcp": 8080
   },
