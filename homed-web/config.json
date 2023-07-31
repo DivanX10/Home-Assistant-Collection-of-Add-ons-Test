@@ -1,6 +1,6 @@
 {
   "name": "HOMEd WEB",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "url": "https://wiki.homed.dev/page/HOMEd",
   "slug": "homedweb",
   "description": "HOMEd WEB",
@@ -23,6 +23,6 @@
     "config_web": "/config/homed"
   },
   "schema": {
-    "config": "str?"
+    "config_web": "str?"
   }
 }
