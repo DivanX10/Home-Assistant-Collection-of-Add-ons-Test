@@ -10,7 +10,7 @@
   "map": ["config:rw"],
   "ingress": true,
   "panel_icon": "mdi:zigbee",
-  "webui": "http://[HOST]:[PORT]",
+  "webui": "http://[HOST]:[PORT:8080]",
   "ports": {
     "8080/tcp": 8080
   },
