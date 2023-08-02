@@ -1,6 +1,6 @@
 {
   "name": "HOMEd Zigbee Test",
-  "version": "3.4.2",
+  "version": "3.4.3",
   "url": "https://github.com/DivanX10/Home-Assistant-Add-on-DeepStack-Edge",
   "slug": "homedzigbee",
   "description": "HOMEd Zigbee",
@@ -9,6 +9,7 @@
   "boot": "auto",
   "map": ["config:rw"],
   "privileged": ["SYS_RAWIO"],
+  "udev": "true",
   "options": {
     "config_zigbee": "/config/homed"
   },
