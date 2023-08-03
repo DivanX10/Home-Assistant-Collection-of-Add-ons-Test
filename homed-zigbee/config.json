@@ -9,11 +9,7 @@
   "boot": "auto",
   "map": ["config:rw"],
   "devices": ["/dev/ttyUSB0"],
-  "arch": [
-    "amd64",
-    "aarch64",
-    "armv7"
-  ],
+  "arch": ["amd64","aarch64","armv7"],
   "options": {
     "config_zigbee": "/config/homed"
   },
