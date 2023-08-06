@@ -1,8 +1,0 @@
-version: "3.7"
-services:
-    privileged: true
-    restart: always
-    volumes:
-      - /mnt/data/supervisor/homeassistant/AgentDVR/Commands:/agent/Commands
-      - /mnt/data/supervisor/homeassistant/AgentDVR/Media:/agent/Media/WebServerRoot/Media
-      - /mnt/data/supervisor/homeassistant/AgentDVR/Config:/agent/Media/XML
