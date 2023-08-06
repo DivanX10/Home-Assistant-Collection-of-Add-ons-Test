@@ -1,60 +1,33 @@
-#!/usr/bin/with-contenv bashio
-
-Folder="$(bashio::config 'folder')"
-
-cd /agent
-
-if ! bashio::fs.directory_exists "/data/Media";
-then
-  mkdir /data/Media
-fi
-
-if ! bashio::fs.directory_exists "/data/Commands";
-then
-  mkdir /data/Commands
-fi
-
-ln -s /data/Media Media
-ln -s /data/Commands Commands
-
-if (bashio::config.true 'override');
-then
-  if ! bashio::fs.directory_exists "/config/${Folder}";
-  then
-    mkdir /config/${Folder}
-  fi
-  ln -s /config/${Folder} Media/WebServerRoot/Media
-fi
-
-./Agent
-
-
 #!/usr/bin/with-contenv bash
 
-# Путь к файлу homed-web.conf внутри контейнера
-DOCKER_HOMED_CONF="/data/homed-web.conf"
+# Путь к папке с файлами внутри контейнера
+DOCKER_MEDIA_DIR="/agent/Media"
+DOCKER_XML_DIR="/agent/Media/XML"
+DOCKER_COMMANDS_DIR="/agent/Commands"
 
-# Извлекаем значение "config_web" из файла options.json
-CONFIG_PATH=$(jq -r '.config_web' < /data/options.json)
+# Извлекаем значение "folder" из файла options.json
+FOLDER=$(jq -r '.folder' < /data/options.json)
 
 # Если значение не определено или пусто, используем значение по умолчанию
-if [ -z "$CONFIG_PATH" ]; then
-    CONFIG_PATH="/config/homed"
+if [ -z "$FOLDER" ]; then
+    FOLDER="agentdvr"
 fi
 
-# Путь к файлу homed-zigbee.conf на хосте (папка config/homed)
-HOST_HOMED_CONF="$CONFIG_PATH/homed-web.conf"
+# Путь к папке с файлами на хосте (папка share/FOLDER)
+HOST_MEDIA_DIR="/share/${FOLDER}/Media"
+HOST_XML_DIR="/share/${FOLDER}/Media/XML"
+HOST_COMMANDS_DIR="/share/${FOLDER}/Commands"
 
-# Проверяем, существует ли файл homed-zigbee.conf на хосте
-if [ -f "$HOST_HOMED_CONF" ]; then
-    # Копируем содержимое файла на хосте в новый файл внутри контейнера
-    cat "$HOST_HOMED_CONF" > "$DOCKER_HOMED_CONF"
-else
-    # Создаем пустой файл homed-zigbee.conf, если его нет на хосте
-    touch "$DOCKER_HOMED_CONF"
-    # Копируем содержимое файла на хосте в новый файл внутри контейнера
-    cat "$DOCKER_HOMED_CONF" > "$HOST_HOMED_CONF"
-fi
+# Создаем папки на хосте, если их нет
+mkdir -p "$HOST_MEDIA_DIR"
+mkdir -p "$HOST_XML_DIR"
+mkdir -p "$HOST_COMMANDS_DIR"
+
+# Копируем содержимое папок из контейнера в папки на хосте
+cp -r "$DOCKER_MEDIA_DIR"/* "$HOST_MEDIA_DIR"
+cp -r "$DOCKER_XML_DIR"/* "$HOST_XML_DIR"
+cp -r "$DOCKER_COMMANDS_DIR"/* "$HOST_COMMANDS_DIR"
+
 
 # Запускаем homed-web
-exec /usr/bin/homed-web
+#exec /usr/bin/homed-web
