@@ -39,8 +39,9 @@ EXPOSE 3478/udp
 # TURN server UDP port range
 EXPOSE 50000-50010/udp
 
-
-CMD ["/agent/run"]
+# Define service entrypoint
+CMD ["/agent/Agent"]
+#CMD ["/agent/run"]
 
 LABEL \
   io.hass.version="VERSION" \
