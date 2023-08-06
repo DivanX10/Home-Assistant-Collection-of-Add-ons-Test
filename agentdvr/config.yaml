@@ -42,7 +42,7 @@ ports_description:
   50009/udp: "Default port, don't change"
   50010/udp: "Default port, don't change"
 options:
-  override: false
+  override: true
   folder: ispy
 schema:
   override: bool
