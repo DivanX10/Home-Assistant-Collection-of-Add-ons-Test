@@ -1,7 +1,7 @@
 {
-  "name": "Agent DVR",
+  "name": "Agent DVR Test",
   "version": "4.2.9.0",
-  "url": "https://www.ispyconnect.com/",
+  "url": "https://github.com/DivanX10/Home-Assistant-Add-on-DeepStack-Edge",
   "slug": "ispyagentdvr",
   "description": "iSpy's Agent DVR, a standalone DVR service to manage IP cameras.",
   "webui": "http://[HOST]:[PORT:8090]",
