@@ -1,14 +1,18 @@
 name: "iSpy Agent DVR Test"
 version: 0.9
 slug: ispy_agent_dvr
-apparmor: true
 description: "Test"
+url: "https://github.com/DivanX10/Home-Assistant-Add-on-DeepStack-Edge"
+webui: http://[HOST]:[PORT:8090]
+watchdog: http://[HOST]:[PORT:8090]
+startup: application
+init: false
 arch:
   - amd64
+boot: auto  
 map:
   - config:rw
   - share:rw
-url: "https://github.com/DivanX10/Home-Assistant-Add-on-DeepStack-Edge"
 ports:
   8090/tcp: 8090
   3478/udp: 3478
@@ -23,10 +27,6 @@ ports:
   50008/udp: 50008
   50009/udp: 50009
   50010/udp: 50010
-image: ljsquare/ispy_agent_dvr
-init: false
-webui: http://[HOST]:[PORT:8090]
-watchdog: http://[HOST]:[PORT:8090]
 ports_description:
   8090/tcp: "Default port, don't change"
   3478/udp: "Default port, don't change"
@@ -47,3 +47,4 @@ options:
 schema:
   override: bool
   folder: str
+image: ljsquare/ispy_agent_dvr
