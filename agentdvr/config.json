@@ -13,13 +13,13 @@
     "8090/tcp": 8090
   },  
   "options": {
-  "Config": "/AgentDVR/Config",
-  "Media": "/AgentDVR/Media",
-  "Commands": "/AgentDVR/Commands"
+    "Config": "/AgentDVR/Config",
+    "Media": "/AgentDVR/Media",
+    "Commands": "/AgentDVR/Commands"
   },
   "schema": {
-  "Config": "str?",
-  "Media": "str?",
-  "Commands": "str?" 
+    "Config": "str?",
+    "Media": "str?",
+    "Commands": "str?" 
   }
  }
