@@ -36,6 +36,5 @@ if [ "$OVERRIDE" = "true" ]; then
 fi
 
 
-
-# Запускаем homed-web
-#exec /usr/bin/homed-web
+# Запускаем agentdvr
+exec /agent/Agent
