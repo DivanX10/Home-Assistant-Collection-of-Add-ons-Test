@@ -1,8 +1,10 @@
 FROM doitandbedone/ispyagentdvr:4.2.9.0
 LABEL maintainer="doitandbedone"
 
-RUN apt update -yqq
-RUN apt install rsync mc nano -yqq
+
+RUN apt-get update && apt-get install -y tini mc nano jq
+# Установим пакеты tini, mc, nano, jq rsync
+RUN apt update && install mc nano jq -yqq
 
 # Modify permission for execution
 RUN echo "Adding executable permissions" && \
@@ -28,7 +30,7 @@ EXPOSE 50000-50010/udp
 # Data volumes
 VOLUME ["/agent/Media/XML", "/agent/Media/WebServerRoot/Media", "/agent/Commands"]
 
-#WORKDIR /agent
+WORKDIR /agent
 
 # Define service entrypoint
 CMD ["/agent/Agent"]
