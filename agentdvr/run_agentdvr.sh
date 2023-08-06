@@ -6,11 +6,6 @@ OVERRIDE=$(jq -r '.override' < /data/options.json)
 # Проверяем, включен ли выключатель "override" и его значение равно "true"
 if [ "$OVERRIDE" = "true" ]; then
 
-    # Путь к папке с файлами внутри контейнера
-    DOCKER_MEDIA_DIR="/agent/Media"
-    DOCKER_XML_DIR="/agent/Media/XML"
-    DOCKER_COMMANDS_DIR="/agent/Commands"
-
     # Извлекаем значение "folder" из файла options.json
     FOLDER=$(jq -r '.folder' < /data/options.json)
 
@@ -24,17 +19,27 @@ if [ "$OVERRIDE" = "true" ]; then
     HOST_XML_DIR="/share/${FOLDER}/Media/XML"
     HOST_COMMANDS_DIR="/share/${FOLDER}/Commands"
 
-    # Создаем папки на хосте, если их нет
+    # Создаем папку "agentdvr" в сетевой папке "share", если она не существует
+    mkdir -p "/share/${FOLDER}"
+    # Создаем подпапки "Media", "Media/XML" и "Commands" внутри папки "agentdvr"
     mkdir -p "$HOST_MEDIA_DIR"
     mkdir -p "$HOST_XML_DIR"
     mkdir -p "$HOST_COMMANDS_DIR"
 
-    # Копируем содержимое папок из контейнера в папки на хосте
-    cp -r "$DOCKER_MEDIA_DIR"/* "$HOST_MEDIA_DIR"
-    cp -r "$DOCKER_XML_DIR"/* "$HOST_XML_DIR"
-    cp -r "$DOCKER_COMMANDS_DIR"/* "$HOST_COMMANDS_DIR"
-fi
+    # Копируем содержимое папок из контейнера в папки на хосте, если они существуют
+    if [ -d "/agent/Media" ]; then
+        cp -r "/agent/Media"/* "$HOST_MEDIA_DIR"
+    fi
 
+    if [ -d "/agent/Media/XML" ]; then
+        cp -r "/agent/Media/XML"/* "$HOST_XML_DIR"
+    fi
+
+    if [ -d "/agent/Commands" ]; then
+        cp -r "/agent/Commands"/* "$HOST_COMMANDS_DIR"
+    fi
+fi
 
 # Запускаем agentdvr
 exec /agent/Agent
+
