@@ -10,7 +10,6 @@ arch:
   - amd64
 boot: auto  
 map:
-  - config:rw
   - share:rw
 ports:
   8090/tcp: 8090
@@ -41,8 +40,8 @@ ports_description:
   50009/udp: "Default port, don't change"
   50010/udp: "Default port, don't change"
 options:
-  override: true
-  folder: ispy
+  override: false
+  folder: /share/agentdvr
 schema:
   override: bool
   folder: str
