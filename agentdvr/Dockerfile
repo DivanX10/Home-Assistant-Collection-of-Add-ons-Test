@@ -30,14 +30,14 @@ VOLUME ["/agent/Media/XML", "/agent/Media/WebServerRoot/Media", "/agent/Commands
 
 WORKDIR /agent
 
-# Define service entrypoint
-#CMD ["/agent/Agent"]
-
 # Скопируем файлы во внутрь контейнера
-COPY run.sh /tmp
+COPY run.sh /agent
 
 # Установим права на выполнение скрипта
-RUN chmod +x /tmp/run.sh
+RUN chmod +x /agent/run.sh
 
 # Укажем Tini как PID 1 и зарегистрируем его как subreaper
-ENTRYPOINT ["/usr/bin/tini", "-s", "--", "bash", "/tmp/run.sh"]
+ENTRYPOINT ["/usr/bin/tini", "-s", "--", "bash", "/agent/run.sh"]
+
+# Define service entrypoint
+#CMD ["/agent/Agent"]
