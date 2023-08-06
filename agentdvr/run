@@ -19,7 +19,7 @@ ln -s /data/Commands Commands
 
 if (bashio::config.true 'override');
 then
-  if ! bashio::fs.directory_exists "/share/${Folder}";
+  if ! bashio::fs.directory_exists "/config/${Folder}";
   then
     mkdir /config/${Folder}
   fi
