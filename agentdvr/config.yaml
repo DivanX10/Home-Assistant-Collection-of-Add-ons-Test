@@ -1,5 +1,5 @@
 name: "iSpy Agent DVR Test"
-version: 4.3.9.0
+version: 0.9
 slug: ispy_agent_dvr
 apparmor: true
 description: "Test"
