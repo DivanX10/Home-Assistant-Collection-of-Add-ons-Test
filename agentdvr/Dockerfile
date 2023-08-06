@@ -1,10 +1,8 @@
 FROM doitandbedone/ispyagentdvr:4.2.9.0
 LABEL maintainer="doitandbedone"
 
-
-RUN apt-get update && apt-get install -y tini mc nano jq
 # Установим пакеты tini, mc, nano, jq rsync
-RUN apt update && install mc nano jq -yqq
+RUN apt update && install tini mc nano jq
 
 # Modify permission for execution
 RUN echo "Adding executable permissions" && \
