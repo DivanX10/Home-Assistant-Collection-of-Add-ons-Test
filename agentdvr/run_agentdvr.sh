@@ -15,12 +15,12 @@ if [ "$OVERRIDE" = "true" ]; then
     fi
 
     # Путь к папке с файлами на хосте (папка share/FOLDER)
-    HOST_MEDIA_DIR="/share/${FOLDER}/Media"
-    HOST_XML_DIR="/share/${FOLDER}/Media/XML"
-    HOST_COMMANDS_DIR="/share/${FOLDER}/Commands"
+    HOST_MEDIA_DIR="${FOLDER}/Media"
+    HOST_XML_DIR="${FOLDER}/Media/XML"
+    HOST_COMMANDS_DIR="${FOLDER}/Commands"
 
     # Создаем папку "agentdvr" в сетевой папке "share", если она не существует
-    mkdir -p "/share/${FOLDER}"
+    mkdir -p "${FOLDER}"
     # Создаем подпапки "Media", "Media/XML" и "Commands" внутри папки "agentdvr"
     mkdir -p "$HOST_MEDIA_DIR"
     mkdir -p "$HOST_XML_DIR"
