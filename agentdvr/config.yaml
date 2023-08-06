@@ -8,7 +8,7 @@ arch:
 map:
   - config:rw
   - share:rw
-url: "https://www.ispyconnect.com/"
+url: "https://github.com/DivanX10/Home-Assistant-Add-on-DeepStack-Edge"
 ports:
   8090/tcp: 8090
   3478/udp: 3478
