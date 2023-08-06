@@ -1,29 +1,15 @@
-ARG BUILD_FROM
-FROM $BUILD_FROM as base
+FROM doitandbedone/ispyagentdvr:4.2.9.0
+LABEL maintainer="doitandbedone"
 
-ENV LANG C.UTF-8
-ARG BUILD_VERSION
+RUN apt update -yqq
+RUN apt install rsync mc nano -yqq
 
-ARG TZ=Europe/Amsterdam
-
-RUN  echo 'deb http://http.us.debian.org/debian testing main non-free contrib' >> /etc/apt/sources.list &&\
-    apt update &&\
-    apt install -y unzip alsa-utils libgdiplus ffmpeg wget
-
-VOLUME ["/data"]
-
-ADD https://ispyfiles.azureedge.net/downloads/Agent_Linux64_4_4_6_0.zip /agent/
-RUN wget -c $(wget -qO- "https://www.ispyconnect.com/api/Agent/DownloadLocation4?platform=Linux64&fromVersion=0" | tr -d '"') -O agent.zip; \
-    unzip agent.zip -d /agent && \
-    rm agent.zip
-
-COPY run /agent/
-
-RUN chmod +x /agent/Agent && \
-  chmod +x /agent/agent-register.sh && \
-  chmod +x /agent/agent-reset.sh && \
-  chmod +x /agent/agent-reset-local-login.sh && \
-  chmod +x /agent/run
+# Modify permission for execution
+RUN echo "Adding executable permissions" && \
+    chmod +x /agent/Agent && \
+    chmod +x /agent/agent-register.sh && \
+    chmod +x /agent/agent-reset.sh && \
+    chmod +x /agent/agent-reset-local-login.sh
 
 # Define default environment variables
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
@@ -39,11 +25,10 @@ EXPOSE 3478/udp
 # TURN server UDP port range
 EXPOSE 50000-50010/udp
 
+# Data volumes
+VOLUME ["/agent/Media/XML", "/agent/Media/WebServerRoot/Media", "/agent/Commands"]
+
+#WORKDIR /agent
+
 # Define service entrypoint
 CMD ["/agent/Agent"]
-#CMD ["/agent/run"]
-
-LABEL \
-  io.hass.version="VERSION" \
-  io.hass.type="addon" \
-  io.hass.arch="amd64"
