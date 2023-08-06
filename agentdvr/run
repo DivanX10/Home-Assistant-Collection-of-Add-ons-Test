@@ -21,9 +21,9 @@ if (bashio::config.true 'override');
 then
   if ! bashio::fs.directory_exists "/share/${Folder}";
   then
-    mkdir /share/${Folder}
+    mkdir /config/${Folder}
   fi
-  ln -s /share/${Folder} Media/WebServerRoot/Media
+  ln -s /config/${Folder} Media/WebServerRoot/Media
 fi
 
 ./Agent
