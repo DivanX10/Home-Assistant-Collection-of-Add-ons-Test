@@ -1,4 +1,4 @@
-# Home Assistant Collection of Add-ons for test
+# Home Assistant Collection of Add-ons for Test
 
 These are test addons for development and debugging. Do not install yourself
 
