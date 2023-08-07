@@ -43,5 +43,8 @@ copy_files
 # Запускаем agentdvr
 exec /agent/Agent
 
-# После завершения работы agentdvr копируем файлы обратно в папку на хосте
-copy_files
+# Добавляем задание в cron
+echo '*/1 * * * * root /bin/bash /tmp/clone.sh' >> /etc/crontabs/root
+
+# Запускаем cron в фоновом режиме
+cron -f
