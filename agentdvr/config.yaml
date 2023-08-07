@@ -8,6 +8,8 @@ startup: application
 init: false
 arch:
   - amd64
+  - aarch64
+  - armv7
 boot: auto  
 map:
   - config:rw
