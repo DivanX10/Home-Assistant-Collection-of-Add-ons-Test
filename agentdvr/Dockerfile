@@ -1,15 +1,20 @@
 FROM doitandbedone/ispyagentdvr:4.2.9.0
 LABEL maintainer="doitandbedone"
 
-# Установим пакеты tini, mc, nano, jq
+# Установим пакеты
 RUN apt-get update && apt-get install -yqq tini mc nano jq rsync cron && apt-get clean
 
-# Modify permission for execution
+# Скопируем файлы во внутрь контейнера
+COPY scripts/ /tmp
+
+# Установим права на выполнение скриптов
 RUN echo "Adding executable permissions" && \
     chmod +x /agent/Agent && \
     chmod +x /agent/agent-register.sh && \
     chmod +x /agent/agent-reset.sh && \
-    chmod +x /agent/agent-reset-local-login.sh
+    chmod +x /agent/agent-reset-local-login.sh && \
+    chmod +x /tmp/run_agentdvr.sh && \
+    chmod +x /tmp/clone.sh
 
 # Define default environment variables
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
@@ -26,23 +31,13 @@ EXPOSE 3478/udp
 EXPOSE 50000-50010/udp
 
 # Data volumes
-VOLUME ["/agent/Media/XML", "/agent/Media/WebServerRoot/Media", "/agent/Commands"]
+#VOLUME ["/agent/Media/XML", "/agent/Media/WebServerRoot/Media", "/agent/Commands"]
 
+# Рабочая директория
 WORKDIR /agent
-
-# Скопируем файлы во внутрь контейнера
-COPY run_agentdvr.sh /tmp
-COPY clone.sh /tmp
-
-# Установим права на выполнение скрипта
-RUN chmod +x /tmp/run_agentdvr.sh
-RUN chmod +x /tmp/clone.sh
 
 # Добавляем строку в файл /etc/crontab
 RUN echo "*/1 * * * * root /bin/bash /tmp/clone.sh" >> /etc/crontab
 
 # Укажем Tini как PID 1 и зарегистрируем его как subreaper
 ENTRYPOINT ["/usr/bin/tini", "-s", "--", "bash", "/tmp/run_agentdvr.sh"]
-
-# Define service entrypoint
-#CMD ["/agent/Agent"]
