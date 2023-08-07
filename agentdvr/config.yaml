@@ -27,19 +27,19 @@ ports:
   50009/udp: 50009
   50010/udp: 50010
 ports_description:
-  8090/tcp: "Default port, don't change"
-  3478/udp: "Default port, don't change"
-  50000/udp: "Default port, don't change"
-  50001/udp: "Default port, don't change"
-  50002/udp: "Default port, don't change"
-  50003/udp: "Default port, don't change"
-  50004/udp: "Default port, don't change"
-  50005/udp: "Default port, don't change"
-  50006/udp: "Default port, don't change"
-  50007/udp: "Default port, don't change"
-  50008/udp: "Default port, don't change"
-  50009/udp: "Default port, don't change"
-  50010/udp: "Default port, don't change"
+  8090/tcp: "Main UI port. Default port"
+  3478/udp: "STUN server port, don't change"
+  50000/udp: "TURN server UDP port range. Default port, don't change"
+  50001/udp: "TURN server UDP port range. Default port, don't change"
+  50002/udp: "TURN server UDP port range. Default port, don't change"
+  50003/udp: "TURN server UDP port range. Default port, don't change"
+  50004/udp: "TURN server UDP port range. Default port, don't change"
+  50005/udp: "TURN server UDP port range. Default port, don't change"
+  50006/udp: "TURN server UDP port range. Default port, don't change"
+  50007/udp: "TURN server UDP port range. Default port, don't changee"
+  50008/udp: "TURN server UDP port range. Default port, don't change"
+  50009/udp: "TURN server UDP port range. Default port, don't changee"
+  50010/udp: "TURN server UDP port range. Default port, don't change"
 options:
   folder_path: /share/agentdvr
 schema:
