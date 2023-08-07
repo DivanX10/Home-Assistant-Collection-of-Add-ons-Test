@@ -1,4 +1,4 @@
-# Home Assistant Add-on: DeepStack Edge
+# Home Assistant Collection of Add-ons for test
 
 These are test addons for development and debugging. Do not install yourself
 
