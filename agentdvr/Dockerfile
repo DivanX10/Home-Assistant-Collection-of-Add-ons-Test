@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Извлекаем значение "folder_path" из файла options.json
+FOLDER_PATH=$(jq -r '.folder_path' < /data/options.json)
+
 # Путь к папке с файлами внутри контейнера
 DOCKER_MEDIA_DIR="/agent/Media"
 DOCKER_XML_DIR="/agent/Media/XML"
@@ -9,6 +12,22 @@ DOCKER_COMMANDS_DIR="/agent/Commands"
 HOST_MEDIA_DIR="$FOLDER_PATH/Media"
 HOST_XML_DIR="$FOLDER_PATH/Media/XML"
 HOST_COMMANDS_DIR="$FOLDER_PATH/Commands"
+
+# Проверяем, существует ли папка на хосте
+if [ ! -d "$HOST_MEDIA_DIR" ]; then
+    # Создаем папку на хосте
+    mkdir -p "$HOST_MEDIA_DIR"
+fi
+
+if [ ! -d "$HOST_XML_DIR" ]; then
+    # Создаем папку на хосте
+    mkdir -p "$HOST_XML_DIR"
+fi
+
+if [ ! -d "$HOST_COMMANDS_DIR" ]; then
+    # Создаем папку на хосте
+    mkdir -p "$HOST_COMMANDS_DIR"
+fi
 
 # Функция для копирования измененных файлов
 copy_files() {
@@ -26,20 +45,8 @@ copy_files() {
     fi
 }
 
-# Добавляем задачу в крон
-echo "*/1 * * * * /tmp/run_agentdvr.sh" > cronjob
-
-# Устанавливаем задачу в крон
-crontab cronjob
-
-# Удаляем временный файл
-rm cronjob
-
-# Запускаем скрипт для копирования файлов
-copy_files
+# Копируем файлы перед запуском agentdvr
+copy_files &
 
 # Запускаем agentdvr
 exec /agent/Agent
-
-# После завершения работы agentdvr копируем файлы обратно в папку на хосте
-copy_files
