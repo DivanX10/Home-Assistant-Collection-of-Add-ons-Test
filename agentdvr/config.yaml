@@ -1,5 +1,5 @@
 name: "iSpy Agent DVR Test"
-version: 4.9.3.0
+version: 4.9.3.0.1
 slug: ispy_agent_dvr
 description: "Test"
 url: "https://github.com/DivanX10/Home-Assistant-Add-on-DeepStack-Edge"
@@ -14,6 +14,7 @@ boot: auto
 map:
   - config:rw
   - share:rw
+advanced: true  
 ports:
   8090/tcp: 8090
   3478/udp: 3478
