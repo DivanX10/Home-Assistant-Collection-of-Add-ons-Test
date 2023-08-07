@@ -40,11 +40,8 @@ copy_files() {
 # Копируем файлы перед запуском agentdvr
 copy_files
 
-# Добавляем задание в cron
-#echo '*/1 * * * * root /bin/bash /tmp/clone.sh' >> /etc/crontabs/root
-
-# Запускаем cron в фоновом режиме
-#cron -f
-
 # Запускаем agentdvr
 exec /agent/Agent
+
+# Запускаем cron внутри контейнера
+cron
