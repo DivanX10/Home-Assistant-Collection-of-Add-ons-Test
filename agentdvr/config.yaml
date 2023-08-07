@@ -1,16 +1,18 @@
 name: "iSpy Agent DVR Test"
-version: 4.9.3.0.1
+version: 4.9.3.0.2
 slug: ispy_agent_dvr
 description: "Test"
 url: "https://github.com/DivanX10/Home-Assistant-Add-on-DeepStack-Edge"
-webui: http://[HOST]:[PORT:8090]
 startup: application
 init: false
+ingress: true
+panel_icon: mdi:cctv
 arch:
   - amd64
   - aarch64
   - armv7
-boot: auto  
+boot: auto
+hassio_api: true
 map:
   - config:rw
   - share:rw
