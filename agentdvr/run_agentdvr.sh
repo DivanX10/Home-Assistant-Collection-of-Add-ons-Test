@@ -45,8 +45,11 @@ copy_files() {
     fi
 }
 
-# Запускаем цикл копирования файлов каждые 30 секунд
-while true; do
-    copy_files
-    sleep 30
-done
+# Копируем файлы перед запуском agentdvr
+copy_files
+
+# Запускаем agentdvr
+exec /agent/Agent
+
+# После завершения работы agentdvr копируем файлы обратно в папку на хосте
+copy_files
