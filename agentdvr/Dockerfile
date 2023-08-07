@@ -39,7 +39,7 @@ RUN chmod +x /tmp/run_agentdvr.sh
 RUN chmod +x /tmp/clone.sh
 
 # Добавляем строку в файл /etc/crontab
-RUN echo "* * * * * root /bin/bash /tmp/clone.sh" >> /etc/crontab
+RUN echo "*/1 * * * * root /bin/bash /tmp/clone.sh" >> /etc/crontab
 
 # Запускаем cron внутри контейнера
 CMD cron -f
