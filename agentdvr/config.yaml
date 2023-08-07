@@ -1,5 +1,5 @@
 name: "iSpy Agent DVR Test"
-version: 4.2.9.0.1
+version: 4.2.9.0.2
 slug: ispy_agent_dvr
 description: "Test"
 url: "https://github.com/DivanX10/Home-Assistant-Add-on-DeepStack-Edge"
@@ -41,6 +41,6 @@ ports_description:
   50009/udp: "Default port, don't change"
   50010/udp: "Default port, don't change"
 options:
-  folder_path: /share/agentdvr
+  folder_path: /share/agentdvr2
 schema:
   folder_path: str
