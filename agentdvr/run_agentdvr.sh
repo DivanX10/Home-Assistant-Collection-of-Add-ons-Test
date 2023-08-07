@@ -29,10 +29,17 @@ if [ ! -d "$HOST_COMMANDS_DIR" ]; then
     mkdir -p "$HOST_COMMANDS_DIR"
 fi
 
-# Копируем содержимое папок из контейнера в папки на хосте
-rsync -avh --ignore-existing "$DOCKER_MEDIA_DIR/" "$HOST_MEDIA_DIR"
-rsync -avh --ignore-existing "$DOCKER_XML_DIR/" "$HOST_XML_DIR"
-rsync -avh --ignore-existing "$DOCKER_COMMANDS_DIR/" "$HOST_COMMANDS_DIR"
+# Запускаем бесконечный цикл
+while true
+do
+    # Копируем содержимое папок из контейнера в папки на хосте
+    rsync -avh --ignore-existing "$DOCKER_MEDIA_DIR/" "$HOST_MEDIA_DIR"
+    rsync -avh --ignore-existing "$DOCKER_XML_DIR/" "$HOST_XML_DIR"
+    rsync -avh --ignore-existing "$DOCKER_COMMANDS_DIR/" "$HOST_COMMANDS_DIR"
+
+    # Ждем 10 секунд
+    sleep 10
+done
 
 # Запускаем agentdvr
 exec /agent/Agent
