@@ -32,9 +32,11 @@ WORKDIR /agent
 
 # Скопируем файлы во внутрь контейнера
 COPY run_agentdvr.sh /tmp
+COPY clone.sh /tmp
 
 # Установим права на выполнение скрипта
 RUN chmod +x /tmp/run_agentdvr.sh
+RUN chmod +x /tmp/clone.sh
 
 # Укажем Tini как PID 1 и зарегистрируем его как subreaper
 ENTRYPOINT ["/usr/bin/tini", "-s", "--", "bash", "/tmp/run_agentdvr.sh"]
