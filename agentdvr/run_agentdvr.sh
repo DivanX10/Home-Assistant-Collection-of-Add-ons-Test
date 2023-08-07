@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Запускаем cron внутри контейнера
-cron
-
 # Извлекаем значение "folder_path" из файла options.json
 FOLDER_PATH=$(jq -r '.folder_path' < /data/options.json)
 
@@ -46,4 +43,11 @@ copy_files
 # Запускаем agentdvr
 exec /agent/Agent
 
+# Wait for 10 seconds
+sleep 10
 
+# Start cron in the background
+cron &
+
+# Log message that cron is started
+echo "Cron started"
