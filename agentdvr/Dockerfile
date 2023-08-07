@@ -1,4 +1,5 @@
-FROM doitandbedone/ispyagentdvr:4.2.9.0
+FROM doitandbedone/ispyagentdvr:4.9.3.0
+
 LABEL maintainer="doitandbedone"
 
 # Установим пакеты
