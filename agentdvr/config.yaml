@@ -16,7 +16,6 @@ hassio_api: true
 map:
   - config:rw
   - share:rw
-advanced: true  
 ports:
   8090/tcp: 8090
   3478/udp: 3478
