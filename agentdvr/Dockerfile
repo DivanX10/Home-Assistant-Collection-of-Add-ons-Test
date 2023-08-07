@@ -41,9 +41,6 @@ RUN chmod +x /tmp/clone.sh
 # Добавляем строку в файл /etc/crontab
 RUN echo "*/1 * * * * root /bin/bash /tmp/clone.sh" >> /etc/crontab
 
-# Запускаем cron внутри контейнера
-CMD ["cron"]
-
 # Укажем Tini как PID 1 и зарегистрируем его как subreaper
 ENTRYPOINT ["/usr/bin/tini", "-s", "--", "bash", "/tmp/run_agentdvr.sh"]
 
