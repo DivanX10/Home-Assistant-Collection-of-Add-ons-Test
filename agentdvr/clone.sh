@@ -16,9 +16,9 @@ DOCKER_COMMANDS_DIR="/agent/Commands"
 # Функция для копирования измененных файлов
 copy_files() {
     # Копируем только измененные файлы из папок на хосте в контейнер
-    rsync -avh --update "$DOCKER_MEDIA_DIR" "$HOST_MEDIA_DIR/"
-    rsync -avh --update "$DOCKER_XML_DIR" "$HOST_XML_DIR/"
-    rsync -avh --update "$DOCKER_COMMANDS_DIR" "$HOST_COMMANDS_DIR/"
+    rsync -avh --update "$DOCKER_MEDIA_DIR/" "$HOST_MEDIA_DIR"
+    rsync -avh --update "$DOCKER_XML_DIR/" "$HOST_XML_DIR"
+    rsync -avh --update "$DOCKER_COMMANDS_DIR/" "$HOST_COMMANDS_DIR"
 }
 
 # Копируем файлы с папки в Home Assistant в контейнер
