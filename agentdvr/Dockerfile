@@ -26,20 +26,20 @@ EXPOSE 3478/udp
 EXPOSE 50000-50010/udp
 
 # Data volumes
-VOLUME ["/agent/Media/XML", "/agent/Media/WebServerRoot/Media", "/agent/Commands"]
+#VOLUME ["/agent/Media/XML", "/agent/Media/WebServerRoot/Media", "/agent/Commands"]
 #VOLUME ["agent_media:/agent/Media", "agent_media_xml:/agent/Media/XML", "agent_commands:/agent/Commands"]
 
 
-#WORKDIR /agent
+WORKDIR /agent
 
 # Скопируем файлы во внутрь контейнера
-#COPY run_agentdvr.sh /tmp
+COPY run_agentdvr.sh /tmp
 
 # Установим права на выполнение скрипта
-#RUN chmod +x /tmp/run_agentdvr.sh
+RUN chmod +x /tmp/run_agentdvr.sh
 
 # Укажем Tini как PID 1 и зарегистрируем его как subreaper
-#ENTRYPOINT ["/usr/bin/tini", "-s", "--", "bash", "/tmp/run_agentdvr.sh"]
+ENTRYPOINT ["/usr/bin/tini", "-s", "--", "bash", "/tmp/run_agentdvr.sh"]
 
 # Define service entrypoint
-CMD ["/agent/Agent"]
+#CMD ["/agent/Agent"]
