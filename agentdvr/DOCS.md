@@ -2,10 +2,27 @@
 
 ## How to use
 
-The user manual for iSpy Agent DVR can be found here: [https://www.ispyconnect.com/userguide-agent-dvr.aspx](https://www.ispyconnect.com/userguide-agent-dvr.aspx)
+The user manual for iSpy Agent DVR can be found [here](https://www.ispyconnect.com/userguide-agent-dvr.aspx)
+Recommended settings can be found [here](https://github.com/doitandbedone/ispyagentdvr-docker#ispy-agent-dvr)
 
-### [Storage Management](https://www.ispyconnect.com/userguide-agent-storage-management.aspx)
-The addon is a docker container. By default the default folder of iSpy is persistent, but not accessible for anywhere.
-To solve this problem, there are 2 options:
-1) add an extra storage location, pointing to a folder in de `/share` folder
-2) use the override switch to link the default folder of iSpy to a folder `/share`. The name of the new folder can be given in the configuration of the addon.
+## Recommended settings:
+### Ports:
+#### 8090: 
+By default the container will use port 8090 for Web UI. To access the panel go to http://localhost:8090 or replace localhost with your local IP.
+
+#### 3478
+Main port used for TURN server communication.
+
+#### 50000-50010
+Ports used to create connections or WebRTC. These will be used as needed.
+
+### Volumes:
+#### Config: 
+/agent/Media/XML/
+#### Media: 
+/agent/Media/WebServerRoot/Media/
+#### Commands:
+/agent/Commands
+
+
+
