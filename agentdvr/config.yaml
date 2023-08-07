@@ -18,32 +18,32 @@ map:
   - share:rw
 ports:
   8090/tcp: 8090
-  3478/udp: 3478
-  50000/udp: 50000
-  50001/udp: 50001
-  50002/udp: 50002
-  50003/udp: 50003
-  50004/udp: 50004
-  50005/udp: 50005
-  50006/udp: 50006
-  50007/udp: 50007
-  50008/udp: 50008
-  50009/udp: 50009
-  50010/udp: 50010
+  3478/udp: null
+  50000/udp: null
+  50001/udp: null
+  50002/udp: null
+  50003/udp: null
+  50004/udp: null
+  50005/udp: null
+  50006/udp: null
+  50007/udp: null
+  50008/udp: null
+  50009/udp: null
+  50010/udp: null
 ports_description:
-  8090/tcp: "Main UI port. Default port"
-  3478/udp: "STUN server port, don't change"
-  50000/udp: "TURN server UDP port range. Default port, don't change"
-  50001/udp: "TURN server UDP port range. Default port, don't change"
-  50002/udp: "TURN server UDP port range. Default port, don't change"
-  50003/udp: "TURN server UDP port range. Default port, don't change"
-  50004/udp: "TURN server UDP port range. Default port, don't change"
-  50005/udp: "TURN server UDP port range. Default port, don't change"
-  50006/udp: "TURN server UDP port range. Default port, don't change"
-  50007/udp: "TURN server UDP port range. Default port, don't changee"
-  50008/udp: "TURN server UDP port range. Default port, don't change"
-  50009/udp: "TURN server UDP port range. Default port, don't changee"
-  50010/udp: "TURN server UDP port range. Default port, don't change"
+  8090/tcp: "Main UI port 8090. Default port"
+  3478/udp: "UDP port 3478. Default port, don't change"
+  50000/udp: "UDP port 50000. Default port, don't change"
+  50001/udp: "UDP port 50001. Default port, don't change"
+  50002/udp: "UDP port 50002. Default port, don't change"
+  50003/udp: "UDP port 50003. Default port, don't change"
+  50004/udp: "UDP port 50004. Default port, don't change"
+  50005/udp: "UDP port 50005. Default port, don't change"
+  50006/udp: "UDP port 50006. Default port, don't changee"
+  50007/udp: "UDP port 50007. Default port, don't change"
+  50008/udp: "UDP port 50008. Default port, don't change"
+  50009/udp: "UDP port 50009. Default port, don't change"
+  50010/udp: "UDP port 50010. Default port, don't change"
 options:
   folder_path: /share/agentdvr
 schema:
