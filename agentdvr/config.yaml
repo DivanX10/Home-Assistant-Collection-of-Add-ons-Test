@@ -3,11 +3,9 @@ version: 4.9.3.0.4
 slug: ispy_agent_dvr
 description: "Test"
 url: "https://github.com/DivanX10/Home-Assistant-Add-on-DeepStack-Edge"
+webui: http://[HOST]:[PORT:8090]
 startup: application
 init: false
-ingress: true
-webui: http://[HOST]:[PORT:8090]
-panel_icon: mdi:cctv
 arch:
   - amd64
   - aarch64
