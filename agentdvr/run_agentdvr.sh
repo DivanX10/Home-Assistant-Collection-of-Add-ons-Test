@@ -29,7 +29,7 @@ if [ ! -d "$HOST_COMMANDS_DIR" ]; then
     mkdir -p "$HOST_COMMANDS_DIR"
 fi
 
-# Функция для копирования файлов
+# Функция для копирования измененных файлов
 copy_files() {
     # Проверяем, существует ли папка /agent и она не пуста
     if [ ! -d "$DOCKER_MEDIA_DIR" ] || [ -z "$(ls -A $DOCKER_MEDIA_DIR)" ]; then
@@ -46,10 +46,7 @@ copy_files() {
 }
 
 # Копируем файлы перед запуском agentdvr
-copy_files
+copy_files &
 
 # Запускаем agentdvr
 exec /agent/Agent
-
-# После завершения работы agentdvr копируем файлы обратно в папку на хосте
-copy_files
