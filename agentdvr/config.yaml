@@ -1,7 +1,7 @@
 name: "iSpy Agent DVR Test"
 version: 4.9.3.0.5
-slug: ispy_agent_dvr
-description: "Test"
+slug: agentdvr
+description: "iSpy is the world’s most popular open source video surveillance application. It's compatible with the the vast majority of consumer webcams and IP cameras"
 url: "https://github.com/DivanX10/Home-Assistant-Add-on-DeepStack-Edge"
 webui: http://[HOST]:[PORT:8090]
 startup: application
