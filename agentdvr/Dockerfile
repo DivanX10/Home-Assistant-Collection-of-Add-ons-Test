@@ -26,8 +26,8 @@ EXPOSE 3478/udp
 EXPOSE 50000-50010/udp
 
 # Data volumes
-#VOLUME ["/agent/Media/XML", "/agent/Media/WebServerRoot/Media", "/agent/Commands"]
-VOLUME ["agent_media:/agent/Media", "agent_media_xml:/agent/Media/XML", "agent_commands:/agent/Commands"]
+VOLUME ["/agent/Media/XML", "/agent/Media/WebServerRoot/Media", "/agent/Commands"]
+#VOLUME ["agent_media:/agent/Media", "agent_media_xml:/agent/Media/XML", "agent_commands:/agent/Commands"]
 
 
 #WORKDIR /agent
