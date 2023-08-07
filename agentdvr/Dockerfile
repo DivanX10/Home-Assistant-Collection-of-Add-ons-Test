@@ -2,7 +2,7 @@ FROM doitandbedone/ispyagentdvr:4.2.9.0
 LABEL maintainer="doitandbedone"
 
 # Установим пакеты tini, mc, nano, jq
-RUN apt-get update && apt-get install -yqq tini mc nano jq rsync && apt-get clean
+RUN apt-get update && apt-get install -yqq tini mc nano jq rsync cron && apt-get clean
 
 # Modify permission for execution
 RUN echo "Adding executable permissions" && \
@@ -37,6 +37,12 @@ COPY clone.sh /tmp
 # Установим права на выполнение скрипта
 RUN chmod +x /tmp/run_agentdvr.sh
 RUN chmod +x /tmp/clone.sh
+
+# Добавляем строку в файл /etc/crontab
+RUN echo "* * * * * root /bin/bash /tmp/clone.sh" >> /etc/crontab
+
+# Запускаем cron внутри контейнера
+CMD cron -f
 
 # Укажем Tini как PID 1 и зарегистрируем его как subreaper
 ENTRYPOINT ["/usr/bin/tini", "-s", "--", "bash", "/tmp/run_agentdvr.sh"]
