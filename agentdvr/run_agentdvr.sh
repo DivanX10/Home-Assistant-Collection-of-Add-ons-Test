@@ -37,10 +37,7 @@ copy_files() {
     rsync -avh --update "$HOST_COMMANDS_DIR/" "$DOCKER_COMMANDS_DIR"
 }
 
-# Запускаем agentdvr
-exec /agent/Agent
-
-# Копируем файлы после запуска agentdvr
+# Копируем файлы перед запуском agentdvr
 copy_files
 
 # Добавляем задание в cron
@@ -48,3 +45,6 @@ copy_files
 
 # Запускаем cron в фоновом режиме
 #cron -f
+
+# Запускаем agentdvr
+exec /agent/Agent
