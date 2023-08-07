@@ -3,6 +3,7 @@
 ## How to use
 
 The user manual for iSpy Agent DVR can be found [here](https://www.ispyconnect.com/userguide-agent-dvr.aspx)
+
 Recommended settings can be found [here](https://github.com/doitandbedone/ispyagentdvr-docker#ispy-agent-dvr)
 
 ## Recommended settings:
