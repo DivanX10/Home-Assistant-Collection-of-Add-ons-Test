@@ -12,6 +12,12 @@ HOST_COMMANDS_DIR="/share/agentdvr/Commands"
 
 # Проверяем, существует ли папка /agent и она не пуста
 if [ ! -d "$DOCKER_MEDIA_DIR" ] || [ -z "$(ls -A $DOCKER_MEDIA_DIR)" ]; then
+    # Проверяем, существует ли папка /share/agentdvr
+    if [ ! -d "/share/agentdvr" ]; then
+        # Создаем папку /share/agentdvr
+        mkdir "/share/agentdvr"
+    fi
+
     # Копируем содержимое папок из контейнера в папки на хосте
     rsync -avh --ignore-existing "$HOST_MEDIA_DIR/" "$DOCKER_MEDIA_DIR"
     rsync -avh --ignore-existing "$HOST_XML_DIR/" "$DOCKER_XML_DIR"
@@ -30,6 +36,7 @@ exec /agent/Agent
 rsync -avh --update "$DOCKER_MEDIA_DIR/" "$HOST_MEDIA_DIR"
 rsync -avh --update "$DOCKER_XML_DIR/" "$HOST_XML_DIR"
 rsync -avh --update "$DOCKER_COMMANDS_DIR/" "$HOST_COMMANDS_DIR"
+
 
 
 
