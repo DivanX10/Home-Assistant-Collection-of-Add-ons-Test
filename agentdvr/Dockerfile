@@ -1,5 +1,4 @@
 FROM doitandbedone/ispyagentdvr:4.9.3.0
-
 LABEL maintainer="doitandbedone"
 
 # Установим пакеты
@@ -14,8 +13,11 @@ RUN echo "Adding executable permissions" && \
     chmod +x /agent/agent-register.sh && \
     chmod +x /agent/agent-reset.sh && \
     chmod +x /agent/agent-reset-local-login.sh && \
-    chmod +x /tmp/run_agentdvr.sh && \
+    chmod +x /tmp/agentdvr.sh && \
     chmod +x /tmp/clone.sh
+
+# Добавим строку в файл /etc/crontab
+RUN echo "*/1 * * * * root /bin/bash /tmp/clone.sh" >> /etc/crontab
 
 # Define default environment variables
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
@@ -31,14 +33,8 @@ EXPOSE 3478/udp
 # TURN server UDP port range
 EXPOSE 50000-50010/udp
 
-# Data volumes
-#VOLUME ["/agent/Media/XML", "/agent/Media/WebServerRoot/Media", "/agent/Commands"]
-
 # Рабочая директория
 WORKDIR /agent
 
-# Добавляем строку в файл /etc/crontab
-RUN echo "*/1 * * * * root /bin/bash /tmp/clone.sh" >> /etc/crontab
-
 # Укажем Tini как PID 1 и зарегистрируем его как subreaper
-ENTRYPOINT ["/usr/bin/tini", "-s", "--", "bash", "/tmp/run_agentdvr.sh"]
+ENTRYPOINT ["/usr/bin/tini", "-s", "--", "bash", "/tmp/agentdvr.sh"]
