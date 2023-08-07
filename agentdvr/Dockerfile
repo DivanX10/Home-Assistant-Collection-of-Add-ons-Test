@@ -1,45 +1,45 @@
-FROM doitandbedone/ispyagentdvr:4.2.9.0
-LABEL maintainer="doitandbedone"
+#!/bin/bash
 
-# Установим пакеты tini, mc, nano, jq
-RUN apt-get update && apt-get install -yqq tini mc nano jq rsync && apt-get clean
+# Путь к папке с файлами внутри контейнера
+DOCKER_MEDIA_DIR="/agent/Media"
+DOCKER_XML_DIR="/agent/Media/XML"
+DOCKER_COMMANDS_DIR="/agent/Commands"
 
-# Modify permission for execution
-RUN echo "Adding executable permissions" && \
-    chmod +x /agent/Agent && \
-    chmod +x /agent/agent-register.sh && \
-    chmod +x /agent/agent-reset.sh && \
-    chmod +x /agent/agent-reset-local-login.sh
+# Путь к папке с файлами на хосте (папка share/agentdvr)
+HOST_MEDIA_DIR="$FOLDER_PATH/Media"
+HOST_XML_DIR="$FOLDER_PATH/Media/XML"
+HOST_COMMANDS_DIR="$FOLDER_PATH/Commands"
 
-# Define default environment variables
-ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-# Fix a memory leak on encoded recording
-ENV MALLOC_TRIM_THRESHOLD_=100000
+# Функция для копирования измененных файлов
+copy_files() {
+    # Проверяем, существует ли папка /agent и она не пуста
+    if [ ! -d "$DOCKER_MEDIA_DIR" ] || [ -z "$(ls -A $DOCKER_MEDIA_DIR)" ]; then
+        # Копируем содержимое папок из контейнера в папки на хосте
+        rsync -avh --ignore-existing "$HOST_MEDIA_DIR/" "$DOCKER_MEDIA_DIR"
+        rsync -avh --ignore-existing "$HOST_XML_DIR/" "$DOCKER_XML_DIR"
+        rsync -avh --ignore-existing "$HOST_COMMANDS_DIR/" "$DOCKER_COMMANDS_DIR"
+    else
+        # Копируем только измененные файлы из папок на хосте в контейнер
+        rsync -avh --update "$HOST_MEDIA_DIR/" "$DOCKER_MEDIA_DIR"
+        rsync -avh --update "$HOST_XML_DIR/" "$DOCKER_XML_DIR"
+        rsync -avh --update "$HOST_COMMANDS_DIR/" "$DOCKER_COMMANDS_DIR"
+    fi
+}
 
-# Main UI port
-EXPOSE 8090
+# Добавляем задачу в крон
+echo "*/1 * * * * /tmp/run_agentdvr.sh" > cronjob
 
-# STUN server port
-EXPOSE 3478/udp
+# Устанавливаем задачу в крон
+crontab cronjob
 
-# TURN server UDP port range
-EXPOSE 50000-50010/udp
+# Удаляем временный файл
+rm cronjob
 
-# Data volumes
-#VOLUME ["/agent/Media/XML", "/agent/Media/WebServerRoot/Media", "/agent/Commands"]
-#VOLUME ["agent_media:/agent/Media", "agent_media_xml:/agent/Media/XML", "agent_commands:/agent/Commands"]
+# Запускаем скрипт для копирования файлов
+copy_files
 
+# Запускаем agentdvr
+exec /agent/Agent
 
-WORKDIR /agent
-
-# Скопируем файлы во внутрь контейнера
-COPY run_agentdvr.sh /tmp
-
-# Установим права на выполнение скрипта
-RUN chmod +x /tmp/run_agentdvr.sh
-
-# Укажем Tini как PID 1 и зарегистрируем его как subreaper
-ENTRYPOINT ["/usr/bin/tini", "-s", "--", "bash", "/tmp/run_agentdvr.sh"]
-
-# Define service entrypoint
-#CMD ["/agent/Agent"]
+# После завершения работы agentdvr копируем файлы обратно в папку на хосте
+copy_files
