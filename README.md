@@ -6,7 +6,7 @@ These are test addons for development and debugging. Do not install yourself
 Go to the external interface of your home assistant in Settings -> Add-ons -> Store -> click on the 3 dots (top right) and add this URL to the repository:
 
 ```
-https://github.com/DivanX10/Home-Assistant-Add-on-DeepStack-Edge
+https://github.com/DivanX10/home-assistant-collection-of-addons-test
 ```
 
 ---------
@@ -18,5 +18,5 @@ https://github.com/DivanX10/Home-Assistant-Add-on-DeepStack-Edge
 Перейдите во внешний интерфейс своего домашнего помощника в Настройки -> Дополнения -> Магазин -> нажимаем на 3 точки (справа наверху) и добавьте этот URL-адрес в репозиторий:
 
 ```
-https://github.com/DivanX10/Home-Assistant-Add-on-DeepStack-Edge
+https://github.com/DivanX10/home-assistant-collection-of-addons-test
 ```
