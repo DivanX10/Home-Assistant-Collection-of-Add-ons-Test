@@ -5,12 +5,12 @@ FOLDER_PATH=$(jq -r '.folder_path' < /data/options.json)
 
 # Путь к папке с файлами внутри контейнера
 DOCKER_MEDIA_DIR="/agent/Media"
-DOCKER_XML_DIR="/agent/Media/XML"
+DOCKER_XML_DIR="/agent/XML"
 DOCKER_COMMANDS_DIR="/agent/Commands"
 
 # Путь к папке с файлами на хосте (папка share/agentdvr)
 HOST_MEDIA_DIR="$FOLDER_PATH/Media"
-HOST_XML_DIR="$FOLDER_PATH/Media/XML"
+HOST_XML_DIR="$FOLDER_PATH/XML"
 HOST_COMMANDS_DIR="$FOLDER_PATH/Commands"
 
 # Проверяем, существует ли папка на хосте
