@@ -3,9 +3,6 @@
 # Запускаем cron во фоновом режиме и ждем его завершения
 cron -f &
 
-# Записываем сообщение о том, что cron запущен
-echo "Cron запущен"
-
 # Извлекаем значение "folder_path" из файла options.json
 FOLDER_PATH=$(jq -r '.folder_path' < /data/options.json)
 
