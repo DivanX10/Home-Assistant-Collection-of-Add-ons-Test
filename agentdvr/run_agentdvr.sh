@@ -45,8 +45,8 @@ copy_files() {
     fi
 }
 
-# Копируем файлы перед запуском agentdvr
-copy_files &
+# Запускаем agentdvr в фоновом режиме
+/exec/agentdvr &
 
-# Запускаем agentdvr
-exec /agent/Agent
+# Копируем файлы каждые 10 секунд
+watch -n 10 copy_files
