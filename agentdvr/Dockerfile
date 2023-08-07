@@ -1,5 +1,11 @@
 FROM doitandbedone/ispyagentdvr:4.9.3.0
-LABEL maintainer="doitandbedone"
+
+# Добавим метаданные к образу
+LABEL \
+  io.hass.version="VERSION" \
+  io.hass.type="addon" \
+  io.hass.arch="amd64|aarch64|armv7" \
+  maintainer="DivanX10"
 
 # Установим пакеты
 RUN apt-get update && apt-get install -yqq tini mc nano jq rsync cron && apt-get clean
