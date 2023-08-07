@@ -41,6 +41,6 @@ ports_description:
   50009/udp: "Default port, don't change"
   50010/udp: "Default port, don't change"
 options:
-  folder_path: /share/agentdvr2
+  folder_path: /share/agentdvr
 schema:
   folder_path: str
