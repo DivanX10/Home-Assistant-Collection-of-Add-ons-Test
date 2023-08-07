@@ -13,6 +13,9 @@ HOST_MEDIA_DIR="$FOLDER_PATH/Media"
 HOST_XML_DIR="$FOLDER_PATH/Media/XML"
 HOST_COMMANDS_DIR="$FOLDER_PATH/Commands"
 
+# Запускаем agentdvr
+exec /agent/Agent
+
 # Проверяем, существует ли папка на хосте
 if [ ! -d "$HOST_MEDIA_DIR" ]; then
     # Создаем папку на хосте
@@ -41,5 +44,3 @@ do
     sleep 10
 done
 
-# Запускаем agentdvr
-exec /agent/Agent
